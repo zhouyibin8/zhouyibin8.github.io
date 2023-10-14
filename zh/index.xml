@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kunyang&#39;s Blog</title>
+    <link>https://zhouyibin8.github.io/zh/</link>
+    <description>Recent content on Kunyang&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 01 Apr 2023 00:07:17 -0400</lastBuildDate><atom:link href="https://zhouyibin8.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo &#43; PaperMod搭建技术博客</title>
+      <link>https://zhouyibin8.github.io/zh/blog/tech/papermod/</link>
+      <pubDate>Fri, 15 Apr 2022 00:28:55 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/blog/tech/papermod/</guid>
+      <description>安装过程 首先需要安装Hugo，安装Hugo需要利用一个包管理工具，对于Windows系统Hugo可以直接用Winget来安装，打开终端输入 winget</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://zhouyibin8.github.io/zh/blog/tech/java/</link>
+      <pubDate>Mon, 02 May 2022 17:28:17 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/blog/tech/java/</guid>
+      <description>Character 判断是否为字母或数字： boolean res = Character.isLetterOrDigit(char); 转小写： char res = Character.toLowerCase(char); 下一个字符： &amp;#39;b&amp;#39; == (char) (&amp;#39;a&amp;#39; + 1); Integer 最大值最小值： int max = Integer.MAX_VALUE; int min = Integer.MIN_VALUE; 比较相等： Integer a = 1; Integer b = 1; a == b; // true</description>
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>https://zhouyibin8.github.io/zh/blog/tech/cpp/</link>
+      <pubDate>Mon, 02 May 2022 17:28:17 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/blog/tech/cpp/</guid>
+      <description>char 转大小写： char ch = &amp;#39;a&amp;#39;; ch = (char) toupper(ch); ch = (char) tolower(ch); 下一个字符： &amp;#39;b&amp;#39; == (&amp;#39;a&amp;#39; + 1); int 最大值最小值： int MAX = INT_MAX; int MIN = INT_MIN; array 创建数组： int array [4]; // 如果不初始化则值随机 int array[] = {1,2,3,4}; int</description>
+    </item>
+    
+    <item>
+      <title>Windows 11 打造个性化终端</title>
+      <link>https://zhouyibin8.github.io/zh/blog/tech/bash/</link>
+      <pubDate>Sat, 01 Apr 2023 00:07:17 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/blog/tech/bash/</guid>
+      <description>前言 我就喜欢搞一些简洁而又花里胡哨的东西。 教程基于Windows 11自带的Terminal。 字体 我使用的字体是CodeNewRoman Nerd Fo</description>
+    </item>
+    
+    <item>
+      <title>友链 🤝</title>
+      <link>https://zhouyibin8.github.io/zh/links/</link>
+      <pubDate>Sat, 21 May 2022 21:50:30 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/links/</guid>
+      <description>zhouyibin8&amp;#39;s Blog Hello World Printer Sulv’s Blog 记录技术、阅读、生活的博客 友链格式： name=&amp;#34;zhouyibin8&amp;#39;s Blog&amp;#34; url=&amp;#34;https://zhouyibin8.github.io/zh&amp;#34; logo=&amp;#34;https://zhouyibin8.github.io/Avatar.png&amp;#34; word=&amp;#34;Hello World Printer&amp;#34;</description>
+    </item>
+
+    
+    <item>
+      <title>最近爱听</title>
+      <link>https://zhouyibin8.github.io/zh/blog/life/music/</link>
+      <pubDate>Sun, 01 May 2022 12:44:55 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/blog/life/music/</guid>
+      <description></description>
+    </item>
+    
+    
+    <item>
+      <title>项目 👨‍💻</title>
+      <link>https://zhouyibin8.github.io/zh/projects/</link>
+      <pubDate>Wed, 10 Oct 2023 14:39:53 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/projects/</guid>
+      <description>研究生项目 Turbo Wallet - 记账软件 2022年1月 至 2022年3月，JavaScript GitHub (前端仓库): https://github.com/zhouyibin8/money-management.git GitHub (后端仓库): https://github.com/zhouyibin8/money-back.git 这是一个帮助我们记录每天生活</description>
+    </item>
+    
+    <item>
+      <title>关于我 👋</title>
+      <link>https://zhouyibin8.github.io/zh/about/</link>
+      <pubDate>Wed, 13 Apr 2022 14:39:46 -0400</pubDate>
+      
+      <guid>https://zhouyibin8.github.io/zh/about/</guid>
+      <description>class Me: def __init__(self): self.name = &amp;#34;周亦彬&amp;#34; self.prefer_name = &amp;#34;Berry&amp;#34; self.born_year = 2000 self.MBTI = ENFJ self.hometown = &amp;#34;长沙, 湖南, 中国&amp;#34; self.curr_location = &amp;#34;纽约市, 纽约州, 美国&amp;#34; self.grad_school = &amp;#34;哥伦比亚大学&amp;#34; self.undergrad_school = &amp;#34;澳门科技大学 &amp;#34;</description>
+    </item>
+    
+  </channel>
+</rss>
