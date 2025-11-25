@@ -1,23 +1,36 @@
-{% include header.html %}
-<main class="main">
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+</script>
+
+{% include header.html %}  <main class="main">
 
 <article class="post-single">
-  <header class="post-header">
-    <br>
-    <br>
-    <h1 class="post-title">
-      About me 👋
-    </h1>
-      <div class="post-meta"><span title='2025.11.26'>2025.11.26</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
+    <header class="post-header">
+        <br>
+        <br>
+        <h1 class="post-title">
+            About me 👋
+        </h1>
+        <div class="post-meta"><span title='2025.11.26'>2025.11.26</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
 <ul class="i18n_list">Language:
-    <li>
-        <a href="https://zhouyibin8.github.io/zh/about/">中文🇨🇳</a>
-    </li>
-</ul>
+            <li>
+                <a href="https://zhouyibin8.github.io/zh/about/">中文🇨🇳</a>
+            </li>
+        </ul>
 
 </div>
-  </header> 
-  <div class="post-content"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
+    </header> 
+    <div class="post-content"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🧊&#34;</span>
@@ -30,6 +43,11 @@
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Candidate&#34;</span>
 </span></span></code></pre></div>
 
-  </div>
+    </div>
 
-  {% include footer.html %}
+    <footer class="post-footer">
+    </footer>
+</article>
+</main>
+    
+{% include footer.html %}  ```
