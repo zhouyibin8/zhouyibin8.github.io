@@ -37,9 +37,6 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
 
 
-
-
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
@@ -176,3 +173,157 @@
         </ul>
     </nav>
 </header>
+<main class="main">
+    <article class="post-single">
+        <header class="post-header">
+            <br>
+            <br>
+            <h1 class="post-title">
+                About me 👋
+            </h1>
+            <div class="post-meta"><span title='2025.11.26'>2025.11.26</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
+            <ul class="i18n_list">Language:
+                <li>
+                    <a href="https://zhouyibin8.github.io/zh/about/">中文🇨🇳</a>
+                </li>
+            </ul>
+            </div>
+        </header> 
+        <div class="post-content">
+            <div class="highlight">
+                <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🧊&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>born_year <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>MBTI <span style="color:#f92672">=</span> ENFJ
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hong Kong&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>PhD <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span>
+</span></span></code></pre></div>
+        </div>
+        <footer class="post-footer">
+        </footer>
+    </article>
+</main>
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://zhouyibin8.github.io/en/">Yibin&#39;s Blog</a></span>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        Visitors: <span id="busuanzi_value_site_uv"></span>
+        Views: <span id="busuanzi_value_site_pv"></span>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = '复制';
+
+        function copyingDone() {
+            copybutton.innerText = '已复制！';
+            setTimeout(() => {
+                copybutton.innerText = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            //
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            //
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            //
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
