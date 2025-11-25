@@ -11,8 +11,11 @@
   <meta name="description" content="我的学术研究成果和研究论文列表，包括多模态分析、旅游营销和深度学习等领域。">
   <meta name="author" content="Berry">
   <link rel="canonical" href="https://zhouyibin8.github.io/zh/research/">
+  
   <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
+  
   <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
+  
   <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://zhouyibin8.github.io/k-48.png">
@@ -20,8 +23,10 @@
   <link rel="mask-icon" href="https://zhouyibin8.github.io/k-48.png">
   <meta name="theme-color" content="#2e2e33">
   <meta name="msapplication-TileColor" content="#2e2e33">
+  
   <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/research/">
   <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/research/">
+  
   <noscript>
     <style>
       #theme-toggle,
@@ -30,6 +35,7 @@
       }
     </style>
   </noscript>
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
@@ -37,6 +43,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
+  
   <meta property="og:title" content="研究 🔬" />
   <meta property="og:description" content="我的学术研究成果和研究论文列表..." />
   <meta property="og:type" content="article" />
@@ -47,7 +54,8 @@
   <meta property="og:site_name" content="Berry" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="研究 🔬" />
-  <meta name="twitter:description" content="我的学术研究成果和研究论文列表..." />
+  <meta name="twitter:description" content="我的学术研究成果..." />
+  
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -160,6 +168,117 @@
   </header>
 
   <main class="main">
+    
+    <style>
+      /* 选项卡容器 */
+      .research-tabs {
+        background: rgba(var(--entry), 0.5); /* 适配主题背景色 */
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      
+      /* 选项卡按钮栏 */
+      .tab-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+        overflow-x: auto; /* 手机端支持横滑 */
+      }
+  
+      /* 按钮样式 */
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--secondary);
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+  
+      /* 激活状态 */
+      .tab-btn.active {
+        background: var(--primary); /* 适配主题色 */
+        color: var(--theme); /* 文字反色 */
+      }
+      
+      .tab-btn:hover {
+        color: var(--primary);
+      }
+      
+      /* Dark mode specific fix for hover if needed */
+      body.dark .tab-btn.active {
+        background: rgba(255, 255, 255, 0.1); 
+        color: var(--primary);
+      }
+  
+      /* 内容区域 */
+      .tab-content {
+        display: none; /* 默认隐藏 */
+        animation: fadeIn 0.4s ease;
+      }
+  
+      .tab-content.active {
+        display: block; /* 激活显示 */
+      }
+  
+      /* 核心亮点列表样式 */
+      .highlights-list li {
+        margin-bottom: 8px;
+        list-style: none;
+        position: relative;
+        padding-left: 20px;
+      }
+      .highlights-list li::before {
+        content: "⚡";
+        position: absolute;
+        left: 0;
+        font-size: 0.8em;
+      }
+  
+      /* 引用区域样式 */
+      .citation-box {
+        background: var(--code-bg);
+        padding: 15px;
+        border-radius: 6px;
+        font-family: 'Times New Roman', Times, serif; /* APA 常用衬线体 */
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--primary);
+        border: 1px solid var(--border);
+        /* 悬挂缩进逻辑 */
+        padding-left: 2em;
+        text-indent: -2em; 
+      }
+  
+      /* 简单的淡入动画 */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* 图片容器 */
+      .research-image-container img {
+         border-radius: 8px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+         transition: transform 0.3s;
+      }
+      .research-image-container img:hover {
+         transform: scale(1.01);
+      }
+    </style>
+  
     <article class="post-single">
       <header class="post-header">
         <h1 class="post-title">学术研究 🔬</h1>
@@ -170,7 +289,7 @@
           </ul>
         </div>
       </header>
-
+  
       <aside id="toc-container" class="toc-container wide">
         <div class="toc">
           <details open>
@@ -180,9 +299,9 @@
             <div class="inner">
               <ul>
                 <li>
-                  <a href="#research-2025" aria-label="2025/Latest 研究成果">2025/Latest</a>
+                  <a href="#research-2025" aria-label="2025/Latest">2025/Latest</a>
                   <ul>
-                    <li><a href="#unveiling-customer-engagement" aria-label="Unveiling Customer Engagement in Destination Marketing">Unveiling Customer Engagement in Destination Marketing</a></li>
+                    <li><a href="#unveiling-customer-engagement" aria-label="Unveiling Customer Engagement...">Unveiling Customer Engagement...</a></li>
                   </ul>
                 </li>
               </ul>
@@ -199,47 +318,97 @@
         <section class="research-paper-entry">
           <h3 id="unveiling-customer-engagement">Unveiling Customer Engagement in Destination Marketing: A Multimodal Approach to Analyzing Official Promotional Videos<a hidden class="anchor" aria-hidden="true" href="#unveiling-customer-engagement">#</a></h3>
           
-          <p class="research-authors" style="margin-bottom: 10px;">
-            <strong>Authors:</strong> 
-            <a href="https://orcid.org/YOUR-ORCID-HERE" target="_blank" rel="noopener noreferrer" title="ORCID: Yibin Berry Zhou">Yibin Berry Zhou</a>, 
-            <a href="https://orcid.org/JASON-ORCID-HERE" target="_blank" rel="noopener noreferrer" title="ORCID: Chen Jason Zhang">Chen Jason Zhang</a>, 
-            <a href="https://orcid.org/MENGLONG-ORCID-HERE" target="_blank" rel="noopener noreferrer" title="ORCID: Menglong Xia">Menglong Xia</a><sup title="Corresponding Author">#</sup>
+          <p class="research-authors" style="margin-bottom: 5px;">
+              <strong>Authors:</strong> 
+              <a href="https://orcid.org/YOUR-ORCID-HERE" target="_blank" rel="noopener noreferrer" title="ORCID: Yibin Berry Zhou">Yibin Berry Zhou</a>, 
+              <a href="https://orcid.org/YOUR-JASON-ID" target="_blank" rel="noopener noreferrer" title="ORCID: Chen Jason Zhang">Chen Jason Zhang</a>, 
+              <a href="https://orcid.org/YOUR-MENGLONG-ID" target="_blank" rel="noopener noreferrer" title="ORCID: Menglong Xia">Menglong Xia</a><sup title="Corresponding Author">#</sup>
           </p>
-
-          <p>
-            <strong>Journal:</strong> 
-            <span style="font-style: italic;">International Journal of Tourism Research</span>
+  
+          <p style="margin-bottom: 10px;">
+            <strong>Journal:</strong> <span style="font-style: italic;">International Journal of Tourism Research</span>
           </p>
-
-          <blockquote>
-             <p>Article URL: <a href="YOUR_ARTICLE_URL_HERE" target="_blank">Link to Paper (Coming Soon)</a></p>
-          </blockquote>
-
-          <h4>Abstract</h4>
-          <blockquote style="border-left: 4px solid var(--primary-color, #268bd2); padding-left: 15px; margin-top: 10px;">
-            <p>This study examines how features of official destination promotional videos (DPVs) shape customer engagement (CE) on social media. Using 5,037 Instagram videos from 54 U.S. national parks, we apply machine learning and computer vision to extract video content, visual features, multimodal cues (text, audio, thumbnails), and post metadata. LightGBM with SHAP analyses shows that thumbnail–video contrasts, color coherence, and emotional cues significantly influence CE. Simpler, familiar content drives passive engagement (likes), whereas emotionally resonant, high-aesthetic content fosters active engagement (comments). Beyond method, this study contributes a dual-pathway theoretical framework that integrates cognitive load, elaboration likelihood, and media richness theories to explain how multimodal features jointly shape CE. Practical implications highlight balancing content simplicity and depth, ensuring visual and emotional consistency, and optimizing posting strategies. Overall, this research advances destination marketing by providing a scalable and theory-informed framework for analyzing social media videos.</p>
-          </blockquote>
           
+          <div class="research-tabs" id="tabs-paper-1">
+            <div class="tab-buttons">
+              <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'highlight')">⚡ Highlights (TL;DR)</button>
+              <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'abstract')">📄 Abstract</button>
+              <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 Citation (APA)</button>
+            </div>
+  
+            <div id="highlight" class="tab-content active">
+              <p><strong>Key Findings & Contributions:</strong></p>
+              <ul class="highlights-list">
+                <li><strong>Dual-Pathway Framework:</strong> Developed a theoretical framework integrating cognitive load, elaboration likelihood, and media richness theories.</li>
+                <li><strong>Multimodal Analysis:</strong> Utilized computer vision and <strong>LightGBM with SHAP</strong> to analyze 5,037 Instagram videos from U.S. national parks.</li>
+                <li><strong>Engagement Drivers:</strong> Found that <em>simpler, familiar content</em> drives passive likes, while <em>emotionally resonant, high-aesthetic content</em> fosters active comments.</li>
+                <li><strong>Visual Cues:</strong> Identified that thumbnail–video contrasts and color coherence are critical predictors of customer engagement.</li>
+              </ul>
+            </div>
+  
+            <div id="abstract" class="tab-content">
+              <blockquote style="border-left: 4px solid var(--primary); padding-left: 15px; margin: 0;">
+                This study examines how features of official destination promotional videos (DPVs) shape customer engagement (CE) on social media. Using 5,037 Instagram videos from 54 U.S. national parks, we apply machine learning and computer vision to extract video content, visual features, multimodal cues (text, audio, thumbnails), and post metadata. LightGBM with SHAP analyses shows that thumbnail–video contrasts, color coherence, and emotional cues significantly influence CE. Simpler, familiar content drives passive engagement (likes), whereas emotionally resonant, high-aesthetic content fosters active engagement (comments). Beyond method, this study contributes a dual-pathway theoretical framework that integrates cognitive load, elaboration likelihood, and media richness theories to explain how multimodal features jointly shape CE. Practical implications highlight balancing content simplicity and depth, ensuring visual and emotional consistency, and optimizing posting strategies. Overall, this research advances destination marketing by providing a scalable and theory-informed framework for analyzing social media videos.
+              </blockquote>
+            </div>
+  
+            <div id="citation" class="tab-content">
+              <p style="margin-bottom: 5px; font-size: 0.9em; color: gray;">Copy the APA citation below:</p>
+              <div class="citation-box">
+Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in destination marketing: A multimodal approach to analyzing official promotional videos. <em>International Journal of Tourism Research</em>.
+              </div>
+            </div>
+          </div>
           <p style="margin-top: 15px;">
             <strong>Keywords:</strong> Customer engagement; Video analysis; Destination promotional video; Multimodal; Tourism destination marketing; Machine learning.
           </p>
-          
+  
           <h4>Framework / Visuals</h4>
           <div class="research-image-container" style="text-align: center; margin: 20px 0;">
-             <img src="https://via.placeholder.com/800x400?text=Multimodal+Analysis+Framework" alt="Theoretical Framework or Video Analysis Process" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <p style="font-size: 0.9em; color: #888; margin-top: 5px;">Figure 1: The proposed multimodal approach framework for analyzing promotional videos.</p>
+            <img src="https://via.placeholder.com/800x400?text=Multimodal+Analysis+Framework+Image" alt="Theoretical Framework" style="max-width: 100%; height: auto;">
+            <p style="font-size: 0.9em; color: #888; margin-top: 5px;">Figure 1: The proposed multimodal approach framework.</p>
           </div>
+          
+          <div style="text-align: center; margin-top: 25px;">
+               <a href="YOUR_REAL_ARTICLE_URL_HERE" target="_blank" class="button" style="background: var(--primary); color: var(--theme); padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid var(--primary);">
+                 📖 Read Full Paper
+               </a>
+          </div>
+  
         </section>
         
         <hr>
-
+  
       </div>
       <footer class="post-footer"></footer>
     </article>
+  
+    <script>
+      function openTab(evt, paperId, tabName) {
+        // 1. 获取该论文容器下的所有 content 和 button
+        var container = document.getElementById(paperId);
+        var tabContents = container.getElementsByClassName("tab-content");
+        var tabButtons = container.getElementsByClassName("tab-btn");
+  
+        // 2. 隐藏所有内容
+        for (var i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove("active");
+        }
+  
+        // 3. 取消所有按钮的激活状态
+        for (var i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].classList.remove("active");
+        }
+  
+        // 4. 显示当前点击的内容，并激活按钮
+        container.querySelector("#" + tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+    </script>
   </main>
 
   <footer class="footer">
-    <span>&copy; 2023 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
+    <span>&copy; 2025 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -341,15 +510,13 @@
       if (container.classList.contains("highlight")) {
         container.appendChild(copybutton);
       } else if (container.parentNode.firstChild == container) {
-
       } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-
         codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
       } else {
-
         codeblock.parentNode.appendChild(copybutton);
       }
     });
   </script>
 </body>
+
 </html>
