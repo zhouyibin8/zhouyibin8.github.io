@@ -13,7 +13,6 @@
   <link rel="canonical" href="https://zhouyibin8.github.io/zh/research/">
   
   <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
-  
   <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
   
   <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
@@ -42,15 +41,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
   
   <meta property="og:title" content="研究 🔬" />
   <meta property="og:description" content="我的学术研究成果和研究论文列表..." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://zhouyibin8.github.io/zh/research/" />
   <meta property="article:section" content="" />
-  <meta property="article:published_time" content="2025-11-26T00:00:00-04:00" />
-  <meta property="article:modified_time" content="2025-11-26T00:00:00-04:00" />
+  <meta property="article:published_time" content="2024-11-26T00:00:00-04:00" />
+  <meta property="article:modified_time" content="2024-11-26T00:00:00-04:00" />
   <meta property="og:site_name" content="Berry" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="研究 🔬" />
@@ -79,8 +77,8 @@
       "description": "我的学术研究成果...",
       "wordCount": "1000",
       "inLanguage": "zh",
-      "datePublished": "2025-11-26T00:00:00-04:00",
-      "dateModified": "2025-11-26T00:00:00-04:00",
+      "datePublished": "2024-11-26T00:00:00-04:00",
+      "dateModified": "2024-11-26T00:00:00-04:00",
       "author": {
         "@type": "Person",
         "name": "Berry"
@@ -170,24 +168,34 @@
   <main class="main">
     
     <style>
+      /* ============ 核心样式：学术内容 ============ */
+      /* 定义学术风格的文字（Times New Roman, 两端对齐） */
+      .academic-text {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        text-align: justify; /* 两端对齐 */
+        color: var(--primary);
+      }
+
       /* 选项卡容器 */
       .research-tabs {
-        background: rgba(var(--entry), 0.5); /* 适配主题背景色 */
+        background: rgba(var(--entry), 0.5);
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 15px;
+        padding: 20px;
         margin-top: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
       }
       
       /* 选项卡按钮栏 */
       .tab-buttons {
         display: flex;
-        gap: 10px;
+        gap: 12px;
         margin-bottom: 15px;
         border-bottom: 1px solid var(--border);
-        padding-bottom: 10px;
-        overflow-x: auto; /* 手机端支持横滑 */
+        padding-bottom: 12px;
+        overflow-x: auto;
       }
   
       /* 按钮样式 */
@@ -196,7 +204,7 @@
         border: none;
         color: var(--secondary);
         cursor: pointer;
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: bold;
         padding: 6px 12px;
         border-radius: 6px;
@@ -209,15 +217,14 @@
   
       /* 激活状态 */
       .tab-btn.active {
-        background: var(--primary); /* 适配主题色 */
-        color: var(--theme); /* 文字反色 */
+        background: var(--primary);
+        color: var(--theme);
       }
       
       .tab-btn:hover {
         color: var(--primary);
       }
       
-      /* Dark mode specific fix for hover if needed */
       body.dark .tab-btn.active {
         background: rgba(255, 255, 255, 0.1); 
         color: var(--primary);
@@ -225,57 +232,41 @@
   
       /* 内容区域 */
       .tab-content {
-        display: none; /* 默认隐藏 */
+        display: none;
         animation: fadeIn 0.4s ease;
       }
   
       .tab-content.active {
-        display: block; /* 激活显示 */
+        display: block;
       }
   
-      /* 核心亮点列表样式 */
-      .highlights-list li {
-        margin-bottom: 8px;
-        list-style: none;
-        position: relative;
-        padding-left: 20px;
-      }
-      .highlights-list li::before {
-        content: "⚡";
-        position: absolute;
-        left: 0;
-        font-size: 0.8em;
-      }
-  
-      /* 引用区域样式 */
+      /* 引用区域样式 - 继承学术风格 */
       .citation-box {
         background: var(--code-bg);
         padding: 15px;
         border-radius: 6px;
-        font-family: 'Times New Roman', Times, serif; /* APA 常用衬线体 */
-        font-size: 1rem;
-        line-height: 1.6;
-        color: var(--primary);
         border: 1px solid var(--border);
         /* 悬挂缩进逻辑 */
         padding-left: 2em;
         text-indent: -2em; 
       }
   
-      /* 简单的淡入动画 */
+      /* 图片样式 */
+      .framework-img {
+         border-radius: 8px;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+         max-width: 100%;
+         height: auto;
+         transition: transform 0.3s;
+         cursor: zoom-in; /* 暗示可以查看大图（虽然没有实现点击放大，但这是个好习惯） */
+      }
+      .framework-img:hover {
+         transform: scale(1.01);
+      }
+
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(5px); }
         to { opacity: 1; transform: translateY(0); }
-      }
-      
-      /* 图片容器 */
-      .research-image-container img {
-         border-radius: 8px;
-         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-         transition: transform 0.3s;
-      }
-      .research-image-container img:hover {
-         transform: scale(1.01);
       }
     </style>
   
@@ -283,7 +274,7 @@
       <header class="post-header">
         <h1 class="post-title">学术研究 🔬</h1>
         <div class="post-meta">
-          <span title='2025.11.26'>2025.11.26</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
+          <span title='2024.11.26'>2024.11.26</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
           <ul class="i18n_list">语言:
             <li><a href="https://zhouyibin8.github.io/en/research/">English🇺🇸</a></li>
           </ul>
@@ -320,9 +311,9 @@
           
           <p class="research-authors" style="margin-bottom: 5px;">
               <strong>Authors:</strong> 
-              <a href="https://orcid.org/YOUR-ORCID-HERE" target="_blank" rel="noopener noreferrer" title="ORCID: Yibin Berry Zhou">Yibin Berry Zhou</a>, 
-              <a href="https://orcid.org/YOUR-JASON-ID" target="_blank" rel="noopener noreferrer" title="ORCID: Chen Jason Zhang">Chen Jason Zhang</a>, 
-              <a href="https://orcid.org/YOUR-MENGLONG-ID" target="_blank" rel="noopener noreferrer" title="ORCID: Menglong Xia">Menglong Xia</a><sup title="Corresponding Author">#</sup>
+              <a href="https://orcid.org/YOUR-ORCID-HERE" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>, 
+              <a href="https://orcid.org/YOUR-JASON-ID" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>, 
+              <a href="https://orcid.org/YOUR-MENGLONG-ID" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
           </p>
   
           <p style="margin-bottom: 10px;">
@@ -331,30 +322,27 @@
           
           <div class="research-tabs" id="tabs-paper-1">
             <div class="tab-buttons">
-              <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'highlight')">⚡ Highlights (TL;DR)</button>
+              <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'visuals')">🖼️ Framework</button>
               <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'abstract')">📄 Abstract</button>
               <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 Citation (APA)</button>
             </div>
   
-            <div id="highlight" class="tab-content active">
-              <p><strong>Key Findings & Contributions:</strong></p>
-              <ul class="highlights-list">
-                <li><strong>Dual-Pathway Framework:</strong> Developed a theoretical framework integrating cognitive load, elaboration likelihood, and media richness theories.</li>
-                <li><strong>Multimodal Analysis:</strong> Utilized computer vision and <strong>LightGBM with SHAP</strong> to analyze 5,037 Instagram videos from U.S. national parks.</li>
-                <li><strong>Engagement Drivers:</strong> Found that <em>simpler, familiar content</em> drives passive likes, while <em>emotionally resonant, high-aesthetic content</em> fosters active comments.</li>
-                <li><strong>Visual Cues:</strong> Identified that thumbnail–video contrasts and color coherence are critical predictors of customer engagement.</li>
-              </ul>
+            <div id="visuals" class="tab-content active">
+              <div style="text-align: center; padding: 10px;">
+                <img src="/zh/projects/framework.png" alt="Conceptual Framework" class="framework-img">
+                <p style="font-size: 0.85em; color: #888; margin-top: 8px;">Figure 1: The proposed multimodal approach framework.</p>
+              </div>
             </div>
   
             <div id="abstract" class="tab-content">
-              <blockquote style="border-left: 4px solid var(--primary); padding-left: 15px; margin: 0;">
+              <blockquote class="academic-text" style="border-left: 4px solid var(--primary); padding-left: 15px; margin: 0;">
                 This study examines how features of official destination promotional videos (DPVs) shape customer engagement (CE) on social media. Using 5,037 Instagram videos from 54 U.S. national parks, we apply machine learning and computer vision to extract video content, visual features, multimodal cues (text, audio, thumbnails), and post metadata. LightGBM with SHAP analyses shows that thumbnail–video contrasts, color coherence, and emotional cues significantly influence CE. Simpler, familiar content drives passive engagement (likes), whereas emotionally resonant, high-aesthetic content fosters active engagement (comments). Beyond method, this study contributes a dual-pathway theoretical framework that integrates cognitive load, elaboration likelihood, and media richness theories to explain how multimodal features jointly shape CE. Practical implications highlight balancing content simplicity and depth, ensuring visual and emotional consistency, and optimizing posting strategies. Overall, this research advances destination marketing by providing a scalable and theory-informed framework for analyzing social media videos.
               </blockquote>
             </div>
   
             <div id="citation" class="tab-content">
               <p style="margin-bottom: 5px; font-size: 0.9em; color: gray;">Copy the APA citation below:</p>
-              <div class="citation-box">
+              <div class="citation-box academic-text">
 Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in destination marketing: A multimodal approach to analyzing official promotional videos. <em>International Journal of Tourism Research</em>.
               </div>
             </div>
@@ -362,12 +350,6 @@ Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in de
           <p style="margin-top: 15px;">
             <strong>Keywords:</strong> Customer engagement; Video analysis; Destination promotional video; Multimodal; Tourism destination marketing; Machine learning.
           </p>
-  
-          <h4>Framework / Visuals</h4>
-          <div class="research-image-container" style="text-align: center; margin: 20px 0;">
-            <img src="https://via.placeholder.com/800x400?text=Multimodal+Analysis+Framework+Image" alt="Theoretical Framework" style="max-width: 100%; height: auto;">
-            <p style="font-size: 0.9em; color: #888; margin-top: 5px;">Figure 1: The proposed multimodal approach framework.</p>
-          </div>
           
           <div style="text-align: center; margin-top: 25px;">
                <a href="YOUR_REAL_ARTICLE_URL_HERE" target="_blank" class="button" style="background: var(--primary); color: var(--theme); padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid var(--primary);">
@@ -385,22 +367,18 @@ Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in de
   
     <script>
       function openTab(evt, paperId, tabName) {
-        // 1. 获取该论文容器下的所有 content 和 button
         var container = document.getElementById(paperId);
         var tabContents = container.getElementsByClassName("tab-content");
         var tabButtons = container.getElementsByClassName("tab-btn");
   
-        // 2. 隐藏所有内容
         for (var i = 0; i < tabContents.length; i++) {
           tabContents[i].classList.remove("active");
         }
   
-        // 3. 取消所有按钮的激活状态
         for (var i = 0; i < tabButtons.length; i++) {
           tabButtons[i].classList.remove("active");
         }
   
-        // 4. 显示当前点击的内容，并激活按钮
         container.querySelector("#" + tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
       }
@@ -408,7 +386,7 @@ Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in de
   </main>
 
   <footer class="footer">
-    <span>&copy; 2025 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
+    <span>&copy; 2023 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span id="busuanzi_container">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
