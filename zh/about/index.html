@@ -18,45 +18,60 @@
     <meta name="theme-color" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 整体布局平移 10px */
+        /* --- 暴力全局样式补丁 --- */
+
+        /* 1. 整体下移 10px */
         article.post-single { margin-top: 10px !important; }
 
-        /* 2. 强力字体修正：确保中文与正文完全一致 */
-        .highlight pre, .highlight code, .highlight span {
-            font-family: inherit !important; 
-            /* inherit 会确保中文使用正文字体，英文会自动适配浏览器的等宽 fallback */
+        /* 2. 链接样式：禁止变蓝，保持加粗 */
+        .post-content a {
+            color: inherit !important; 
+            text-decoration: none !important;
+            font-weight: bold !important;
         }
 
-        /* 3. 对齐与宽度：强制满宽，去掉 padding */
-        .highlight, .highlight pre {
+        /* 3. 代码框字体：强制中文与正文 100% 一致 */
+        .highlight pre, .highlight code {
+            font-family: "Code New Roman", "Ubuntu Mono", monospace !important;
             width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            box-sizing: border-box !important;
             padding: 0 !important;
+            margin: 0 !important;
             border-radius: 12px !important;
+            box-sizing: border-box !important;
+        }
+        
+        /* 关键：强制代码框内的所有 span 继承正文的中文字体 */
+        .highlight span { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif !important; 
         }
 
-        /* 每一行代码的左侧微量偏移，确保美观 */
         .highlight span[style*="display:flex"] {
             padding-left: 10px;
-            padding-top: 2px;
-            padding-bottom: 2px;
+            padding-top: 1px;
+            padding-bottom: 1px;
         }
 
-        /* 4. 浅色模式专项加深 (self 和基础字符) */
+        /* 4. 浅色模式适配：self 彻底加黑 */
         body:not(.dark) .highlight pre {
-            background-color: #f6f8fa !important;
-            color: #000000 !important; /* 强制基础颜色为黑 */
+            background-color: #f8f9fa !important;
+            color: #000000 !important; /* 基础文字设为纯黑 */
+            border: none !important;
+            box-shadow: none !important;
         }
-        /* 针对 self 的样式单独锁定 */
-        body:not(.dark) .highlight span[style*="color:#f8f8f2"] {
-            color: #000000 !important;
-        }
+        /* 强制覆盖代码原有的浅色高亮 */
+        body:not(.dark) .highlight span[style*="color:#f8f8f2"] { color: #000000 !important; }
+        body:not(.dark) .highlight span[style*="color:#66d9ef"], 
+        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; } /* 关键字红色 */
+        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #032f62 !important; } /* 字符串深蓝 */
+        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #6f42c1 !important; } /* 类名紫色 */
 
-        /* 5. 底部间距压缩 -50px */
+        /* 5. 底部间距 -50px 暴力压缩 */
         .main { padding-bottom: 0 !important; }
         .post-single { padding-bottom: 0 !important; }
         .post-content { padding-bottom: 0 !important; }
@@ -64,20 +79,19 @@
 
         .footer { 
             margin-top: 0 !important; 
-            padding: 15px 0 !important;
+            padding: 10px 0 !important;
             border-top: none !important;
+            font-size: 0.85rem;
         }
 
-        /* 隐藏可能的复制按钮残余 */
-        .copy-code { display: none !important; }
+        /* 彻底干掉复制按钮 */
+        .copy-code { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 
 <body class=" dark" id="top">
     <script>
-        if (localStorage.getItem("pref-theme") === "light") {
-            document.body.classList.remove('dark')
-        }
+        if (localStorage.getItem("pref-theme") === "light") { document.body.classList.remove('dark') }
     </script>
 
     <header class="header">
@@ -89,7 +103,7 @@
                         <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                         <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" x2="19.78" y2="19.78"></line>
                             <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
@@ -108,16 +122,16 @@
     </header>
 
     <main class="main" style="padding-top: 0;">
-        <article class="post-single" style="margin-top: 0;">
+        <article class="post-single">
             <header class="post-header">
-                <h1 class="post-title" style="margin: 0 0 10px 0;">关于我 👋</h1>
+                <h1 class="post-title" style="margin-bottom: 10px;">关于我 👋</h1>
                 <div class="post-meta"><span>2026.01.10</span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
             </header>
 
             <div class="post-content">
-                <section style="line-height: 1.7; margin-bottom: 15px;">
-                    <p style="margin-bottom: 10px;">我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院</a> 的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank" style="text-decoration: none; font-weight: bold;">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank" style="text-decoration: none; font-weight: bold;">澳门科技大学</a> 获得学士学位。</p>
-                    <p style="margin-bottom: 10px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
+                <section style="line-height: 1.7;">
+                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank">澳门科技大学</a> 获得学士学位。</p>
+                    <p style="margin-bottom: 15px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
                 <div class="highlight">
@@ -157,6 +171,7 @@
                 localStorage.setItem("pref-theme", 'dark');
             }
         });
+        // 彻底删除复制按钮逻辑
     </script>
 </body>
 </html>
