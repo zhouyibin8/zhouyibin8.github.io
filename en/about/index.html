@@ -14,28 +14,44 @@
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
     <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zhouyibin8.github.io/k-48.png">
     <link rel="apple-touch-icon" href="https://zhouyibin8.github.io/k-48.png">
+    <link rel="mask-icon" href="https://zhouyibin8.github.io/k-48.png">
     <meta name="theme-color" content="#2e2e33">
+    <meta name="msapplication-TileColor" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
+    <noscript>
+        <style>
+            #theme-toggle, .top-link { display: none; }
+        </style>
+    </noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 整体向上移动 (与中文版一致) */
+        /* 1. 整体向上移动 (严格同步中文版 -50px) */
         article.post-single {
+            margin-top: -50px !important;
+        }
+
+        /* 2. 底部强力拉升 (严格同步中文版 -60px) */
+        .footer {
             margin-top: -60px !important;
         }
 
-        /* 2. 底部向上拉升 (与中文版一致) */
-        .footer {
-            margin-top: -80px !important;
-        }
-
-        /* 3. 代码框宽度对齐 */
+        /* 3. 代码框对齐补丁 (严格同步中文版) */
         .highlight {
             width: 100% !important;
         }
 
-        /* 4. 链接样式保持加粗不划线 */
+        /* 4. 链接样式 (严格同步中文版) */
         .post-content a {
             color: var(--primary);
             text-decoration: none;
@@ -60,12 +76,19 @@
                 <a href="https://zhouyibin8.github.io/en/" accesskey="h" title="Home (Alt + H)">Home</a>
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
                         <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </button>
                     <ul class="lang-switch"><li>|</li>
@@ -94,7 +117,7 @@
             <div class="post-content">
                 <section>
                     <p>I am currently a PhD student at the <a href="https://www.polyu.edu.hk/shtm/" target="_blank">School of Hotel and Tourism Management (SHTM), The Hong Kong Polytechnic University</a>. Previously, I obtained my Master's degree from <a href="https://www.columbia.edu/" target="_blank">Columbia University</a> and my Bachelor's degree from <a href="https://www.must.edu.mo/" target="_blank">Macau University of Science and Technology</a>.</p>
-                    <p>I am currently pursuing my research under the supervision of <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a>. I am dedicated to exploring complex social phenomena through an <strong>interdisciplinary lens</strong>, skillfully integrating cutting-edge computer science methods, including <strong>machine learning</strong> and <strong>computer vision</strong>, with <strong>econometrics</strong> and <strong>qualitative research methods</strong>. My core research interests are centered on <strong>AI for Tourism</strong>, <strong>Social Media</strong> and <strong>Marginalized Communities</strong>.</p>
+                    <p>I am currently conducting my research under the supervision of <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a>. I am dedicated to exploring complex social phenomena through an <strong>interdisciplinary lens</strong>, skillfully integrating cutting-edge computer science methods, such as <strong>machine learning</strong> and <strong>computer vision</strong>, with <strong>econometrics</strong> and <strong>qualitative research methods</strong>. My core research interests focus on: <strong>AI for Tourism</strong>, <strong>Social Media</strong>, and <strong>Marginalized Communities</strong>.</p>
                 </section>
 
                 <div class="highlight">
@@ -112,6 +135,7 @@
 </span></span></code></pre>
                 </div>
             </div>
+            <footer class="post-footer"></footer>
         </article>
     </main>
 
@@ -120,11 +144,19 @@
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-            Visitors: <span id="busuanzi_value_site_uv"></span> Views: <span id="busuanzi_value_site_pv"></span>
+            Visitors: <span id="busuanzi_value_site_uv"></span>
+            Views: <span id="busuanzi_value_site_pv"></span>
         </span>
     </footer>
 
+    <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </a>
+
     <script>
+        // 保持菜单滚动位置
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
@@ -133,6 +165,7 @@
             }
         }
 
+        // 统一的主题切换逻辑
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -142,8 +175,33 @@
                 localStorage.setItem("pref-theme", 'dark');
             }
         });
-        
-        // "Copy" button script block has been removed as requested.
+
+        // 锚点平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                var id = this.getAttribute("href").substr(1);
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                } else {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                }
+            });
+        });
+
+        // 返回顶部按钮可见性
+        var mybutton = document.getElementById("top-link");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = "visible";
+                mybutton.style.opacity = "1";
+            } else {
+                mybutton.style.visibility = "hidden";
+                mybutton.style.opacity = "0";
+            }
+        };
     </script>
 </body>
 </html>
