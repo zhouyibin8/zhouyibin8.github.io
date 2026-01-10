@@ -11,7 +11,9 @@
     <meta name="description" content="周亦彬 (Berry) 的个人简介与学术背景">
     <meta name="author" content="Berry">
     <link rel="canonical" href="https://zhouyibin8.github.io/zh/about/">
+    
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
+    
     <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
     <link rel="apple-touch-icon" href="https://zhouyibin8.github.io/k-48.png">
@@ -20,56 +22,65 @@
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
 
     <style>
-        /* 1. 布局补丁：全宽对齐，不留缝隙 */
-        .post-content, .highlight, .highlight pre {
-            width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            box-sizing: border-box !important;
-            padding: 0 !important;
+        /* --- 暴力布局与字体补丁 --- */
+        
+        /* 1. 整体向下移动 10px */
+        article.post-single {
+            margin-top: 10px !important;
+        }
+
+        /* 2. 代码框字体同步逻辑 */
+        .highlight pre, .highlight code, .highlight span {
+            /* 优先使用正文系统字体，确保中文一致 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif, "Menlo", "Monaco", "Consolas", monospace !important;
         }
 
         .highlight pre {
+            width: 100% !important;
+            padding: 0 !important; /* 去掉 Padding */
+            margin: 10px 0 !important;
             border-radius: 12px !important;
-            margin-top: 10px !important;
-            /* 字体：优先继承正文中文，英文自动fallback等宽 */
-            font-family: inherit !important; 
+            box-sizing: border-box !important;
+            /* 底部距离改为 -50px */
+            margin-bottom: -50px !important;
         }
 
-        /* 强制代码行英文字体为等宽，中文继承 */
-        .highlight code {
-            font-family: "Menlo", "Monaco", "Consolas", monospace, inherit !important;
-        }
-
+        /* 代码行缩进 */
         .highlight span[style*="display:flex"] {
             padding-left: 10px;
             padding-top: 2px;
             padding-bottom: 2px;
         }
 
-        /* 2. 浅色模式补丁：self 纯黑，去边框阴影 */
+        /* 3. 浅色模式适配：彻底黑化基础文字 */
         body:not(.dark) .highlight pre {
-            background-color: #f6f8fa !important;
-            color: #000000 !important; /* self 和 . 变纯黑 */
+            background-color: #f5f5f7 !important; /* 苹果风浅灰 */
+            color: #000000 !important; /* 基础文字纯黑 */
             border: none !important;
             box-shadow: none !important;
         }
 
-        /* 3. 底部空间补丁：强行拉高 footer */
-        .main { padding-bottom: 0 !important; }
-        .post-single { margin-bottom: 0 !important; padding-bottom: 0 !important; }
-        .post-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-        
-        .highlight { margin-bottom: -30px !important; }
+        /* 浅色模式语法高亮加深 */
+        body:not(.dark) .highlight span[style*="color:#66d9ef"], 
+        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; font-weight: bold; } /* 关键字 */
+        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #032f62 !important; } /* 字符串 */
+        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #6f42c1 !important; } /* 类名 */
+        body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #005cc5 !important; } /* 数字 */
 
+        /* 4. 底部间距压缩 */
+        .main { padding-bottom: 0 !important; }
+        .post-single { padding-bottom: 0 !important; }
         .footer { 
             margin-top: 0 !important; 
             padding: 10px 0 20px 0 !important;
             border-top: none !important;
         }
 
-        /* 隐藏复制按钮相关的样式 */
-        .copy-code { display: none !important; }
+        /* 彻底干掉复制按钮 */
+        .copy-code { display: none !important; visibility: hidden !important; }
+        
+        /* 链接加粗不划线 */
+        .post-content a { text-decoration: none !important; font-weight: bold !important; }
     </style>
 </head>
 
@@ -114,8 +125,8 @@
 
             <div class="post-content">
                 <section style="line-height: 1.7;">
-                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a> 获得学士学位。</p>
-                    <p style="margin-bottom: 15px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
+                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary);">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary);">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary);">澳门科技大学</a> 获得学士学位。</p>
+                    <p style="margin-bottom: 15px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary);">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
                 <div class="highlight">
@@ -155,6 +166,7 @@
                 localStorage.setItem("pref-theme", 'dark');
             }
         });
+        // 不再包含复制按钮脚本，保持页面简洁
     </script>
 </body>
 </html>
