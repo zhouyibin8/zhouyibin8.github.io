@@ -11,70 +11,68 @@
     <meta name="description" content="周亦彬 (Berry) 的个人简介与学术背景">
     <meta name="author" content="Berry">
     <link rel="canonical" href="https://zhouyibin8.github.io/zh/about/">
-    <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659+f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
+    
+    <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
+    
     <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://zhouyibin8.github.io/k-48.png">
     <link rel="apple-touch-icon" href="https://zhouyibin8.github.io/k-48.png">
-    <link rel="mask-icon" href="https://zhouyibin8.github.io/k-48.png">
     <meta name="theme-color" content="#2e2e33">
-    <meta name="msapplication-TileColor" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
-    <noscript><style>#theme-toggle, .top-link { display: none; }</style></noscript>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 字体对齐补丁 */
+        /* --- 大哥专属强力样式补丁 --- */
+        
+        /* 1. 字体对齐：英文用 Code，中文继承网页正文 */
         .highlight pre, .highlight code {
-            /* 顺序：先尝试代码字体，中文会自动回落到后面的系统字体，从而与正文一致 */
-            font-family: "Code New Roman", "Ubuntu Mono", Menlo, Monaco, Consolas, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif !important;
+            font-family: "Code New Roman", "Ubuntu Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
             width: 100% !important;
-            border-radius: 12px !important;
+            padding: 0 !important; /* 彻底去掉内边距 */
             margin: 0 !important;
-            padding: 0 !important;
+            border-radius: 12px !important;
             box-sizing: border-box !important;
         }
 
-        /* 每一行代码的内边距，确保中文不贴边 */
+        /* 强制代码框内的中文 span 继承全局字体 */
+        .highlight span { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; 
+        }
+
+        /* 每一行代码微量左缩进，确保不贴死边缘 */
         .highlight span[style*="display:flex"] {
             padding-left: 10px;
             padding-top: 1px;
             padding-bottom: 1px;
         }
 
-        /* 2. 浅色模式补丁：self 变纯黑，去装饰 */
+        /* 2. 浅色模式适配：self 加黑，去装饰 */
         body:not(.dark) .highlight pre {
             background-color: #f8f9fa !important;
-            color: #000000 !important; /* 强制 self, name 等基础文字为纯黑 */
+            color: #000000 !important; /* 基础文字（self, . 等）变纯黑 */
             border: none !important;
             box-shadow: none !important;
         }
-        /* 浅色模式语法色调 */
-        body:not(.dark) .highlight span[style*="color:#66d9ef"], 
-        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #cf222e !important; }
-        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #0a3069 !important; }
-        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #8250df !important; }
-        body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #0550ae !important; }
 
-        /* 3. 彻底干掉底部大留白 */
+        /* 3. 极致空间压缩：干掉底部黑洞 */
         .main { padding-bottom: 0 !important; }
         .post-single { margin-bottom: 0 !important; padding-bottom: 0 !important; }
         .post-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-        .highlight { margin-bottom: -40px !important; } /* 负边距强行上拉页脚 */
         
+        /* 利用负边距将页脚强行拉上来 */
+        .highlight { margin-bottom: -35px !important; }
+
         .footer { 
             margin-top: 0 !important; 
-            padding-top: 10px !important;
-            padding-bottom: 20px !important;
+            padding: 10px 0 !important; 
             border-top: none !important;
+            font-size: 0.85rem;
+        }
+
+        /* 链接样式：加粗不划线 */
+        .post-content a {
+            text-decoration: none !important;
+            font-weight: bold !important;
         }
     </style>
 </head>
@@ -117,16 +115,13 @@
         <article class="post-single" style="margin-top: 0;">
             <header class="post-header">
                 <h1 class="post-title" style="margin: 0 0 10px 0;">关于我 👋</h1>
-                <div class="post-meta">
-                    <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
-                    <ul class="i18n_list">语言: <li><a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></li></ul>
-                </div>
+                <div class="post-meta"><span>2026.01.10</span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
             </header>
 
             <div class="post-content">
                 <section style="line-height: 1.7;">
-                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在<a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a>获得硕士学位，以及在<a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a>获得学士学位。</p>
-                    <p style="margin-bottom: 15px;">在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
+                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary);">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary);">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary);">澳门科技大学</a> 获得学士学位。</p>
+                    <p style="margin-bottom: 10px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary);">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
                 <div class="highlight">
@@ -157,6 +152,7 @@
     </footer>
 
     <script>
+        // 保持原有的主题切换和代码复制脚本
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
