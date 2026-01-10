@@ -36,35 +36,35 @@
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 强制代码框宽度与文字一致 */
+        /* 1. 容器缩小到 90% 并保持一致宽度 */
+        .post-content {
+            max-width: 90% !important;
+            margin: 0 auto !important;
+        }
+
+        /* 2. 强制代码框宽度填充容器 */
         .highlight, .highlight pre {
             width: 100% !important;
             box-sizing: border-box !important;
         }
 
-        /* 浅色模式下的适配补丁 */
+        /* 3. 减少底部留白 */
+        .main { padding-bottom: 0 !important; }
+        .post-single { margin-bottom: 0 !important; }
+        .footer { margin-top: 10px !important; padding: 10px 0 !important; }
+
+        /* 4. 浅色模式适配 */
         body:not(.dark) .highlight pre {
             background-color: #f6f8fa !important;
             color: #24292e !important;
             border: 1px solid #e1e4e8;
         }
         body:not(.dark) .highlight span[style*="color:#66d9ef"],
-        body:not(.dark) .highlight span[style*="color:#f92672"] {
-            color: #d73a49 !important;
-        }
-        body:not(.dark) .highlight span[style*="color:#e6db74"] {
-            color: #032f62 !important;
-        }
-        body:not(.dark) .highlight span[style*="color:#a6e22e"] {
-            color: #6f42c1 !important;
-        }
-        body:not(.dark) .highlight span[style*="color:#ae81ff"] {
-            color: #005cc5 !important;
-        }
-        body:not(.dark) .copy-code {
-            background: #f1f1f1 !important;
-            color: #333 !important;
-        }
+        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; }
+        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #032f62 !important; }
+        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #6f42c1 !important; }
+        body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #005cc5 !important; }
+        body:not(.dark) .copy-code { background: #f1f1f1 !important; color: #333 !important; }
     </style>
 </head>
 
@@ -113,7 +113,7 @@
 
     <main class="main" style="padding-top: 0;">
         <article class="post-single" style="margin-top: 0;">
-            <header class="post-header" style="margin-bottom: 15px;">
+            <header class="post-header" style="margin-bottom: 15px; max-width: 90%; margin-left: auto; margin-right: auto;">
                 <h1 class="post-title" style="margin: 0 0 10px 0;">关于我 👋</h1>
                 <div class="post-meta">
                     <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
@@ -126,10 +126,11 @@
             <div class="post-content">
                 <section style="line-height: 1.7;">
                     <p style="margin-bottom: 10px;">
-                        我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在<strong>哥伦比亚大学</strong>获得硕士学位，以及在<strong>澳门科技大学</strong>获得学士学位。
-                    </p>                    
+                        我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a> 的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a> 获得学士学位。
+                    </p>
+                    
                     <p style="margin-bottom: 15px;">
-                        在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
+                        在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
                     </p>
                 </section>
 
@@ -168,7 +169,6 @@
     </a>
 
     <script>
-        // 脚本部分保持原样
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
