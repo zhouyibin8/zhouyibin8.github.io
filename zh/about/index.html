@@ -18,74 +18,68 @@
     <meta name="theme-color" content="#2e2e33">
     <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* --- 暴力全局样式补丁 --- */
-
-        /* 1. 整体下移 10px */
+        /* 1. 整体布局平移 10px */
         article.post-single { margin-top: 10px !important; }
 
-        /* 2. 链接样式：禁止变蓝，保持加粗 */
+        /* 2. 链接强制颜色：禁止变蓝 */
         .post-content a {
-            color: inherit !important; 
+            color: inherit !important;
             text-decoration: none !important;
             font-weight: bold !important;
         }
 
-        /* 3. 代码框字体：强制中文与正文 100% 一致 */
-        .highlight pre, .highlight code {
-            font-family: "Code New Roman", "Ubuntu Mono", monospace !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            border-radius: 12px !important;
-            box-sizing: border-box !important;
+        /* 3. 代码框字体同步：强制使用网页正文系统字体栈 */
+        .highlight, .highlight pre, .highlight code, .highlight span {
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+            font-variant-ligatures: none !important;
         }
-        
-        /* 关键：强制代码框内的所有 span 继承正文的中文字体 */
-        .highlight span { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif !important; 
+
+        /* 4. 代码框结构优化：满宽、圆角、无 Padding */
+        .highlight {
+            width: 100% !important;
+            margin: 15px 0 -50px 0 !important; /* 底部暴力压缩 50px */
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+
+        .highlight pre {
+            padding: 8px 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
         .highlight span[style*="display:flex"] {
-            padding-left: 10px;
-            padding-top: 1px;
-            padding-bottom: 1px;
+            padding-left: 12px !important;
         }
 
-        /* 4. 浅色模式适配：self 彻底加黑 */
+        /* 5. 浅色模式补丁：self 彻底黑化，去装饰 */
         body:not(.dark) .highlight pre {
-            background-color: #f8f9fa !important;
-            color: #000000 !important; /* 基础文字设为纯黑 */
+            background-color: #f6f8fa !important;
+            color: #000000 !important; 
             border: none !important;
             box-shadow: none !important;
         }
-        /* 强制覆盖代码原有的浅色高亮 */
-        body:not(.dark) .highlight span[style*="color:#f8f8f2"] { color: #000000 !important; }
-        body:not(.dark) .highlight span[style*="color:#66d9ef"], 
-        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; } /* 关键字红色 */
-        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #032f62 !important; } /* 字符串深蓝 */
-        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #6f42c1 !important; } /* 类名紫色 */
+        /* 强制白天模式下 self, 点号, 括号等为黑 */
+        body:not(.dark) .highlight span[style*="color:#f8f8f2"] {
+            color: #000000 !important;
+        }
+        /* 关键字加深 */
+        body:not(.dark) .highlight span[style*="color:#66d9ef"],
+        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; }
 
-        /* 5. 底部间距 -50px 暴力压缩 */
+        /* 6. 底部留白极致清理 */
         .main { padding-bottom: 0 !important; }
-        .post-single { padding-bottom: 0 !important; }
-        .post-content { padding-bottom: 0 !important; }
-        .highlight { margin-bottom: -50px !important; }
-
         .footer { 
             margin-top: 0 !important; 
-            padding: 10px 0 !important;
-            border-top: none !important;
-            font-size: 0.85rem;
+            padding: 10px 0 20px 0 !important; 
+            border-top: none !important; 
         }
 
-        /* 彻底干掉复制按钮 */
-        .copy-code { display: none !important; visibility: hidden !important; }
+        /* 彻底移除复制按钮样式 */
+        .copy-code { display: none !important; }
     </style>
 </head>
 
@@ -125,7 +119,7 @@
         <article class="post-single">
             <header class="post-header">
                 <h1 class="post-title" style="margin-bottom: 10px;">关于我 👋</h1>
-                <div class="post-meta"><span>2026.01.10</span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
+                <div class="post-meta"><span>2026.01.10 </span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
             </header>
 
             <div class="post-content">
@@ -156,7 +150,6 @@
         <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin&#39;s Blog</a></span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             Visitors: <span id="busuanzi_value_site_uv"></span> Views: <span id="busuanzi_value_site_pv"></span>
         </span>
     </footer>
