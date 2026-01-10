@@ -36,35 +36,38 @@
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 容器缩小到 90% 并保持一致宽度 */
-        .post-content {
-            max-width: 90% !important;
-            margin: 0 auto !important;
-        }
-
-        /* 2. 强制代码框宽度填充容器 */
+        /* 1. 确保代码框宽度撑满容器且具备圆角 */
         .highlight, .highlight pre {
             width: 100% !important;
+            border-radius: 12px !important;
             box-sizing: border-box !important;
+            margin: 10px 0 !important;
         }
 
-        /* 3. 减少底部留白 */
-        .main { padding-bottom: 0 !important; }
-        .post-single { margin-bottom: 0 !important; }
-        .footer { margin-top: 10px !important; padding: 10px 0 !important; }
-
-        /* 4. 浅色模式适配 */
+        /* 2. 浅色模式下更明显的圆角框设计 */
         body:not(.dark) .highlight pre {
-            background-color: #f6f8fa !important;
+            background-color: #f8f9fa !important;
             color: #24292e !important;
-            border: 1px solid #e1e4e8;
+            border: 1px solid #ddd !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05) !important;
         }
-        body:not(.dark) .highlight span[style*="color:#66d9ef"],
+
+        /* 3. 语法高亮色值补丁 (针对浅色模式) */
+        body:not(.dark) .highlight span[style*="color:#66d9ef"], 
         body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; }
         body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #032f62 !important; }
         body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #6f42c1 !important; }
         body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #005cc5 !important; }
-        body:not(.dark) .copy-code { background: #f1f1f1 !important; color: #333 !important; }
+
+        /* 4. 彻底压缩内容与页脚的间距 */
+        .main { padding-bottom: 0 !important; }
+        .post-single { margin-bottom: 0 !important; padding-bottom: 5px !important; }
+        .footer { 
+            margin-top: 5px !important; 
+            padding: 10px 0 !important; 
+            border-top: none !important;
+        }
+        .post-content { padding-bottom: 0 !important; }
     </style>
 </head>
 
@@ -81,24 +84,15 @@
                 <a href="https://zhouyibin8.github.io/zh/" accesskey="h" title="Home (Alt + H)">Home</a>
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                         <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </button>
-                    <ul class="lang-switch"><li>|</li>
-                        <li><a href="https://zhouyibin8.github.io/en/" title="English🇺🇸">English🇺🇸</a></li>
-                    </ul>
+                    <ul class="lang-switch"><li>|</li><li><a href="https://zhouyibin8.github.io/en/" title="English🇺🇸">English🇺🇸</a></li></ul>
                 </span>
             </div>
             <ul id="menu">
@@ -113,28 +107,21 @@
 
     <main class="main" style="padding-top: 0;">
         <article class="post-single" style="margin-top: 0;">
-            <header class="post-header" style="margin-bottom: 15px; max-width: 90%; margin-left: auto; margin-right: auto;">
+            <header class="post-header">
                 <h1 class="post-title" style="margin: 0 0 10px 0;">关于我 👋</h1>
                 <div class="post-meta">
                     <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
-                    <ul class="i18n_list">语言:
-                        <li><a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></li>
-                    </ul>
+                    <ul class="i18n_list">语言: <li><a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></li></ul>
                 </div>
             </header>
 
             <div class="post-content">
                 <section style="line-height: 1.7;">
-                    <p style="margin-bottom: 10px;">
-                        我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院</a>的博士生。在此之前，我先后在<a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a> 获得硕士学位，以及在<a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a>获得学士学位。
-                    </p>
-                    
-                    <p style="margin-bottom: 15px;">
-                        在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
-                    </p>
+                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在<a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a>获得硕士学位，以及在<a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a>获得学士学位。</p>
+                    <p style="margin-bottom: 10px;">在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
-                <div class="highlight" style="margin-top: 0;">
+                <div class="highlight">
                     <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4; padding: 15px;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;周亦彬&#34;</span>
@@ -157,25 +144,11 @@
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         <span id="busuanzi_container">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-            Visitors: <span id="busuanzi_value_site_uv"></span>
-            Views: <span id="busuanzi_value_site_pv"></span>
+            Visitors: <span id="busuanzi_value_site_uv"></span> Views: <span id="busuanzi_value_site_pv"></span>
         </span>
     </footer>
 
-    <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-            <path d="M12 6H0l6-6z" />
-        </svg>
-    </a>
-
     <script>
-        let menu = document.getElementById('menu')
-        if (menu) {
-            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-            menu.onscroll = function () {
-                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-            }
-        }
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -188,8 +161,7 @@
         document.querySelectorAll('pre > code').forEach((codeblock) => {
             const container = codeblock.parentNode.parentNode;
             const copybutton = document.createElement('button');
-            copybutton.classList.add('copy-code');
-            copybutton.innerText = '复制';
+            copybutton.classList.add('copy-code'); copybutton.innerText = '复制';
             copybutton.addEventListener('click', () => {
                 if ('clipboard' in navigator) {
                     navigator.clipboard.writeText(codeblock.textContent);
@@ -197,9 +169,7 @@
                     setTimeout(() => { copybutton.innerText = '复制'; }, 2000);
                 }
             });
-            if (container.classList.contains("highlight")) {
-                container.appendChild(copybutton);
-            }
+            if (container.classList.contains("highlight")) { container.appendChild(copybutton); }
         });
     </script>
 </body>
