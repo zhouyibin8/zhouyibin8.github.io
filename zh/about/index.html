@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 </head>
 
 <body class=" dark" id="top">
@@ -76,9 +80,9 @@
     </header>
 
     <main class="main" style="padding-top: 0;">
-        <article class="post-single" style="margin-top: 10px;">
-            <header class="post-header" style="margin-bottom: 20px;">
-                <h1 class="post-title" style="margin-bottom: 10px;">关于我 👋</h1>
+        <article class="post-single" style="margin-top: 0;">
+            <header class="post-header" style="margin-bottom: 15px;">
+                <h1 class="post-title" style="margin: 0 0 10px 0;">关于我 👋</h1>
                 <div class="post-meta">
                     <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
                     <ul class="i18n_list">语言:
@@ -88,24 +92,21 @@
             </header>
 
             <div class="post-content">
-                <section style="margin-bottom: 1.5rem; line-height: 1.7;">
+                <section style="line-height: 1.7;">
                     <p style="margin-bottom: 10px;">
                         我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a> 的博士生。
                     </p>
                     
                     <p style="margin-bottom: 10px;">
-                        在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。
-                        在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。
-                        我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
+                        在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
                     </p>
-                    <p style="margin-bottom: 10px;">
+                    
+                    <p style="margin-bottom: 15px;">
                         在此之前，我先后在<strong>哥伦比亚大学</strong>获得硕士学位，以及在<strong>澳门科技大学</strong>获得学士学位。
                     </p>
                 </section>
 
-                <hr style="margin: 1.5rem 0; opacity: 0.15;">
-
-                <div class="highlight" style="margin-top: 10px;">
+                <div class="highlight" style="margin-top: 0;">
                     <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4; padding: 15px;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;周亦彬&#34;</span>
@@ -125,6 +126,12 @@
 
     <footer class="footer">
         <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin&#39;s Blog</a></span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            Visitors: <span id="busuanzi_value_site_uv"></span>
+            Views: <span id="busuanzi_value_site_pv"></span>
+        </span>
     </footer>
 
     <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
@@ -134,7 +141,6 @@
     </a>
 
     <script>
-        // 保持原有的逻辑脚本...
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
