@@ -34,6 +34,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
+
+    <style>
+        /* 强制代码框宽度与文字一致 */
+        .highlight, .highlight pre {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* 浅色模式下的适配补丁 */
+        body:not(.dark) .highlight pre {
+            background-color: #f6f8fa !important;
+            color: #24292e !important;
+            border: 1px solid #e1e4e8;
+        }
+        body:not(.dark) .highlight span[style*="color:#66d9ef"],
+        body:not(.dark) .highlight span[style*="color:#f92672"] {
+            color: #d73a49 !important;
+        }
+        body:not(.dark) .highlight span[style*="color:#e6db74"] {
+            color: #032f62 !important;
+        }
+        body:not(.dark) .highlight span[style*="color:#a6e22e"] {
+            color: #6f42c1 !important;
+        }
+        body:not(.dark) .highlight span[style*="color:#ae81ff"] {
+            color: #005cc5 !important;
+        }
+        body:not(.dark) .copy-code {
+            background: #f1f1f1 !important;
+            color: #333 !important;
+        }
+    </style>
 </head>
 
 <body class=" dark" id="top">
@@ -94,15 +126,10 @@
             <div class="post-content">
                 <section style="line-height: 1.7;">
                     <p style="margin-bottom: 10px;">
-                        我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a> 的博士生。
-                    </p>
-                    
-                    <p style="margin-bottom: 10px;">
-                        在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
-                    </p>
-                    
+                        我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在<strong>哥伦比亚大学</strong>获得硕士学位，以及在<strong>澳门科技大学</strong>获得学士学位。
+                    </p>                    
                     <p style="margin-bottom: 15px;">
-                        在此之前，我先后在<strong>哥伦比亚大学</strong>获得硕士学位，以及在<strong>澳门科技大学</strong>获得学士学位。
+                        在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。
                     </p>
                 </section>
 
@@ -141,6 +168,7 @@
     </a>
 
     <script>
+        // 脚本部分保持原样
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
