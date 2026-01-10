@@ -36,11 +36,22 @@
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 底部强制上移补丁 */
+        /* 1. 整体向上移动 30px */
+        article.post-single {
+            margin-top: -50px !important;
+        }
+
+        /* 2. 底部强力拉升 100px */
         .footer {
             margin-top: -100px !important;
         }
-        /* 链接样式增强 */
+
+        /* 3. 代码框对齐补丁 */
+        .highlight {
+            width: 100% !important;
+        }
+
+        /* 4. 链接样式（不使用蓝色，跟随主题） */
         .post-content a {
             color: var(--primary);
             text-decoration: none;
@@ -81,7 +92,7 @@
                         </svg>
                     </button>
                     <ul class="lang-switch"><li>|</li>
-                        <li><a href="https://zhouyibin8.github.io/en/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a></li>
+                        <li><a href="https://zhouyibin8.github.io/en/" title="English🇺🇸">English🇺🇸</a></li>
                     </ul>
                 </span>
             </div>
@@ -109,21 +120,23 @@
             </header>
 
             <div class="post-content">
-                <p>我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank">香港理工大学酒店及旅游业管理学院 (SHTM)</a> 的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank">澳门科技大学</a> 获得学士学位。</p>
-                <p>在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong> 以及 <strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong> 以及 <strong>Marginalized Communities</strong>。</p>
+                <section>
+                    <p>我目前是 <a href="https://www.polyu.edu.hk/shtm/" target="_blank">香港理工大学 酒店及旅游业管理学院(SHTM)</a> 的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank">澳门科技大学</a> 获得学士学位。</p>
+                    <p>在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong> 以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>、<strong>Marginalized Communities</strong>。</p>
+                </section>
 
                 <div class="highlight">
                     <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;周亦彬&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;🧊&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berry&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>born_year <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>MBTI <span style="color:#f92672">=</span> ENFJ
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;香港&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;澳门科技大学&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;哥伦比亚大学&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;香港理工大学&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;博士生&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hong Kong&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span>
 </span></span></code></pre>
                 </div>
             </div>
@@ -148,6 +161,7 @@
     </a>
 
     <script>
+        // 保持菜单滚动位置
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
@@ -156,6 +170,18 @@
             }
         }
 
+        // 统一的主题切换逻辑
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+            if (document.body.className.includes("dark")) {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            }
+        });
+
+        // 锚点平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -167,14 +193,10 @@
                 } else {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
                 }
-                if (id === "top") {
-                    history.replaceState(null, null, " ");
-                } else {
-                    history.pushState(null, null, `#${id}`);
-                }
             });
         });
 
+        // 返回顶部按钮可见性
         var mybutton = document.getElementById("top-link");
         window.onscroll = function () {
             if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -186,53 +208,7 @@
             }
         };
 
-        document.getElementById("theme-toggle").addEventListener("click", () => {
-            if (document.body.className.includes("dark")) {
-                document.body.classList.remove('dark');
-                localStorage.setItem("pref-theme", 'light');
-            } else {
-                document.body.classList.add('dark');
-                localStorage.setItem("pref-theme", 'dark');
-            }
-        })
-
-        document.querySelectorAll('pre > code').forEach((codeblock) => {
-            const container = codeblock.parentNode.parentNode;
-            const copybutton = document.createElement('button');
-            copybutton.classList.add('copy-code');
-            copybutton.innerText = '复制';
-
-            function copyingDone() {
-                copybutton.innerText = '已复制！';
-                setTimeout(() => {
-                    copybutton.innerText = '复制';
-                }, 2000);
-            }
-
-            copybutton.addEventListener('click', (cb) => {
-                if ('clipboard' in navigator) {
-                    navigator.clipboard.writeText(codeblock.textContent);
-                    copyingDone();
-                    return;
-                }
-                const range = document.createRange();
-                range.selectNodeContents(codeblock);
-                const selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(range);
-                try {
-                    document.execCommand('copy');
-                    copyingDone();
-                } catch (e) { };
-                selection.removeRange(range);
-            });
-
-            if (container.classList.contains("highlight")) {
-                container.appendChild(copybutton);
-            } else {
-                codeblock.parentNode.appendChild(copybutton);
-            }
-        });
+        // 注意：这里删除了复制按钮的脚本块
     </script>
 </body>
 
