@@ -20,66 +20,43 @@
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
 
     <style>
-        /* 1. 整体布局平移 10px */
+        /* 1. 整体下移与链接样式 */
         article.post-single { margin-top: 10px !important; }
+        .post-content a { color: inherit !important; text-decoration: none !important; font-weight: bold !important; }
 
-        /* 2. 链接强制颜色：禁止变蓝 */
-        .post-content a {
-            color: inherit !important;
-            text-decoration: none !important;
-            font-weight: bold !important;
-        }
-
-        /* 3. 代码框字体同步：强制使用网页正文系统字体栈 */
+        /* 2. 字体彻底一致补丁：强制代码框所有元素继承网页正文字体 */
         .highlight, .highlight pre, .highlight code, .highlight span {
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !important;
-            font-variant-ligatures: none !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
         }
 
-        /* 4. 代码框结构优化：满宽、圆角、无 Padding */
+        /* 3. 代码框宽度与占比对齐 */
         .highlight {
             width: 100% !important;
-            margin: 15px 0 -50px 0 !important; /* 底部暴力压缩 50px */
+            margin: 15px 0 -50px 0 !important; /* 底部间距 -50px */
             border-radius: 12px !important;
-            overflow: hidden !important;
-        }
-
-        .highlight pre {
-            padding: 8px 0 !important;
-            margin: 0 !important;
-            width: 100% !important;
             box-sizing: border-box !important;
         }
+        .highlight pre { 
+            padding: 8px 0 !important; 
+            margin: 0 !important; 
+            background: transparent !important; /* 防止双重背景 */
+        }
+        .highlight span[style*="display:flex"] { padding-left: 10px !important; }
 
-        .highlight span[style*="display:flex"] {
-            padding-left: 12px !important;
-        }
-
-        /* 5. 浅色模式补丁：self 彻底黑化，去装饰 */
-        body:not(.dark) .highlight pre {
-            background-color: #f6f8fa !important;
-            color: #000000 !important; 
-            border: none !important;
-            box-shadow: none !important;
-        }
-        /* 强制白天模式下 self, 点号, 括号等为黑 */
-        body:not(.dark) .highlight span[style*="color:#f8f8f2"] {
-            color: #000000 !important;
-        }
-        /* 关键字加深 */
+        /* 4. 浅色模式补丁：self 加黑，去多余轮廓 */
+        body:not(.dark) .highlight { background-color: #f6f8fa !important; }
+        body:not(.dark) .highlight pre { color: #000000 !important; }
+        body:not(.dark) .highlight span[style*="color:#f8f8f2"] { color: #000000 !important; } /* self, 点号等 */
         body:not(.dark) .highlight span[style*="color:#66d9ef"],
         body:not(.dark) .highlight span[style*="color:#f92672"] { color: #d73a49 !important; }
 
-        /* 6. 底部留白极致清理 */
+        /* 5. 底部间距压缩 */
         .main { padding-bottom: 0 !important; }
-        .footer { 
-            margin-top: 0 !important; 
-            padding: 10px 0 20px 0 !important; 
-            border-top: none !important; 
-        }
+        .footer { margin-top: 0 !important; padding: 10px 0 20px 0 !important; border: none !important; }
 
-        /* 彻底移除复制按钮样式 */
-        .copy-code { display: none !important; }
+        /* 彻底移除复制按钮 */
+        .copy-code { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 
@@ -94,7 +71,9 @@
                 <a href="https://zhouyibin8.github.io/zh/" accesskey="h" title="Home (Alt + H)">Home</a>
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
                         <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
                             <line x1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" x2="19.78" y2="19.78"></line>
@@ -119,13 +98,13 @@
         <article class="post-single">
             <header class="post-header">
                 <h1 class="post-title" style="margin-bottom: 10px;">关于我 👋</h1>
-                <div class="post-meta"><span>2026.01.10 </span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
+                <div class="post-meta"><span>2026.01.10</span> · Berry | 语言: <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a></div>
             </header>
 
             <div class="post-content">
                 <section style="line-height: 1.7;">
                     <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在 <a href="https://www.columbia.edu/" target="_blank">哥伦比亚大学</a> 获得硕士学位，以及在 <a href="https://www.must.edu.mo/" target="_blank">澳门科技大学</a> 获得学士学位。</p>
-                    <p style="margin-bottom: 15px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
+                    <p style="margin-bottom: 10px;">在学术研究上，我由 <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a> 指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用 <strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong> 来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
                 <div class="highlight">
@@ -155,6 +134,7 @@
     </footer>
 
     <script>
+        // 主题切换逻辑保持原封不动
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -164,7 +144,7 @@
                 localStorage.setItem("pref-theme", 'dark');
             }
         });
-        // 彻底删除复制按钮逻辑
+        // 彻底删除了复制按钮的 JS 代码
     </script>
 </body>
 </html>
