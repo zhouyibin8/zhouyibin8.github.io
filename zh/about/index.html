@@ -30,47 +30,52 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 强制对齐与去内边距 */
+        /* 1. 强制代码框宽度与文字 100% 对齐并设置圆角 */
         .highlight, .highlight pre {
             width: 100% !important;
             border-radius: 12px !important;
-            margin: 10px 0 !important;
-            padding: 0 !important; /* 去掉 padding */
             box-sizing: border-box !important;
-            /* 字体设置：英文代码等宽，中文继承正文字体 */
-            font-family: "Code New Roman", "Ubuntu Mono", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+            margin-top: 10px !important;
+            margin-bottom: -20px !important; /* 暴力压缩底部距离 */
+            padding: 0 !important; /* 彻底去掉内边距 */
+            /* 字体设置：优先使用系统字体确保中文与正文一致 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Code New Roman", "Ubuntu Mono", monospace !important;
         }
         
-        /* 确保代码行有少许缩进但不影响整体 padding */
+        /* 确保每一行代码有极小的左间距，避免文字紧贴色块边缘 */
         .highlight span[style*="display:flex"] {
             padding-left: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
 
-        /* 2. 浅色模式补丁：无边框、无阴影、加深字体 */
+        /* 2. 浅色模式适配：去轮廓、去质感、加深 self */
         body:not(.dark) .highlight pre {
             background-color: #f8f9fa !important;
-            color: #1a1a1a !important; /* 加深 self 等基础文字颜色 */
-            border: none !important; /* 去掉轮廓 */
-            box-shadow: none !important; /* 去掉卡片质感 */
+            color: #000000 !important; /* 让 self 和基础字符变纯黑 */
+            border: none !important;
+            box-shadow: none !important;
         }
 
         /* 浅色模式语法高亮细调 */
         body:not(.dark) .highlight span[style*="color:#66d9ef"], 
-        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #cf222e !important; }
-        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #0a3069 !important; }
-        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #8250df !important; }
-        body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #0550ae !important; }
+        body:not(.dark) .highlight span[style*="color:#f92672"] { color: #cf222e !important; } /* 关键字 */
+        body:not(.dark) .highlight span[style*="color:#e6db74"] { color: #0a3069 !important; } /* 字符串 */
+        body:not(.dark) .highlight span[style*="color:#a6e22e"] { color: #8250df !important; } /* 类名 */
+        body:not(.dark) .highlight span[style*="color:#ae81ff"] { color: #0550ae !important; } /* 数字 */
 
-        /* 3. 极致压缩底部留白 */
+        /* 3. 彻底干掉页面底部的所有间距 */
         .main { padding-bottom: 0 !important; }
-        .post-single { margin-bottom: 0 !important; padding-bottom: 5px !important; }
-        .footer { margin-top: 0 !important; padding: 10px 0 !important; border-top: none !important; }
+        .post-single { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+        .post-content { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+        .footer { 
+            margin-top: 0 !important; 
+            padding-top: 5px !important;
+            padding-bottom: 15px !important;
+            border-top: none !important;
+        }
     </style>
 </head>
 
@@ -120,11 +125,11 @@
 
             <div class="post-content">
                 <section style="line-height: 1.7;">
-                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院</a>的博士生。在此之前，我先后在<a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a>获得硕士学位，以及在<a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a>获得学士学位。</p>
-                    <p style="margin-bottom: 15px;">在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>、<strong>Marginalized Communities</strong>。</p>
+                    <p style="margin-bottom: 10px;">我目前是<a href="https://www.polyu.edu.hk/shtm/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">香港理工大学酒店及旅游业管理学院 (SHTM)</a>的博士生。在此之前，我先后在<a href="https://www.columbia.edu/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">哥伦比亚大学</a>获得硕士学位，以及在<a href="https://www.must.edu.mo/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">澳门科技大学</a>获得学士学位。</p>
+                    <p style="margin-bottom: 15px;">在学术研究上，我由<a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: bold;">Dr. Jason Zhang</a>指导。在研究方法上，我倾向于采用跨学科的视角，灵活运用<strong>机器学习</strong>、<strong>计算机视觉</strong>、<strong>计量经济学</strong>以及<strong>定性研究方法</strong>来解析复杂的社会现象。我的研究兴趣主要集中在：<strong>AI for Tourism</strong>、<strong>Social Media</strong>以及<strong>Marginalized Communities</strong>。</p>
                 </section>
 
-                <div class="highlight" style="margin-top: 0;">
+                <div class="highlight">
                     <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;周亦彬&#34;</span>
