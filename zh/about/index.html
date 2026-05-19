@@ -197,40 +197,26 @@
         }
 
         /* =========================
-           About Code Block
+           About Code Only
         ========================= */
-        .about-code-card {
-            width: 100%;
-            box-sizing: border-box;
+        .highlight.about-only-code {
+            width: 100% !important;
+            margin: 0 !important;
+            border-radius: 18px !important;
+            overflow: hidden !important;
+            background: #272822 !important;
             border: 1px solid var(--border);
-            border-radius: 18px;
-            background: rgba(var(--entry), 0.45);
-            padding: 30px 34px;
-            overflow: hidden;
-            transition: all 0.25s ease;
-        }
-
-        .about-code-card:hover {
-            transform: translateY(-2px);
             box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
         }
 
-        .highlight {
-            width: 100% !important;
-            margin: 0 !important;
-            border-radius: 16px !important;
-            overflow: hidden !important;
-            background: #272822 !important;
-        }
-
-        .highlight pre {
+        .highlight.about-only-code pre {
             width: 100% !important;
             box-sizing: border-box !important;
             margin: 0 !important;
-            padding: 30px 32px !important;
-            border-radius: 16px !important;
+            padding: 34px 38px !important;
+            border-radius: 18px !important;
             background: #272822 !important;
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border: none !important;
             font-size: 1.2rem !important;
             line-height: 1.72 !important;
 
@@ -241,7 +227,7 @@
             overflow-wrap: anywhere !important;
         }
 
-        .highlight code {
+        .highlight.about-only-code code {
             font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace !important;
             font-size: inherit !important;
             line-height: inherit !important;
@@ -250,33 +236,33 @@
             overflow-wrap: anywhere !important;
         }
 
-        .highlight code > span {
+        .highlight.about-only-code code > span {
             display: block !important;
             white-space: pre-wrap !important;
             word-break: break-word !important;
             overflow-wrap: anywhere !important;
         }
 
-        .highlight code > span > span {
+        .highlight.about-only-code code > span > span {
             display: inline !important;
         }
 
-        .highlight,
-        .highlight pre,
-        .highlight code {
+        .highlight.about-only-code,
+        .highlight.about-only-code pre,
+        .highlight.about-only-code code {
             scrollbar-width: none !important;
         }
 
-        .highlight::-webkit-scrollbar,
-        .highlight pre::-webkit-scrollbar,
-        .highlight code::-webkit-scrollbar {
+        .highlight.about-only-code::-webkit-scrollbar,
+        .highlight.about-only-code pre::-webkit-scrollbar,
+        .highlight.about-only-code code::-webkit-scrollbar {
             display: none !important;
         }
 
-        .highlight div,
-        .highlight table,
-        .highlight td,
-        .highlight span {
+        .highlight.about-only-code div,
+        .highlight.about-only-code table,
+        .highlight.about-only-code td,
+        .highlight.about-only-code span {
             background-color: transparent;
         }
 
@@ -316,12 +302,8 @@
                 font-size: 1.05rem;
             }
 
-            .about-code-card {
-                padding: 22px 20px;
-            }
-
-            .highlight pre {
-                padding: 22px 18px !important;
+            .highlight.about-only-code pre {
+                padding: 24px 20px !important;
                 font-size: 1rem !important;
                 line-height: 1.68 !important;
                 overflow-x: hidden !important;
@@ -404,9 +386,8 @@
             </header>
 
             <div class="post-content">
-                <section class="about-code-card">
-                    <div class="highlight">
-                        <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
+                <div class="highlight about-only-code">
+                    <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berry&#34;</span>
@@ -426,8 +407,7 @@
 </span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Visually Impaired Tourists&#34;</span>
 </span></span><span style="display:flex;"><span>        ]
 </span></span></code></pre>
-                    </div>
-                </section>
+                </div>
             </div>
 
             <footer class="post-footer"></footer>
