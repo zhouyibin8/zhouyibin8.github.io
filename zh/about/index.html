@@ -22,7 +22,457 @@
 
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
 
-    <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
+    <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://zhouyibin8.github.io/k-48.png">
+
+    <link rel="apple-touch-icon" href="https://zhouyibin8.github.io/k-48.png">
+
+    <link rel="mask-icon" href="https://zhouyibin8.github.io/k-48.png">
+
+    <meta name="theme-color" content="#2e2e33">
+
+    <meta name="msapplication-TileColor" content="#2e2e33">
+
+    <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
+
+    <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
+
+    <noscript>
+        <style>
+            #theme-toggle,
+            .top-link {
+                display: none;
+            }
+        </style>
+    </noscript>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="关于我 👋" />
+
+    <meta property="og:description" content="周亦彬 Berry 的个人简介与学术背景。" />
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:url" content="https://zhouyibin8.github.io/zh/about/" />
+
+    <meta property="og:site_name" content="Berry" />
+
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="twitter:title" content="关于我 👋" />
+
+    <meta name="twitter:description" content="周亦彬 Berry 的个人简介与学术背景。" />
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "关于我 👋",
+                "item": "https://zhouyibin8.github.io/zh/about/"
+            }]
+        }
+    </script>
+
+    <style>
+        /* =========================
+           Header
+        ========================= */
+        .header {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .nav {
+            max-width: 1280px;
+            padding-left: 36px;
+            padding-right: 36px;
+        }
+
+        .logo a {
+            font-size: 1.16rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .logo-switches {
+            align-items: center;
+            gap: 12px;
+        }
+
+        #theme-toggle {
+            transform: scale(1.18);
+            margin-left: 8px;
+        }
+
+        .lang-switch a {
+            font-size: 1.04rem;
+        }
+
+        #menu {
+            gap: 8px;
+        }
+
+        #menu a {
+            font-size: 1.1rem;
+            padding: 9px 14px;
+        }
+
+        .header,
+        .nav,
+        .logo a,
+        .logo-switches,
+        .lang-switch,
+        .lang-switch a,
+        #menu,
+        #menu a,
+        #menu span {
+            font-family: inherit !important;
+        }
+
+        /* =========================
+           Page Layout
+        ========================= */
+        .main {
+            max-width: 1320px;
+            padding-top: 38px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .post-single {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin-bottom: 38px;
+        }
+
+        .post-title {
+            font-size: 2.35rem;
+            line-height: 1.25;
+        }
+
+        .post-meta {
+            font-size: 1.04rem;
+        }
+
+        .footer {
+            margin-top: 72px;
+            font-size: 1rem;
+        }
+
+        .post-content {
+            font-family: inherit;
+            font-size: 1.13rem;
+        }
+
+        .post-content a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        .post-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           Clean Code Box
+           只有一个代码框，无外层黑框，无横向滚动条
+        ========================= */
+        .about-code {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 34px 38px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: #272822;
+            color: #f8f8f2;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+
+            font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace;
+            font-size: 1.2rem;
+            line-height: 1.72;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+
+            overflow-x: hidden;
+            overflow-y: visible;
+            scrollbar-width: none;
+        }
+
+        .about-code::-webkit-scrollbar {
+            display: none;
+        }
+
+        .code-keyword {
+            color: #66d9ef;
+        }
+
+        .code-class {
+            color: #a6e22e;
+        }
+
+        .code-string {
+            color: #e6db74;
+        }
+
+        .code-number {
+            color: #ae81ff;
+        }
+
+        .code-operator {
+            color: #f92672;
+        }
+
+        /* =========================
+           Responsive
+        ========================= */
+        @media (max-width: 760px) {
+            .nav {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .logo a {
+                font-size: 1.04rem;
+            }
+
+            #menu a {
+                font-size: 0.98rem;
+                padding: 6px 9px;
+            }
+
+            #theme-toggle {
+                transform: scale(1.04);
+            }
+
+            .main {
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .post-title {
+                font-size: 1.85rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .about-code {
+                padding: 24px 20px;
+                font-size: 1rem;
+                line-height: 1.68;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark" id="top">
+    <script>
+        if (localStorage.getItem("pref-theme") === "light") {
+            document.body.classList.remove('dark')
+        }
+    </script>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="https://zhouyibin8.github.io/zh/" accesskey="h" title="Home (Alt + H)">Home</a>
+
+                <span class="logo-switches">
+                    <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <ul class="lang-switch">
+                        <li>|</li>
+                        <li>
+                            <a href="https://zhouyibin8.github.io/en/about/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+
+            <ul id="menu">
+                <li><a href="https://zhouyibin8.github.io/zh/" title="主页"><span>主页</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/about" title="关于"><span class="active">关于</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/projects" title="研究"><span>研究</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/resume" title="简历"><span>简历</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/blog" title="生活"><span>生活</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <article class="post-single">
+            <header class="post-header">
+                <h1 class="post-title">关于我 👋</h1>
+
+                <div class="post-meta">
+                    <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
+
+                    <ul class="i18n_list">语言:
+                        <li>
+                            <a href="https://zhouyibin8.github.io/en/about/">English🇺🇸</a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <div class="post-content">
+<pre class="about-code"><code><span class="code-keyword">class</span> <span class="code-class">Me</span>:
+    <span class="code-keyword">def</span> __init__(self):
+        self<span class="code-operator">.</span>name <span class="code-operator">=</span> <span class="code-string">"Yibin Zhou"</span>
+        self<span class="code-operator">.</span>prefer_name <span class="code-operator">=</span> <span class="code-string">"Berry"</span>
+        self<span class="code-operator">.</span>born_year <span class="code-operator">=</span> <span class="code-number">2000</span>
+        self<span class="code-operator">.</span>MBTI <span class="code-operator">=</span> <span class="code-string">"ENFJ"</span>
+        self<span class="code-operator">.</span>curr_location <span class="code-operator">=</span> <span class="code-string">"Hong Kong"</span>
+        self<span class="code-operator">.</span>bachelor_school <span class="code-operator">=</span> <span class="code-string">"Macau University of Science and Technology"</span>
+        self<span class="code-operator">.</span>master_school <span class="code-operator">=</span> <span class="code-string">"Columbia University"</span>
+        self<span class="code-operator">.</span>phd_school <span class="code-operator">=</span> <span class="code-string">"The Hong Kong Polytechnic University"</span>
+        self<span class="code-operator">.</span>college <span class="code-operator">=</span> <span class="code-string">"School of Hotel and Tourism Management"</span>
+        self<span class="code-operator">.</span>supervisor <span class="code-operator">=</span> <span class="code-string">"Dr. Jason Zhang"</span>
+        self<span class="code-operator">.</span>self_status <span class="code-operator">=</span> <span class="code-string">"PhD Student"</span>
+        self<span class="code-operator">.</span>research_interests <span class="code-operator">=</span> [
+            <span class="code-string">"AI in Tourism"</span>,
+            <span class="code-string">"Social Media"</span>,
+            <span class="code-string">"Destination Marketing"</span>,
+            <span class="code-string">"Visually Impaired Tourists"</span>
+        ]</code></pre>
+            </div>
+
+            <footer class="post-footer"></footer>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
+
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        <span id="busuanzi_container">
+            Visitors: <span id="busuanzi_value_site_uv"></span>
+            Views: <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </footer>
+
+    <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </a>
+
+    <script>
+        let menu = document.getElementById('menu')
+        if (menu) {
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+            menu.onscroll = function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }
+        }
+
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+            if (document.body.className.includes("dark")) {
+                document.body.classList.remove('dark');
+                localStorage.setItem("pref-theme", 'light');
+            } else {
+                document.body.classList.add('dark');
+                localStorage.setItem("pref-theme", 'dark');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                var id = this.getAttribute("href").substr(1);
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                } else {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                }
+            });
+        });
+
+        var mybutton = document.getElementById("top-link");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = "visible";
+                mybutton.style.opacity = "1";
+            } else {
+                mybutton.style.visibility = "hidden";
+                mybutton.style.opacity = "0";
+            }
+        };
+    </script>
+</body>
+
+</html><!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="robots" content="index, follow">
+
+    <title>关于我 👋 | Yibin's Blog</title>
+
+    <meta name="keywords" content="About, Yibin, Berry">
+
+    <meta name="description" content="周亦彬 Berry 的个人简介与学术背景。">
+
+    <meta name="author" content="Berry">
+
+    <link rel="canonical" href="https://zhouyibin8.github.io/zh/about/">
+
+    <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
 
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
 
@@ -197,73 +647,55 @@
         }
 
         /* =========================
-           About Code Only
+           Clean Code Box
+           只有一个代码框，无外层黑框，无横向滚动条
         ========================= */
-        .highlight.about-only-code {
-            width: 100% !important;
-            margin: 0 !important;
-            border-radius: 18px !important;
-            overflow: hidden !important;
-            background: #272822 !important;
+        .about-code {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 34px 38px;
+            border-radius: 18px;
             border: 1px solid var(--border);
+            background: #272822;
+            color: #f8f8f2;
             box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+
+            font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace;
+            font-size: 1.2rem;
+            line-height: 1.72;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+
+            overflow-x: hidden;
+            overflow-y: visible;
+            scrollbar-width: none;
         }
 
-        .highlight.about-only-code pre {
-            width: 100% !important;
-            box-sizing: border-box !important;
-            margin: 0 !important;
-            padding: 34px 38px !important;
-            border-radius: 18px !important;
-            background: #272822 !important;
-            border: none !important;
-            font-size: 1.2rem !important;
-            line-height: 1.72 !important;
-
-            overflow-x: hidden !important;
-            overflow-y: visible !important;
-            white-space: pre-wrap !important;
-            word-break: break-word !important;
-            overflow-wrap: anywhere !important;
+        .about-code::-webkit-scrollbar {
+            display: none;
         }
 
-        .highlight.about-only-code code {
-            font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace !important;
-            font-size: inherit !important;
-            line-height: inherit !important;
-            white-space: pre-wrap !important;
-            word-break: break-word !important;
-            overflow-wrap: anywhere !important;
+        .code-keyword {
+            color: #66d9ef;
         }
 
-        .highlight.about-only-code code > span {
-            display: block !important;
-            white-space: pre-wrap !important;
-            word-break: break-word !important;
-            overflow-wrap: anywhere !important;
+        .code-class {
+            color: #a6e22e;
         }
 
-        .highlight.about-only-code code > span > span {
-            display: inline !important;
+        .code-string {
+            color: #e6db74;
         }
 
-        .highlight.about-only-code,
-        .highlight.about-only-code pre,
-        .highlight.about-only-code code {
-            scrollbar-width: none !important;
+        .code-number {
+            color: #ae81ff;
         }
 
-        .highlight.about-only-code::-webkit-scrollbar,
-        .highlight.about-only-code pre::-webkit-scrollbar,
-        .highlight.about-only-code code::-webkit-scrollbar {
-            display: none !important;
-        }
-
-        .highlight.about-only-code div,
-        .highlight.about-only-code table,
-        .highlight.about-only-code td,
-        .highlight.about-only-code span {
-            background-color: transparent;
+        .code-operator {
+            color: #f92672;
         }
 
         /* =========================
@@ -302,14 +734,10 @@
                 font-size: 1.05rem;
             }
 
-            .highlight.about-only-code pre {
-                padding: 24px 20px !important;
-                font-size: 1rem !important;
-                line-height: 1.68 !important;
-                overflow-x: hidden !important;
-                white-space: pre-wrap !important;
-                word-break: break-word !important;
-                overflow-wrap: anywhere !important;
+            .about-code {
+                padding: 24px 20px;
+                font-size: 1rem;
+                line-height: 1.68;
             }
         }
     </style>
@@ -386,28 +814,25 @@
             </header>
 
             <div class="post-content">
-                <div class="highlight about-only-code">
-                    <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berry&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>born_year <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>MBTI <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENFJ&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hong Kong&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>college <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;School of Hotel and Tourism Management&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>supervisor <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dr. Jason Zhang&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>research_interests <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;AI in Tourism&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Social Media&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Destination Marketing&#34;</span>,
-</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Visually Impaired Tourists&#34;</span>
-</span></span><span style="display:flex;"><span>        ]
-</span></span></code></pre>
-                </div>
+<pre class="about-code"><code><span class="code-keyword">class</span> <span class="code-class">Me</span>:
+    <span class="code-keyword">def</span> __init__(self):
+        self<span class="code-operator">.</span>name <span class="code-operator">=</span> <span class="code-string">"Yibin Zhou"</span>
+        self<span class="code-operator">.</span>prefer_name <span class="code-operator">=</span> <span class="code-string">"Berry"</span>
+        self<span class="code-operator">.</span>born_year <span class="code-operator">=</span> <span class="code-number">2000</span>
+        self<span class="code-operator">.</span>MBTI <span class="code-operator">=</span> <span class="code-string">"ENFJ"</span>
+        self<span class="code-operator">.</span>curr_location <span class="code-operator">=</span> <span class="code-string">"Hong Kong"</span>
+        self<span class="code-operator">.</span>bachelor_school <span class="code-operator">=</span> <span class="code-string">"Macau University of Science and Technology"</span>
+        self<span class="code-operator">.</span>master_school <span class="code-operator">=</span> <span class="code-string">"Columbia University"</span>
+        self<span class="code-operator">.</span>phd_school <span class="code-operator">=</span> <span class="code-string">"The Hong Kong Polytechnic University"</span>
+        self<span class="code-operator">.</span>college <span class="code-operator">=</span> <span class="code-string">"School of Hotel and Tourism Management"</span>
+        self<span class="code-operator">.</span>supervisor <span class="code-operator">=</span> <span class="code-string">"Dr. Jason Zhang"</span>
+        self<span class="code-operator">.</span>self_status <span class="code-operator">=</span> <span class="code-string">"PhD Student"</span>
+        self<span class="code-operator">.</span>research_interests <span class="code-operator">=</span> [
+            <span class="code-string">"AI in Tourism"</span>,
+            <span class="code-string">"Social Media"</span>,
+            <span class="code-string">"Destination Marketing"</span>,
+            <span class="code-string">"Visually Impaired Tourists"</span>
+        ]</code></pre>
             </div>
 
             <footer class="post-footer"></footer>
