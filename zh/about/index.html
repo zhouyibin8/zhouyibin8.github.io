@@ -179,92 +179,65 @@
         .post-content a {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: normal;
         }
 
         .post-content a:hover {
             text-decoration: underline;
         }
 
-        .post-content strong {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
         /* =========================
-           About Intro
+           About Code Block
         ========================= */
-        .about-intro-card {
-            color: var(--secondary);
-            font-size: 1.16rem;
-            line-height: 1.9;
+        .about-code-card {
             width: 100%;
             box-sizing: border-box;
-            padding: 26px 30px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            background: rgba(var(--entry), 0.35);
-            margin-bottom: 36px;
-        }
-
-        .about-intro-card p {
-            margin: 0;
-        }
-
-        .about-intro-card strong,
-        .about-intro-card a {
-            color: var(--primary);
-        }
-
-        /* =========================
-           Profile Code Card
-        ========================= */
-        .profile-code-card {
             border: 1px solid var(--border);
             border-radius: 18px;
             background: rgba(var(--entry), 0.45);
             padding: 30px 34px;
+            overflow: hidden;
             transition: all 0.25s ease;
         }
 
-        .profile-code-card:hover {
+        .about-code-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
-        }
-
-        .profile-code-title {
-            font-size: 1.32rem;
-            line-height: 1.45;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 0;
-            margin-bottom: 18px;
-        }
-
-        .profile-code-note {
-            color: var(--secondary);
-            font-size: 1.04rem;
-            line-height: 1.7;
-            margin-top: -4px;
-            margin-bottom: 22px;
         }
 
         .highlight {
             width: 100% !important;
             margin: 0 !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
+            background: #272822 !important;
         }
 
         .highlight pre {
-            border-radius: 14px !important;
-            padding: 22px 24px !important;
-            font-size: 1.02rem !important;
-            line-height: 1.65 !important;
-            overflow-x: auto;
-            border: 1px solid var(--border);
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 30px 32px !important;
+            border-radius: 16px !important;
+            background: #272822 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            font-size: 1.2rem !important;
+            line-height: 1.72 !important;
+            overflow-x: auto !important;
         }
 
-        code {
-            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace;
+        .highlight code {
+            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
+            font-size: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* 防止主题默认代码块背景在圆角外露 */
+        .highlight div,
+        .highlight table,
+        .highlight td,
+        .highlight span {
+            background-color: transparent;
         }
 
         /* =========================
@@ -303,26 +276,14 @@
                 font-size: 1.05rem;
             }
 
-            .about-intro-card {
-                font-size: 1.06rem;
+            .about-code-card {
                 padding: 22px 20px;
-            }
-
-            .profile-code-card {
-                padding: 22px 20px;
-            }
-
-            .profile-code-title {
-                font-size: 1.18rem;
-            }
-
-            .profile-code-note {
-                font-size: 1rem;
             }
 
             .highlight pre {
-                font-size: 0.94rem !important;
-                padding: 18px 16px !important;
+                padding: 22px 18px !important;
+                font-size: 1rem !important;
+                line-height: 1.68 !important;
             }
         }
     </style>
@@ -399,24 +360,7 @@
             </header>
 
             <div class="post-content">
-
-                <section class="about-intro-card">
-                    <p>
-                        我目前是
-                        <a href="https://www.polyu.edu.hk/shtm/" target="_blank" rel="noopener noreferrer">香港理工大学酒店及旅游业管理学院</a>
-                        的博士生，在
-                        <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank" rel="noopener noreferrer">Dr. Jason Zhang</a>
-                        的指导下开展学术工作。我致力于通过<strong>跨学科</strong>的视角探索复杂社会现象，擅长将<strong>机器学习</strong>、<strong>计算机视觉</strong>等前沿计算机科学方法，与<strong>计量经济学</strong>及<strong>定性研究方法</strong>结合。我的核心研究兴趣聚焦于：<strong>旅游AI</strong>、<strong>社交媒体</strong>、<strong>边缘化群体</strong>。
-                    </p>
-                </section>
-
-                <section class="profile-code-card">
-                    <h2 class="profile-code-title">Profile as Code</h2>
-
-                    <p class="profile-code-note">
-                        A compact, playful snapshot of my academic background, research identity, and personal profile.
-                    </p>
-
+                <section class="about-code-card">
                     <div class="highlight">
                         <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
@@ -428,11 +372,18 @@
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>college <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;School of Hotel and Tourism Management&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>supervisor <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dr. Jason Zhang&#34;</span>
 </span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>research_interests <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;AI in Tourism&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Social Media&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Destination Marketing&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Visually Impaired Tourists&#34;</span>
+</span></span><span style="display:flex;"><span>        ]
 </span></span></code></pre>
                     </div>
                 </section>
-
             </div>
 
             <footer class="post-footer"></footer>
