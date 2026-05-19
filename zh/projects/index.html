@@ -15,7 +15,7 @@
 
     <meta name="keywords" content="Customer engagement, Video analysis, Multimodal, Tourism marketing, Machine learning, Public health, Destination vulnerability, Destination resilience, Tourism demand, Econometrics, Crisis management">
 
-    <meta name="description" content="My academic research findings and publications, covering multimodal analysis, tourism marketing, and deep learning.">
+    <meta name="description" content="周亦彬的学术研究成果，聚焦旅游人工智能、社交媒体分析、目的地营销、公共卫生脆弱性与目的地韧性。">
 
     <meta name="author" content="Berry">
 
@@ -64,17 +64,21 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
-
     <meta property="og:title" content="学术研究 🔬" />
 
-    <meta property="og:description" content="My academic research findings and publications..." />
+    <meta property="og:description" content="周亦彬的学术研究成果，聚焦旅游人工智能、社交媒体分析、目的地营销、公共卫生脆弱性与目的地韧性。" />
 
     <meta property="og:type" content="article" />
 
     <meta property="og:url" content="https://zhouyibin8.github.io/zh/projects/" />
 
     <meta property="og:site_name" content="Berry" />
+
+    <meta name="twitter:card" content="summary" />
+
+    <meta name="twitter:title" content="学术研究 🔬" />
+
+    <meta name="twitter:description" content="周亦彬的学术研究成果。" />
 
     <script type="application/ld+json">
         {
@@ -90,32 +94,93 @@
     </script>
 
     <style>
+        /* =========================
+           Header: 放大顶部导航
+        ========================= */
+        .header {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .nav {
+            max-width: 1120px;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+
+        .logo a {
+            font-size: 1.08rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .logo-switches {
+            align-items: center;
+            gap: 10px;
+        }
+
+        #theme-toggle {
+            transform: scale(1.12);
+            margin-left: 6px;
+        }
+
+        .lang-switch a {
+            font-size: 0.98rem;
+        }
+
+        #menu {
+            gap: 6px;
+        }
+
+        #menu a {
+            font-size: 1.02rem;
+            padding: 8px 12px;
+        }
+
+        /* =========================
+           Page Layout: 加宽正文区域
+        ========================= */
         .main {
-            padding-top: 24px;
+            padding-top: 34px;
         }
 
         .post-single {
-            max-width: 780px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
         .post-header {
-            margin-bottom: 30px;
+            margin-bottom: 34px;
+        }
+
+        .post-title {
+            font-size: 2.15rem;
+            line-height: 1.25;
+        }
+
+        .post-meta {
+            font-size: 0.98rem;
         }
 
         .footer {
-            margin-top: 56px;
+            margin-top: 64px;
         }
 
+        /* 隐藏原来的虚线/分割线，仅保留留白 */
         .post-content hr {
             border: none;
             height: 0;
-            margin: 40px 0;
+            margin: 42px 0;
             background: transparent;
         }
 
+        /* =========================
+           Font: 恢复最初 Research 页面字体逻辑
+           页面主体继承主题字体；只有摘要和引用用 Times
+        ========================= */
         .post-content {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: inherit;
+            font-size: 1.06rem;
         }
 
         .post-content a {
@@ -128,112 +193,118 @@
             text-decoration: underline;
         }
 
+        /* 只高亮你的名字，其他超链接作者不加粗 */
         .author-highlight {
             font-weight: 700 !important;
             color: var(--primary);
             text-decoration: underline;
             text-decoration-thickness: 2px;
             text-underline-offset: 3px;
-            text-decoration-color: rgba(255, 255, 255, 0.35);
+            text-decoration-color: rgba(255, 255, 255, 0.38);
         }
 
         body:not(.dark) .author-highlight {
             text-decoration-color: rgba(0, 0, 0, 0.28);
         }
 
-        .page-intro {
+        /* =========================
+           Research Page Content
+        ========================= */
+        .research-interest {
             color: var(--secondary);
-            font-size: 1.05rem;
-            line-height: 1.75;
+            font-size: 1.08rem;
+            line-height: 1.8;
             margin-top: -6px;
-            margin-bottom: 36px;
+            margin-bottom: 42px;
+        }
+
+        .research-interest strong {
+            color: var(--primary);
+            font-weight: 700;
         }
 
         .section-title {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.42rem;
-            margin-top: 36px;
-            margin-bottom: 18px;
+            font-size: 1.5rem;
+            margin-top: 42px;
+            margin-bottom: 22px;
             letter-spacing: -0.01em;
         }
 
         .research-paper-entry {
-            margin-bottom: 42px;
+            margin-bottom: 52px;
         }
 
         .research-paper-entry h3 {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.22rem;
+            font-size: 1.3rem;
             line-height: 1.45;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-weight: 700;
         }
 
         .research-authors {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.02rem;
-            line-height: 1.65;
-            margin-bottom: 6px;
+            font-size: 1.05rem;
+            line-height: 1.68;
+            margin-bottom: 8px;
         }
 
         .research-journal {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.03rem;
+            line-height: 1.65;
             color: var(--secondary);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .research-keywords {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 0.98rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.65;
             color: var(--secondary);
-            margin-top: 14px;
+            margin-top: 16px;
         }
 
+        /* 最初 Research 页面里的专业字体：只用于摘要和 APA 引用 */
         .academic-text {
             font-family: 'Times New Roman', Times, serif;
-            font-size: 1.02rem;
-            line-height: 1.7;
-            text-align: left;
+            font-size: 1.06rem;
+            line-height: 1.74;
+            text-align: justify;
             color: var(--primary);
             font-weight: normal;
         }
 
+        /* Tab Container */
         .research-tabs {
             background: rgba(var(--entry), 0.5);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 18px;
-            margin-top: 18px;
-            margin-bottom: 22px;
+            padding: 22px;
+            margin-top: 20px;
+            margin-bottom: 24px;
         }
 
         .tab-buttons {
             display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 18px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
+            padding-bottom: 14px;
             overflow-x: auto;
         }
 
         .tab-btn {
-            font-family: var(--font-family, inherit);
             background: transparent;
             border: none;
             color: var(--secondary);
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 6px 12px;
-            border-radius: 999px;
-            transition: all 0.25s ease;
+            font-size: 0.96rem;
+            font-weight: bold;
+            padding: 7px 14px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 6px;
             white-space: nowrap;
+            font-family: inherit;
         }
 
         .tab-btn.active {
@@ -246,13 +317,13 @@
         }
 
         body.dark .tab-btn.active {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--primary);
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.35s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .tab-content.active {
@@ -260,11 +331,8 @@
         }
 
         .citation-box {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1rem;
-            line-height: 1.65;
             background: var(--code-bg);
-            padding: 15px;
+            padding: 18px;
             border-radius: 8px;
             border: 1px solid var(--border);
             padding-left: 2em;
@@ -273,7 +341,7 @@
 
         .framework-img {
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             max-width: 100%;
             height: auto;
             transition: transform 0.3s;
@@ -284,19 +352,27 @@
             transform: scale(1.01);
         }
 
+        .figure-caption {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
         .paper-actions {
             text-align: center;
-            margin-top: 22px;
+            margin-top: 24px;
         }
 
         .paper-actions .button {
-            font-family: var(--font-family, inherit);
             background: var(--primary);
             color: var(--theme);
-            padding: 11px 22px;
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 999px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
             border: 1px solid var(--primary);
             display: inline-block;
         }
@@ -306,22 +382,25 @@
             text-decoration: none;
         }
 
+        /* =========================
+           Conference
+        ========================= */
         .conference-section {
-            margin-top: 44px;
+            margin-top: 52px;
         }
 
         .conference-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 18px;
-            margin-top: 18px;
+            gap: 22px;
+            margin-top: 22px;
         }
 
         .conference-card {
             background: rgba(var(--entry), 0.55);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 20px 22px;
+            padding: 24px 26px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -331,9 +410,9 @@
             content: "";
             position: absolute;
             left: 0;
-            top: 18px;
+            top: 20px;
             width: 4px;
-            height: calc(100% - 36px);
+            height: calc(100% - 40px);
             border-radius: 4px;
             background: var(--primary);
             opacity: 0.65;
@@ -345,66 +424,93 @@
         }
 
         .conference-title {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.05rem;
-            line-height: 1.5;
+            font-size: 1.1rem;
+            line-height: 1.52;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
         .conference-authors {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 0.98rem;
-            line-height: 1.6;
-            margin-bottom: 8px;
+            font-size: 1rem;
+            line-height: 1.65;
+            margin-bottom: 10px;
         }
 
         .conference-meta {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: var(--secondary);
             margin-bottom: 0;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .conference-tag {
-            font-family: var(--font-family, inherit);
             display: inline-block;
-            font-size: 0.76rem;
+            font-size: 0.8rem;
             letter-spacing: 0.02em;
             color: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 999px;
-            padding: 3px 10px;
-            margin-bottom: 10px;
+            padding: 4px 11px;
+            margin-bottom: 12px;
         }
 
-        @media (min-width: 760px) {
+        @media (min-width: 860px) {
             .conference-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 760px) {
+            .nav {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .logo a {
+                font-size: 1rem;
+            }
+
+            #menu a {
+                font-size: 0.96rem;
+                padding: 6px 9px;
+            }
+
+            #theme-toggle {
+                transform: scale(1.02);
+            }
+
             .main {
-                padding-top: 12px;
+                padding-top: 18px;
             }
 
-            .post-header {
-                margin-bottom: 24px;
+            .post-title {
+                font-size: 1.78rem;
             }
 
-            .research-tabs {
-                padding: 15px;
+            .post-content {
+                font-size: 1.02rem;
+            }
+
+            .research-interest {
+                font-size: 1.04rem;
             }
 
             .section-title {
-                font-size: 1.25rem;
+                font-size: 1.34rem;
             }
 
             .research-paper-entry h3 {
-                font-size: 1.1rem;
+                font-size: 1.18rem;
+            }
+
+            .research-tabs {
+                padding: 16px;
+            }
+
+            .academic-text {
+                font-size: 1.02rem;
+                text-align: left;
             }
         }
 
@@ -436,13 +542,13 @@
 
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
 
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
@@ -495,17 +601,17 @@
 
             <div class="post-content">
 
-                <p class="page-intro">
-                    My research explores AI in tourism, social media analytics, destination marketing, public health vulnerability, and destination resilience through computational, econometric, and interdisciplinary approaches.
+                <p class="research-interest">
+                    <strong>研究兴趣：</strong>我的研究聚焦于旅游人工智能、社交媒体分析、目的地营销、公共卫生脆弱性与目的地韧性，并尝试结合计算方法、计量经济学与跨学科视角理解旅游与社会现象。
                 </p>
 
-                <h2 class="section-title" id="journal-articles">Journal Articles<a hidden class="anchor" aria-hidden="true" href="#journal-articles">#</a></h2>
+                <h2 class="section-title" id="journal-articles">期刊论文<a hidden class="anchor" aria-hidden="true" href="#journal-articles">#</a></h2>
 
                 <section class="research-paper-entry">
                     <h3 id="health-is-the-new-safety">Health is the new safety: Destination public health vulnerability, resilience, and international tourism<a hidden class="anchor" aria-hidden="true" href="#health-is-the-new-safety">#</a></h3>
 
                     <p class="research-authors">
-                        <strong>Authors:</strong>
+                        <strong>作者：</strong>
                         <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                         Zhiguang Huang,
                         <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
@@ -513,31 +619,31 @@
                     </p>
 
                     <p class="research-journal">
-                        <strong>Journal:</strong> <em>Journal of Destination Marketing & Management [SSCI Q1, IF = 7.4]</em>
+                        <strong>期刊：</strong><em>Journal of Destination Marketing & Management [SSCI Q1, IF = 7.4]</em>
                     </p>
 
                     <div class="research-tabs" id="tabs-paper-2">
                         <div class="tab-buttons">
-                            <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-2', 'visuals-2')">📊 Framework</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'abstract-2')">📄 Abstract</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'citation-2')">📝 Citation</button>
+                            <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-2', 'visuals-2')">📊 研究框架</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'abstract-2')">📄 摘要</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'citation-2')">📝 引用格式</button>
                         </div>
 
                         <div id="visuals-2" class="tab-content active">
                             <div style="text-align: center;">
                                 <img src="/zh/projects/DPHV.png" alt="Conceptual Framework" class="framework-img">
-                                <p style="font-size: 0.85em; color: #888; margin-top: 8px; margin-bottom: 0;">Figure: Overview of Research Framework.</p>
+                                <p class="figure-caption">Figure: Overview of Research Framework.</p>
                             </div>
                         </div>
 
                         <div id="abstract-2" class="tab-content">
-                            <blockquote class="academic-text" style="border-left: 4px solid var(--primary); padding-left: 15px; margin: 0;">
+                            <blockquote class="academic-text" style="border-left: 4px solid var(--primary); padding-left: 18px; margin: 0;">
                                 Tourism is highly vulnerable to health crises, yet little is known about how structural public health risks shape long-term demand. This study develops a composite Destination Public Health Vulnerability (DPHV) index that integrates exposure, sensitivity, and adaptive capacity, and links it to international tourism demand. Drawing on a global panel of 196 countries from 2000 to 2019, two-way fixed effects models, distributed lag models, and spatial Durbin models are employed, complemented by robustness checks leveraging the 2003 SARS outbreak. Results show that higher DPHV significantly reduces per capita tourist arrivals, with effects persisting for up to three years, underscoring the enduring impact of health-related risk perceptions. Resilience features, including cultural heritage and sanitation infrastructure, partially buffer these negative effects, whereas political stability provides a comparatively weaker safeguard. Spatial Durbin models reveal that health shocks primarily depress demand domestically rather than diffusing broadly across neighboring destinations. By conceptualizing public health vulnerability as a multidimensional construct and linking it to global tourism demand, this study advances destination vulnerability theory and highlights the role of resilience assets in mitigating health risks. These insights offer practical guidance for policymakers and destination managers seeking to sustain competitiveness in an increasingly crisis-prone global tourism system.
                             </blockquote>
                         </div>
 
                         <div id="citation-2" class="tab-content">
-                            <p style="margin-bottom: 5px; font-size: 0.9em; color: gray;">APA Citation:</p>
+                            <p style="margin-bottom: 8px; font-size: 0.96em; color: gray;">APA 引用格式：</p>
 
                             <div class="citation-box academic-text">
                                 Zhou, Y. B., Huang, Z., Zhang, C. J., & Xia, M. (2026). Health is the new safety: Destination public health vulnerability, resilience, and international tourism. <em>Journal of Destination Marketing & Management, 41</em>, 101121.
@@ -546,12 +652,12 @@
                     </div>
 
                     <p class="research-keywords">
-                        <strong>Keywords:</strong> Public health; Destination vulnerability; Destination resilience; Tourism demand; Econometrics; Crisis management.
+                        <strong>关键词：</strong>Public health; Destination vulnerability; Destination resilience; Tourism demand; Econometrics; Crisis management.
                     </p>
 
                     <div class="paper-actions">
                         <a href="https://www.sciencedirect.com/science/article/pii/S2212571X26000399" target="_blank" class="button">
-                            📖 Read Full Paper
+                            📖 阅读全文
                         </a>
                     </div>
                 </section>
@@ -560,38 +666,38 @@
                     <h3 id="unveiling-customer-engagement">Unveiling Customer Engagement in Destination Marketing: A Multimodal Approach to Analyzing Official Promotional Videos<a hidden class="anchor" aria-hidden="true" href="#unveiling-customer-engagement">#</a></h3>
 
                     <p class="research-authors">
-                        <strong>Authors:</strong>
+                        <strong>作者：</strong>
                         <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                         <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                         <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
                     </p>
 
                     <p class="research-journal">
-                        <strong>Journal:</strong> <em>International Journal of Tourism Research [SSCI Q1, IF = 5.7]</em>
+                        <strong>期刊：</strong><em>International Journal of Tourism Research [SSCI Q1, IF = 5.7]</em>
                     </p>
 
                     <div class="research-tabs" id="tabs-paper-1">
                         <div class="tab-buttons">
-                            <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'visuals')">📊 Framework</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'abstract')">📄 Abstract</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 Citation</button>
+                            <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'visuals')">📊 研究框架</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'abstract')">📄 摘要</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 引用格式</button>
                         </div>
 
                         <div id="visuals" class="tab-content active">
                             <div style="text-align: center;">
                                 <img src="/zh/projects/framework.png" alt="Conceptual Framework" class="framework-img">
-                                <p style="font-size: 0.85em; color: #888; margin-top: 8px; margin-bottom: 0;">Figure: Overview of Research.</p>
+                                <p class="figure-caption">Figure: Overview of Research.</p>
                             </div>
                         </div>
 
                         <div id="abstract" class="tab-content">
-                            <blockquote class="academic-text" style="border-left: 4px solid var(--primary); padding-left: 15px; margin: 0;">
+                            <blockquote class="academic-text" style="border-left: 4px solid var(--primary); padding-left: 18px; margin: 0;">
                                 This study examines how features of official destination promotional videos (DPVs) shape customer engagement (CE) on social media. Using 5,037 Instagram videos from 54 U.S. national parks, we apply machine learning and computer vision to extract video content, visual features, multimodal cues (text, audio, thumbnails), and post metadata. LightGBM with SHAP analyses shows that thumbnail–video contrasts, color coherence, and emotional cues significantly influence CE. Simpler, familiar content drives passive engagement (likes), whereas emotionally resonant, high-aesthetic content fosters active engagement (comments). Beyond method, this study contributes a dual-pathway theoretical framework that integrates cognitive load, elaboration likelihood, and media richness theories to explain how multimodal features jointly shape CE. Practical implications highlight balancing content simplicity and depth, ensuring visual and emotional consistency, and optimizing posting strategies. Overall, this research advances destination marketing by providing a scalable and theory-informed framework for analyzing social media videos.
                             </blockquote>
                         </div>
 
                         <div id="citation" class="tab-content">
-                            <p style="margin-bottom: 5px; font-size: 0.9em; color: gray;">APA Citation:</p>
+                            <p style="margin-bottom: 8px; font-size: 0.96em; color: gray;">APA 引用格式：</p>
 
                             <div class="citation-box academic-text">
                                 Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in destination marketing: A multimodal approach to analyzing official promotional videos. <em>International Journal of Tourism Research, 27</em>(6), e70152.
@@ -600,51 +706,51 @@
                     </div>
 
                     <p class="research-keywords">
-                        <strong>Keywords:</strong> Customer engagement; Video analysis; Destination promotional video; Multimodal; Tourism destination marketing; Machine learning.
+                        <strong>关键词：</strong>Customer engagement; Video analysis; Destination promotional video; Multimodal; Tourism destination marketing; Machine learning.
                     </p>
 
                     <div class="paper-actions">
                         <a href="http://dx.doi.org/10.1002/jtr.70152" target="_blank" class="button">
-                            📖 Read Full Paper
+                            📖 阅读全文
                         </a>
                     </div>
                 </section>
 
                 <section class="conference-section">
-                    <h2 class="section-title" id="conference-presentations">Conference Presentations<a hidden class="anchor" aria-hidden="true" href="#conference-presentations">#</a></h2>
+                    <h2 class="section-title" id="conference-presentations">学术会议<a hidden class="anchor" aria-hidden="true" href="#conference-presentations">#</a></h2>
 
                     <div class="conference-grid">
 
                         <div class="conference-card">
-                            <span class="conference-tag">Conference Presentation</span>
+                            <span class="conference-tag">会议发表</span>
 
                             <h3 class="conference-title">
                                 Unveiling Customer Engagement in Destination Marketing: A Machine Learning Approach to Analyzing Official Promotional Videos
                             </h3>
 
                             <p class="conference-authors">
-                                <strong>Authors:</strong>
+                                <strong>作者：</strong>
                                 <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                                 <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                                 <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a>
                             </p>
 
                             <p class="conference-meta">
-                                <strong>Presented at:</strong> The 4th Health-Oriented Tourism & Food Conference<br>
-                                <strong>Date:</strong> 19–21 April 2025<br>
-                                <strong>Location:</strong> GATE, Kathmandu, Nepal
+                                <strong>会议：</strong>The 4th Health-Oriented Tourism & Food Conference<br>
+                                <strong>时间：</strong>19–21 April 2025<br>
+                                <strong>地点：</strong>GATE, Kathmandu, Nepal
                             </p>
                         </div>
 
                         <div class="conference-card">
-                            <span class="conference-tag">Conference Presentation</span>
+                            <span class="conference-tag">会议发表</span>
 
                             <h3 class="conference-title">
                                 Embodied Practices in the Kitchen: A Contingency Study of Chef Precision Matching Training Methods
                             </h3>
 
                             <p class="conference-authors">
-                                <strong>Authors:</strong>
+                                <strong>作者：</strong>
                                 <a href="https://scholar.google.com/citations?user=rIVSgeUAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Vicky Y. Chen</a>,
                                 <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                                 <a href="https://scholar.google.com/citations?user=BwN-284AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Pearl M.C. Lin</a>,
@@ -652,9 +758,9 @@
                             </p>
 
                             <p class="conference-meta">
-                                <strong>Presented at:</strong> À Table! Hospitality, Food & Wine Conference<br>
-                                <strong>Date:</strong> 18–19 May 2026<br>
-                                <strong>Location:</strong> Lyon, France
+                                <strong>会议：</strong>À Table! Hospitality, Food & Wine Conference<br>
+                                <strong>时间：</strong>18–19 May 2026<br>
+                                <strong>地点：</strong>Lyon, France
                             </p>
                         </div>
 
