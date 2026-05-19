@@ -64,8 +64,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
-
     <meta property="og:title" content="学术研究 🔬" />
 
     <meta property="og:description" content="周亦彬的学术研究成果，聚焦旅游人工智能、社交媒体、目的地营销、视觉障碍游客，并尝试结合计算机科学、计量经济学与跨学科视角理解旅游与社会现象。" />
@@ -98,7 +96,7 @@
     <style>
         /* =========================
            Header
-           顶部导航使用主题默认样式，与主页保持一致
+           顶部导航不做额外放大，保持与主页一致
         ========================= */
 
         /* =========================
@@ -576,6 +574,24 @@
         }
 
         @media (max-width: 760px) {
+            .nav {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .logo a {
+                font-size: 1.04rem;
+            }
+
+            #menu a {
+                font-size: 0.98rem;
+                padding: 6px 9px;
+            }
+
+            #theme-toggle {
+                transform: scale(1.04);
+            }
+
             .main {
                 padding-top: 20px;
                 padding-left: 20px;
