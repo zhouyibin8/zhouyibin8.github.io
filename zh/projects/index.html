@@ -96,8 +96,46 @@
     <style>
         /* =========================
            Header
-           顶部导航不做额外放大，保持与主页一致
         ========================= */
+        .header {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+        .nav {
+            max-width: 1280px;
+            padding-left: 36px;
+            padding-right: 36px;
+        }
+
+        .logo a {
+            font-size: 1.16rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .logo-switches {
+            align-items: center;
+            gap: 12px;
+        }
+
+        #theme-toggle {
+            transform: scale(1.18);
+            margin-left: 8px;
+        }
+
+        .lang-switch a {
+            font-size: 1.04rem;
+        }
+
+        #menu {
+            gap: 8px;
+        }
+
+        #menu a {
+            font-size: 1.1rem;
+            padding: 9px 14px;
+        }
 
         /* =========================
            Page Layout
@@ -684,13 +722,13 @@
 
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
 
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
@@ -833,7 +871,7 @@
                                 </p>
 
                                 <div class="paper-actions">
-                                    <a href="https://dx.doi.org/10.1002/jtr.70152" target="_blank" class="button">
+                                    <a href="http://dx.doi.org/10.1002/jtr.70152" target="_blank" class="button">
                                         📖 阅读全文
                                     </a>
                                 </div>
