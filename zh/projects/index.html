@@ -64,6 +64,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
+
     <meta property="og:title" content="学术研究 🔬" />
 
     <meta property="og:description" content="周亦彬的学术研究成果，聚焦旅游人工智能、社交媒体、目的地营销、视觉障碍游客，并尝试结合计算机科学、计量经济学与跨学科视角理解旅游与社会现象。" />
@@ -96,46 +98,8 @@
     <style>
         /* =========================
            Header
+           顶部导航使用主题默认样式，与主页保持一致
         ========================= */
-        .header {
-            padding-top: 12px;
-            padding-bottom: 12px;
-        }
-
-        .nav {
-            max-width: 1280px;
-            padding-left: 36px;
-            padding-right: 36px;
-        }
-
-        .logo a {
-            font-size: 1.16rem;
-            font-weight: 700;
-            letter-spacing: 0.01em;
-        }
-
-        .logo-switches {
-            align-items: center;
-            gap: 12px;
-        }
-
-        #theme-toggle {
-            transform: scale(1.18);
-            margin-left: 8px;
-        }
-
-        .lang-switch a {
-            font-size: 1.04rem;
-        }
-
-        #menu {
-            gap: 8px;
-        }
-
-        #menu a {
-            font-size: 1.1rem;
-            padding: 9px 14px;
-        }
 
         /* =========================
            Page Layout
@@ -612,24 +576,6 @@
         }
 
         @media (max-width: 760px) {
-            .nav {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-
-            .logo a {
-                font-size: 1.04rem;
-            }
-
-            #menu a {
-                font-size: 0.98rem;
-                padding: 6px 9px;
-            }
-
-            #theme-toggle {
-                transform: scale(1.04);
-            }
-
             .main {
                 padding-top: 20px;
                 padding-left: 20px;
@@ -705,31 +651,6 @@
                 font-size: 1.4rem;
             }
         }
-
-        /* =========================
-           Top Area Font Override
-           与 About me 页面顶部字体保持一致
-        ========================= */
-        .header,
-        .header a,
-        .logo a,
-        .logo-switches,
-        .lang-switch,
-        .lang-switch a,
-        #menu,
-        #menu a,
-        #menu span,
-        .post-header,
-        .post-title,
-        .post-meta,
-        .post-meta span,
-        .post-meta a,
-        .post-meta .i18n_list,
-        .post-meta .i18n_list li,
-        .post-meta .i18n_list a {
-            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
-        }
-
     </style>
 </head>
 
@@ -747,13 +668,13 @@
 
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
 
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
