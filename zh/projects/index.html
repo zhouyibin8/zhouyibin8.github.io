@@ -95,92 +95,95 @@
 
     <style>
         /* =========================
-           Header: 放大顶部导航
+           Header
         ========================= */
         .header {
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 12px;
+            padding-bottom: 12px;
         }
 
         .nav {
-            max-width: 1120px;
-            padding-left: 28px;
-            padding-right: 28px;
+            max-width: 1280px;
+            padding-left: 36px;
+            padding-right: 36px;
         }
 
         .logo a {
-            font-size: 1.08rem;
+            font-size: 1.16rem;
             font-weight: 700;
             letter-spacing: 0.01em;
         }
 
         .logo-switches {
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         #theme-toggle {
-            transform: scale(1.12);
-            margin-left: 6px;
+            transform: scale(1.18);
+            margin-left: 8px;
         }
 
         .lang-switch a {
-            font-size: 0.98rem;
+            font-size: 1.04rem;
         }
 
         #menu {
-            gap: 6px;
+            gap: 8px;
         }
 
         #menu a {
-            font-size: 1.02rem;
-            padding: 8px 12px;
+            font-size: 1.1rem;
+            padding: 9px 14px;
         }
 
         /* =========================
-           Page Layout: 加宽正文区域
+           Page Layout
         ========================= */
         .main {
-            padding-top: 34px;
+            max-width: 1320px;
+            padding-top: 38px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         .post-single {
-            max-width: 960px;
+            max-width: 1160px;
             margin: 0 auto;
         }
 
         .post-header {
-            margin-bottom: 34px;
+            margin-bottom: 38px;
         }
 
         .post-title {
-            font-size: 2.15rem;
+            font-size: 2.35rem;
             line-height: 1.25;
         }
 
         .post-meta {
-            font-size: 0.98rem;
+            font-size: 1.04rem;
         }
 
         .footer {
-            margin-top: 64px;
+            margin-top: 72px;
+            font-size: 1rem;
         }
 
-        /* 隐藏原来的虚线/分割线，仅保留留白 */
         .post-content hr {
             border: none;
             height: 0;
-            margin: 42px 0;
+            margin: 46px 0;
             background: transparent;
         }
 
         /* =========================
-           Font: 恢复最初 Research 页面字体逻辑
-           页面主体继承主题字体；只有摘要和引用用 Times
+           Font Logic
+           主体字体恢复最初 Research 页风格
         ========================= */
         .post-content {
             font-family: inherit;
-            font-size: 1.06rem;
+            font-size: 1.13rem;
         }
 
         .post-content a {
@@ -193,29 +196,28 @@
             text-decoration: underline;
         }
 
-        /* 只高亮你的名字，其他超链接作者不加粗 */
         .author-highlight {
             font-weight: 700 !important;
             color: var(--primary);
             text-decoration: underline;
             text-decoration-thickness: 2px;
-            text-underline-offset: 3px;
-            text-decoration-color: rgba(255, 255, 255, 0.38);
+            text-underline-offset: 4px;
+            text-decoration-color: rgba(255, 255, 255, 0.4);
         }
 
         body:not(.dark) .author-highlight {
-            text-decoration-color: rgba(0, 0, 0, 0.28);
+            text-decoration-color: rgba(0, 0, 0, 0.3);
         }
 
         /* =========================
-           Research Page Content
+           Research Content
         ========================= */
         .research-interest {
             color: var(--secondary);
-            font-size: 1.08rem;
-            line-height: 1.8;
+            font-size: 1.16rem;
+            line-height: 1.85;
             margin-top: -6px;
-            margin-bottom: 42px;
+            margin-bottom: 48px;
         }
 
         .research-interest strong {
@@ -224,69 +226,70 @@
         }
 
         .section-title {
-            font-size: 1.5rem;
-            margin-top: 42px;
-            margin-bottom: 22px;
+            font-size: 1.7rem;
+            margin-top: 48px;
+            margin-bottom: 26px;
             letter-spacing: -0.01em;
         }
 
         .research-paper-entry {
-            margin-bottom: 52px;
+            margin-bottom: 60px;
         }
 
         .research-paper-entry h3 {
-            font-size: 1.3rem;
+            font-size: 1.48rem;
             line-height: 1.45;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             font-weight: 700;
         }
 
         .research-authors {
-            font-size: 1.05rem;
-            line-height: 1.68;
-            margin-bottom: 8px;
+            font-size: 1.13rem;
+            line-height: 1.72;
+            margin-bottom: 10px;
         }
 
         .research-journal {
-            font-size: 1.03rem;
-            line-height: 1.65;
+            font-size: 1.11rem;
+            line-height: 1.7;
             color: var(--secondary);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         .research-keywords {
-            font-size: 1rem;
-            line-height: 1.65;
+            font-size: 1.08rem;
+            line-height: 1.7;
             color: var(--secondary);
-            margin-top: 16px;
+            margin-top: 18px;
         }
 
-        /* 最初 Research 页面里的专业字体：只用于摘要和 APA 引用 */
         .academic-text {
             font-family: 'Times New Roman', Times, serif;
-            font-size: 1.06rem;
-            line-height: 1.74;
+            font-size: 1.12rem;
+            line-height: 1.78;
             text-align: justify;
             color: var(--primary);
             font-weight: normal;
         }
 
-        /* Tab Container */
+        /* =========================
+           Tabs
+        ========================= */
         .research-tabs {
             background: rgba(var(--entry), 0.5);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 22px;
-            margin-top: 20px;
-            margin-bottom: 24px;
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 22px;
+            margin-bottom: 28px;
         }
 
         .tab-buttons {
             display: flex;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 14px;
+            margin-bottom: 20px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 14px;
+            padding-bottom: 16px;
             overflow-x: auto;
         }
 
@@ -295,14 +298,14 @@
             border: none;
             color: var(--secondary);
             cursor: pointer;
-            font-size: 0.96rem;
+            font-size: 1.02rem;
             font-weight: bold;
-            padding: 7px 14px;
+            padding: 8px 16px;
             border-radius: 6px;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 7px;
             white-space: nowrap;
             font-family: inherit;
         }
@@ -332,16 +335,16 @@
 
         .citation-box {
             background: var(--code-bg);
-            padding: 18px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
             border: 1px solid var(--border);
             padding-left: 2em;
             text-indent: -2em;
         }
 
         .framework-img {
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
             max-width: 100%;
             height: auto;
             transition: transform 0.3s;
@@ -353,25 +356,25 @@
         }
 
         .figure-caption {
-            font-size: 0.9rem;
+            font-size: 0.96rem;
             color: #888;
-            margin-top: 10px;
+            margin-top: 12px;
             margin-bottom: 0;
             text-align: center;
         }
 
         .paper-actions {
             text-align: center;
-            margin-top: 24px;
+            margin-top: 28px;
         }
 
         .paper-actions .button {
             background: var(--primary);
             color: var(--theme);
-            padding: 12px 24px;
+            padding: 13px 28px;
             text-decoration: none;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 1.06rem;
             font-weight: 700;
             border: 1px solid var(--primary);
             display: inline-block;
@@ -386,21 +389,21 @@
            Conference
         ========================= */
         .conference-section {
-            margin-top: 52px;
+            margin-top: 58px;
         }
 
         .conference-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 22px;
-            margin-top: 22px;
+            gap: 28px;
+            margin-top: 26px;
         }
 
         .conference-card {
             background: rgba(var(--entry), 0.55);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px 26px;
+            border-radius: 16px;
+            padding: 28px 30px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -410,9 +413,9 @@
             content: "";
             position: absolute;
             left: 0;
-            top: 20px;
+            top: 22px;
             width: 4px;
-            height: calc(100% - 40px);
+            height: calc(100% - 44px);
             border-radius: 4px;
             background: var(--primary);
             opacity: 0.65;
@@ -420,42 +423,42 @@
 
         .conference-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
         }
 
         .conference-title {
-            font-size: 1.1rem;
-            line-height: 1.52;
+            font-size: 1.18rem;
+            line-height: 1.55;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--primary);
         }
 
         .conference-authors {
-            font-size: 1rem;
-            line-height: 1.65;
-            margin-bottom: 10px;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
 
         .conference-meta {
-            font-size: 0.98rem;
+            font-size: 1.05rem;
             color: var(--secondary);
             margin-bottom: 0;
-            line-height: 1.65;
+            line-height: 1.7;
         }
 
         .conference-tag {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.86rem;
             letter-spacing: 0.02em;
             color: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 999px;
-            padding: 4px 11px;
-            margin-bottom: 12px;
+            padding: 5px 12px;
+            margin-bottom: 14px;
         }
 
-        @media (min-width: 860px) {
+        @media (min-width: 900px) {
             .conference-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -468,49 +471,70 @@
             }
 
             .logo a {
-                font-size: 1rem;
+                font-size: 1.04rem;
             }
 
             #menu a {
-                font-size: 0.96rem;
+                font-size: 0.98rem;
                 padding: 6px 9px;
             }
 
             #theme-toggle {
-                transform: scale(1.02);
+                transform: scale(1.04);
             }
 
             .main {
-                padding-top: 18px;
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             .post-title {
-                font-size: 1.78rem;
+                font-size: 1.85rem;
             }
 
             .post-content {
-                font-size: 1.02rem;
+                font-size: 1.05rem;
             }
 
             .research-interest {
-                font-size: 1.04rem;
+                font-size: 1.06rem;
             }
 
             .section-title {
-                font-size: 1.34rem;
+                font-size: 1.4rem;
             }
 
             .research-paper-entry h3 {
-                font-size: 1.18rem;
+                font-size: 1.22rem;
+            }
+
+            .research-authors,
+            .research-journal,
+            .research-keywords {
+                font-size: 1.02rem;
             }
 
             .research-tabs {
-                padding: 16px;
+                padding: 18px;
             }
 
             .academic-text {
-                font-size: 1.02rem;
+                font-size: 1.04rem;
                 text-align: left;
+            }
+
+            .tab-btn {
+                font-size: 0.95rem;
+            }
+
+            .conference-title {
+                font-size: 1.08rem;
+            }
+
+            .conference-authors,
+            .conference-meta {
+                font-size: 1rem;
             }
         }
 
@@ -542,13 +566,13 @@
 
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
 
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
@@ -643,7 +667,7 @@
                         </div>
 
                         <div id="citation-2" class="tab-content">
-                            <p style="margin-bottom: 8px; font-size: 0.96em; color: gray;">APA 引用格式：</p>
+                            <p style="margin-bottom: 8px; font-size: 1em; color: gray;">APA 引用格式：</p>
 
                             <div class="citation-box academic-text">
                                 Zhou, Y. B., Huang, Z., Zhang, C. J., & Xia, M. (2026). Health is the new safety: Destination public health vulnerability, resilience, and international tourism. <em>Journal of Destination Marketing & Management, 41</em>, 101121.
@@ -697,7 +721,7 @@
                         </div>
 
                         <div id="citation" class="tab-content">
-                            <p style="margin-bottom: 8px; font-size: 0.96em; color: gray;">APA 引用格式：</p>
+                            <p style="margin-bottom: 8px; font-size: 1em; color: gray;">APA 引用格式：</p>
 
                             <div class="citation-box academic-text">
                                 Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in destination marketing: A multimodal approach to analyzing official promotional videos. <em>International Journal of Tourism Research, 27</em>(6), e70152.
