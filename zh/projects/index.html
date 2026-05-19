@@ -134,11 +134,11 @@
             </div>
 
             <ul id="menu">
-                <li><a href="https://zhouyibin8.github.io/zh" title="Home"><span>Home</span></a></li>
-                <li><a href="https://zhouyibin8.github.io/zh/about" title="About"><span>About</span></a></li>
-                <li><a href="https://zhouyibin8.github.io/zh/projects" title="Research"><span class="active">Research</span></a></li>
-                <li><a href="https://zhouyibin8.github.io/zh/resume" title="Resume"><span>Resume</span></a></li>
-                <li><a href="https://zhouyibin8.github.io/zh/blog" title="Blog"><span>Blog</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/" title="主页"><span>主页</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/about" title="关于"><span>关于</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/projects" title="研究"><span class="active">研究</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/resume" title="简历"><span>简历</span></a></li>
+                <li><a href="https://zhouyibin8.github.io/zh/blog" title="生活"><span>生活</span></a></li>
             </ul>
         </nav>
     </header>
@@ -146,13 +146,47 @@
     <main class="main">
 
         <style>
+            /* 页面整体位置：与 About 页保持接近 */
+            article.post-single {
+                margin-top: -50px !important;
+            }
+
+            .footer {
+                margin-top: -60px !important;
+            }
+
+            /* 链接样式：与 About 页一致，不使用突兀蓝色 */
+            .post-content a {
+                color: var(--primary);
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .post-content a:hover {
+                text-decoration: underline;
+            }
+
+            /* 隐藏不同板块之间的虚线，仅保留自然留白 */
+            .post-content hr {
+                border: none;
+                height: 0;
+                margin: 38px 0;
+                background: transparent;
+            }
+
+            /* 正文字体：取消 Times New Roman，继承主题默认字体，与 About 页保持一致 */
             .academic-text {
-                font-family: 'Times New Roman', Times, serif;
-                font-size: 1.05rem;
-                line-height: 1.7;
+                font-family: inherit;
+                font-size: 1rem;
+                line-height: 1.75;
                 text-align: justify;
                 color: var(--primary);
                 font-weight: normal;
+            }
+
+            .research-authors {
+                font-size: 1rem;
+                line-height: 1.65;
             }
 
             .research-tabs {
@@ -187,6 +221,7 @@
                 align-items: center;
                 gap: 6px;
                 white-space: nowrap;
+                font-family: inherit;
             }
 
             .tab-btn.active {
@@ -219,6 +254,7 @@
                 border: 1px solid var(--border);
                 padding-left: 2em;
                 text-indent: -2em;
+                font-family: inherit;
             }
 
             .framework-img {
@@ -273,9 +309,9 @@
             }
 
             .conference-title {
-                font-family: 'Times New Roman', Times, serif;
-                font-size: 1.08rem;
-                line-height: 1.45;
+                font-family: inherit;
+                font-size: 1.05rem;
+                line-height: 1.5;
                 font-weight: bold;
                 margin-bottom: 8px;
                 color: var(--primary);
@@ -326,12 +362,13 @@
 
         <article class="post-single">
             <header class="post-header">
+                <br><br>
                 <h1 class="post-title">学术研究 🔬</h1>
 
                 <div class="post-meta">
                     <span title='2026.05.14'>2026.05.14</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
 
-                    <ul class="i18n_list">Language:
+                    <ul class="i18n_list">语言:
                         <li>
                             <a href="https://zhouyibin8.github.io/en/projects/">English🇺🇸</a>
                         </li>
@@ -568,6 +605,15 @@
     </a>
 
     <script>
+        // 保持菜单滚动位置
+        let menu = document.getElementById('menu')
+        if (menu) {
+            menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+            menu.onscroll = function () {
+                localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+            }
+        }
+
         // Tab switching logic
         function openTab(evt, paperId, tabName) {
             var container = document.getElementById(paperId);
@@ -586,7 +632,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // Theme toggle logic
+        // 主题切换逻辑
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -597,32 +643,32 @@
             }
         });
 
-        // Copy button logic
-        document.querySelectorAll('pre > code').forEach((codeblock) => {
-            const container = codeblock.parentNode.parentNode;
-            const copybutton = document.createElement('button');
-
-            copybutton.classList.add('copy-code');
-            copybutton.innerText = 'Copy';
-
-            function copyingDone() {
-                copybutton.innerText = 'Copied!';
-                setTimeout(() => {
-                    copybutton.innerText = 'Copy';
-                }, 2000);
-            }
-
-            copybutton.addEventListener('click', () => {
-                if ('clipboard' in navigator) {
-                    navigator.clipboard.writeText(codeblock.textContent);
-                    copyingDone();
+        // 锚点平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                var id = this.getAttribute("href").substr(1);
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                } else {
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
                 }
             });
-
-            if (container.classList.contains("highlight")) {
-                container.appendChild(copybutton);
-            }
         });
+
+        // 返回顶部按钮可见性
+        var mybutton = document.getElementById("top-link");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = "visible";
+                mybutton.style.opacity = "1";
+            } else {
+                mybutton.style.visibility = "hidden";
+                mybutton.style.opacity = "0";
+            }
+        };
     </script>
 </body>
 
