@@ -64,6 +64,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
+
     <meta property="og:title" content="学术研究 🔬" />
 
     <meta property="og:description" content="My academic research findings and publications..." />
@@ -86,6 +88,327 @@
             }]
         }
     </script>
+
+    <style>
+        /* Global page rhythm */
+        .main {
+            padding-top: 24px;
+        }
+
+        .post-single {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin-bottom: 30px;
+        }
+
+        .footer {
+            margin-top: 56px;
+        }
+
+        /* Keep links consistent with About page */
+        .post-content a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .post-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Remove dotted / dashed separators */
+        .post-content hr {
+            border: none;
+            height: 0;
+            margin: 40px 0;
+            background: transparent;
+        }
+
+        /* Unified typography: inherit theme font */
+        .post-content,
+        .post-content p,
+        .post-content blockquote,
+        .post-content div,
+        .post-content span,
+        .post-content button {
+            font-family: inherit;
+        }
+
+        .page-intro {
+            color: var(--secondary);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-top: -6px;
+            margin-bottom: 36px;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            margin-top: 36px;
+            margin-bottom: 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .research-paper-entry {
+            margin-bottom: 42px;
+        }
+
+        .research-paper-entry h3 {
+            font-size: 1.18rem;
+            line-height: 1.45;
+            margin-bottom: 12px;
+        }
+
+        .research-authors {
+            font-size: 1rem;
+            line-height: 1.65;
+            margin-bottom: 6px;
+        }
+
+        .research-journal {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: var(--secondary);
+            margin-bottom: 12px;
+        }
+
+        .research-keywords {
+            font-size: 0.94rem;
+            line-height: 1.6;
+            color: var(--secondary);
+            margin-top: 14px;
+        }
+
+        .academic-text {
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: left;
+            color: var(--primary);
+            font-weight: normal;
+        }
+
+        .research-tabs {
+            background: rgba(var(--entry), 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 18px;
+            margin-bottom: 22px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            font-family: inherit;
+            background: transparent;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 999px;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--theme);
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+        }
+
+        body.dark .tab-btn.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .citation-box {
+            font-family: inherit;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            background: var(--code-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        .framework-img {
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+            cursor: zoom-in;
+        }
+
+        .framework-img:hover {
+            transform: scale(1.01);
+        }
+
+        .paper-actions {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .paper-actions .button {
+            background: var(--primary);
+            color: var(--theme);
+            padding: 11px 22px;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: bold;
+            border: 1px solid var(--primary);
+            display: inline-block;
+        }
+
+        .paper-actions .button:hover {
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .conference-section {
+            margin-top: 44px;
+        }
+
+        .conference-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .conference-card {
+            background: rgba(var(--entry), 0.55);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conference-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 4px;
+            height: calc(100% - 36px);
+            border-radius: 4px;
+            background: var(--primary);
+            opacity: 0.65;
+        }
+
+        .conference-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+        }
+
+        .conference-title {
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .conference-authors {
+            font-family: inherit;
+            font-size: 0.96rem;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .conference-meta {
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--secondary);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .conference-tag {
+            font-family: inherit;
+            display: inline-block;
+            font-size: 0.76rem;
+            letter-spacing: 0.02em;
+            color: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 3px 10px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 760px) {
+            .conference-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .main {
+                padding-top: 12px;
+            }
+
+            .post-header {
+                margin-bottom: 24px;
+            }
+
+            .research-tabs {
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 1.22rem;
+            }
+
+            .research-paper-entry h3 {
+                font-size: 1.08rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body class="dark" id="top">
@@ -144,225 +467,8 @@
     </header>
 
     <main class="main">
-
-        <style>
-            /* 页面整体位置：与 About 页保持接近 */
-            article.post-single {
-                margin-top: -50px !important;
-            }
-
-            .footer {
-                margin-top: -60px !important;
-            }
-
-            /* 链接样式：与 About 页一致，不使用突兀蓝色 */
-            .post-content a {
-                color: var(--primary);
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            .post-content a:hover {
-                text-decoration: underline;
-            }
-
-            /* 隐藏不同板块之间的虚线，仅保留自然留白 */
-            .post-content hr {
-                border: none;
-                height: 0;
-                margin: 38px 0;
-                background: transparent;
-            }
-
-            /* 正文字体：取消 Times New Roman，继承主题默认字体，与 About 页保持一致 */
-            .academic-text {
-                font-family: inherit;
-                font-size: 1rem;
-                line-height: 1.75;
-                text-align: justify;
-                color: var(--primary);
-                font-weight: normal;
-            }
-
-            .research-authors {
-                font-size: 1rem;
-                line-height: 1.65;
-            }
-
-            .research-tabs {
-                background: rgba(var(--entry), 0.5);
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                padding: 20px;
-                margin-top: 20px;
-                margin-bottom: 25px;
-            }
-
-            .tab-buttons {
-                display: flex;
-                gap: 12px;
-                margin-bottom: 15px;
-                border-bottom: 1px solid var(--border);
-                padding-bottom: 12px;
-                overflow-x: auto;
-            }
-
-            .tab-btn {
-                background: transparent;
-                border: none;
-                color: var(--secondary);
-                cursor: pointer;
-                font-size: 0.9rem;
-                font-weight: bold;
-                padding: 6px 12px;
-                border-radius: 6px;
-                transition: all 0.3s ease;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                white-space: nowrap;
-                font-family: inherit;
-            }
-
-            .tab-btn.active {
-                background: var(--primary);
-                color: var(--theme);
-            }
-
-            .tab-btn:hover {
-                color: var(--primary);
-            }
-
-            body.dark .tab-btn.active {
-                background: rgba(255, 255, 255, 0.1);
-                color: var(--primary);
-            }
-
-            .tab-content {
-                display: none;
-                animation: fadeIn 0.4s ease;
-            }
-
-            .tab-content.active {
-                display: block;
-            }
-
-            .citation-box {
-                background: var(--code-bg);
-                padding: 15px;
-                border-radius: 6px;
-                border: 1px solid var(--border);
-                padding-left: 2em;
-                text-indent: -2em;
-                font-family: inherit;
-            }
-
-            .framework-img {
-                border-radius: 8px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-                max-width: 100%;
-                height: auto;
-                transition: transform 0.3s;
-                cursor: zoom-in;
-            }
-
-            .framework-img:hover {
-                transform: scale(1.01);
-            }
-
-            .conference-section {
-                margin-top: 35px;
-            }
-
-            .conference-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 18px;
-                margin-top: 18px;
-            }
-
-            .conference-card {
-                background: rgba(var(--entry), 0.55);
-                border: 1px solid var(--border);
-                border-radius: 14px;
-                padding: 20px 22px;
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .conference-card::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 18px;
-                width: 4px;
-                height: calc(100% - 36px);
-                border-radius: 4px;
-                background: var(--primary);
-                opacity: 0.75;
-            }
-
-            .conference-card:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
-            }
-
-            .conference-title {
-                font-family: inherit;
-                font-size: 1.05rem;
-                line-height: 1.5;
-                font-weight: bold;
-                margin-bottom: 8px;
-                color: var(--primary);
-            }
-
-            .conference-meta {
-                font-size: 0.92rem;
-                color: var(--secondary);
-                margin-bottom: 8px;
-                line-height: 1.6;
-            }
-
-            .conference-authors {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 8px;
-            }
-
-            .conference-tag {
-                display: inline-block;
-                font-size: 0.78rem;
-                letter-spacing: 0.02em;
-                color: var(--secondary);
-                border: 1px solid var(--border);
-                border-radius: 999px;
-                padding: 3px 10px;
-                margin-bottom: 10px;
-            }
-
-            @media (min-width: 760px) {
-                .conference-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-            }
-
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(5px);
-                }
-
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        </style>
-
         <article class="post-single">
             <header class="post-header">
-                <br><br>
                 <h1 class="post-title">学术研究 🔬</h1>
 
                 <div class="post-meta">
@@ -376,48 +482,18 @@
                 </div>
             </header>
 
-            <aside id="toc-container" class="toc-container wide">
-                <div class="toc">
-                    <details open>
-                        <summary accesskey="c" title="(Alt + C)">
-                            <span class="details">研究时间轴</span>
-                        </summary>
-
-                        <div class="inner">
-                            <ul>
-                                <li>
-                                    <a href="#research-2026" aria-label="2026/最新">2026/最新</a>
-                                    <ul>
-                                        <li><a href="#health-is-the-new-safety" aria-label="2026.05.14">2026.05.14</a></li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="#research-2025" aria-label="2025">2025</a>
-                                    <ul>
-                                        <li><a href="#unveiling-customer-engagement" aria-label="2025.11.17">2025.11.17</a></li>
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="#conference-presentations" aria-label="Conference Presentations">Conference Presentations</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-            </aside>
-
             <div class="post-content">
 
-                <hr>
+                <p class="page-intro">
+                    My research explores AI in tourism, social media analytics, destination marketing, public health vulnerability, and destination resilience through computational, econometric, and interdisciplinary approaches.
+                </p>
 
-                <h2 id="research-2026">📅 2026/最新研究<a hidden class="anchor" aria-hidden="true" href="#research-2026">#</a></h2>
+                <h2 class="section-title" id="journal-articles">Journal Articles<a hidden class="anchor" aria-hidden="true" href="#journal-articles">#</a></h2>
 
                 <section class="research-paper-entry">
                     <h3 id="health-is-the-new-safety">Health is the new safety: Destination public health vulnerability, resilience, and international tourism<a hidden class="anchor" aria-hidden="true" href="#health-is-the-new-safety">#</a></h3>
 
-                    <p class="research-authors" style="margin-bottom: 5px;">
+                    <p class="research-authors">
                         <strong>Authors:</strong>
                         <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
                         Zhiguang Huang,
@@ -425,15 +501,15 @@
                         <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
                     </p>
 
-                    <p style="margin-bottom: 10px;">
-                        <strong>Journal:</strong> <span style="font-style: italic;">Journal of Destination Marketing & Management [SSCI Q1, IF = 7.4]</span>
+                    <p class="research-journal">
+                        <strong>Journal:</strong> <em>Journal of Destination Marketing & Management [SSCI Q1, IF = 7.4]</em>
                     </p>
 
                     <div class="research-tabs" id="tabs-paper-2">
                         <div class="tab-buttons">
                             <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-2', 'visuals-2')">📊 Framework</button>
                             <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'abstract-2')">📄 Abstract</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'citation-2')">📝 Citation (APA)</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-2', 'citation-2')">📝 Citation</button>
                         </div>
 
                         <div id="visuals-2" class="tab-content active">
@@ -458,40 +534,36 @@
                         </div>
                     </div>
 
-                    <p style="margin-top: 15px;">
+                    <p class="research-keywords">
                         <strong>Keywords:</strong> Public health; Destination vulnerability; Destination resilience; Tourism demand; Econometrics; Crisis management.
                     </p>
 
-                    <div style="text-align: center; margin-top: 25px;">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S2212571X26000399" target="_blank" class="button" style="background: var(--primary); color: var(--theme); padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid var(--primary);">
+                    <div class="paper-actions">
+                        <a href="https://www.sciencedirect.com/science/article/pii/S2212571X26000399" target="_blank" class="button">
                             📖 Read Full Paper
                         </a>
                     </div>
                 </section>
 
-                <hr>
-
-                <h2 id="research-2025">📅 2025研究<a hidden class="anchor" aria-hidden="true" href="#research-2025">#</a></h2>
-
                 <section class="research-paper-entry">
                     <h3 id="unveiling-customer-engagement">Unveiling Customer Engagement in Destination Marketing: A Multimodal Approach to Analyzing Official Promotional Videos<a hidden class="anchor" aria-hidden="true" href="#unveiling-customer-engagement">#</a></h3>
 
-                    <p class="research-authors" style="margin-bottom: 5px;">
+                    <p class="research-authors">
                         <strong>Authors:</strong>
                         <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
                         <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                         <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
                     </p>
 
-                    <p style="margin-bottom: 10px;">
-                        <strong>Journal:</strong> <span style="font-style: italic;">International Journal of Tourism Research [SSCI Q1, IF = 5.7]</span>
+                    <p class="research-journal">
+                        <strong>Journal:</strong> <em>International Journal of Tourism Research [SSCI Q1, IF = 5.7]</em>
                     </p>
 
                     <div class="research-tabs" id="tabs-paper-1">
                         <div class="tab-buttons">
                             <button class="tab-btn active" onclick="openTab(event, 'tabs-paper-1', 'visuals')">📊 Framework</button>
                             <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'abstract')">📄 Abstract</button>
-                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 Citation (APA)</button>
+                            <button class="tab-btn" onclick="openTab(event, 'tabs-paper-1', 'citation')">📝 Citation</button>
                         </div>
 
                         <div id="visuals" class="tab-content active">
@@ -516,21 +588,19 @@
                         </div>
                     </div>
 
-                    <p style="margin-top: 15px;">
+                    <p class="research-keywords">
                         <strong>Keywords:</strong> Customer engagement; Video analysis; Destination promotional video; Multimodal; Tourism destination marketing; Machine learning.
                     </p>
 
-                    <div style="text-align: center; margin-top: 25px;">
-                        <a href="http://dx.doi.org/10.1002/jtr.70152" target="_blank" class="button" style="background: var(--primary); color: var(--theme); padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; border: 1px solid var(--primary);">
+                    <div class="paper-actions">
+                        <a href="http://dx.doi.org/10.1002/jtr.70152" target="_blank" class="button">
                             📖 Read Full Paper
                         </a>
                     </div>
                 </section>
 
-                <hr>
-
                 <section class="conference-section">
-                    <h2 id="conference-presentations">🎤 Conference Presentations<a hidden class="anchor" aria-hidden="true" href="#conference-presentations">#</a></h2>
+                    <h2 class="section-title" id="conference-presentations">Conference Presentations<a hidden class="anchor" aria-hidden="true" href="#conference-presentations">#</a></h2>
 
                     <div class="conference-grid">
 
@@ -579,8 +649,6 @@
 
                     </div>
                 </section>
-
-                <hr>
 
             </div>
 
