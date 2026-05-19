@@ -90,7 +90,6 @@
     </script>
 
     <style>
-        /* Global page rhythm */
         .main {
             padding-top: 24px;
         }
@@ -108,18 +107,6 @@
             margin-top: 56px;
         }
 
-        /* Keep links consistent with About page */
-        .post-content a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .post-content a:hover {
-            text-decoration: underline;
-        }
-
-        /* Remove dotted / dashed separators */
         .post-content hr {
             border: none;
             height: 0;
@@ -127,26 +114,44 @@
             background: transparent;
         }
 
-        /* Unified typography: inherit theme font */
-        .post-content,
-        .post-content p,
-        .post-content blockquote,
-        .post-content div,
-        .post-content span,
-        .post-content button {
-            font-family: inherit;
+        .post-content {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .post-content a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+        .post-content a:hover {
+            text-decoration: underline;
+        }
+
+        .author-highlight {
+            font-weight: 700 !important;
+            color: var(--primary);
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(255, 255, 255, 0.35);
+        }
+
+        body:not(.dark) .author-highlight {
+            text-decoration-color: rgba(0, 0, 0, 0.28);
         }
 
         .page-intro {
             color: var(--secondary);
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.75;
             margin-top: -6px;
             margin-bottom: 36px;
         }
 
         .section-title {
-            font-size: 1.35rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.42rem;
             margin-top: 36px;
             margin-bottom: 18px;
             letter-spacing: -0.01em;
@@ -157,34 +162,39 @@
         }
 
         .research-paper-entry h3 {
-            font-size: 1.18rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.22rem;
             line-height: 1.45;
             margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .research-authors {
-            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.02rem;
             line-height: 1.65;
             margin-bottom: 6px;
         }
 
         .research-journal {
-            font-size: 0.98rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
             line-height: 1.6;
             color: var(--secondary);
             margin-bottom: 12px;
         }
 
         .research-keywords {
-            font-size: 0.94rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.98rem;
             line-height: 1.6;
             color: var(--secondary);
             margin-top: 14px;
         }
 
         .academic-text {
-            font-family: inherit;
-            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.02rem;
             line-height: 1.7;
             text-align: left;
             color: var(--primary);
@@ -210,7 +220,7 @@
         }
 
         .tab-btn {
-            font-family: inherit;
+            font-family: var(--font-family, inherit);
             background: transparent;
             border: none;
             color: var(--secondary);
@@ -250,8 +260,8 @@
         }
 
         .citation-box {
-            font-family: inherit;
-            font-size: 0.98rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1rem;
             line-height: 1.65;
             background: var(--code-bg);
             padding: 15px;
@@ -280,6 +290,7 @@
         }
 
         .paper-actions .button {
+            font-family: var(--font-family, inherit);
             background: var(--primary);
             color: var(--theme);
             padding: 11px 22px;
@@ -334,8 +345,8 @@
         }
 
         .conference-title {
-            font-family: inherit;
-            font-size: 1rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.05rem;
             line-height: 1.5;
             font-weight: 700;
             margin-bottom: 8px;
@@ -343,22 +354,22 @@
         }
 
         .conference-authors {
-            font-family: inherit;
-            font-size: 0.96rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.98rem;
             line-height: 1.6;
             margin-bottom: 8px;
         }
 
         .conference-meta {
-            font-family: inherit;
-            font-size: 0.92rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 0.95rem;
             color: var(--secondary);
             margin-bottom: 0;
             line-height: 1.6;
         }
 
         .conference-tag {
-            font-family: inherit;
+            font-family: var(--font-family, inherit);
             display: inline-block;
             font-size: 0.76rem;
             letter-spacing: 0.02em;
@@ -389,11 +400,11 @@
             }
 
             .section-title {
-                font-size: 1.22rem;
+                font-size: 1.25rem;
             }
 
             .research-paper-entry h3 {
-                font-size: 1.08rem;
+                font-size: 1.1rem;
             }
         }
 
@@ -495,7 +506,7 @@
 
                     <p class="research-authors">
                         <strong>Authors:</strong>
-                        <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
+                        <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                         Zhiguang Huang,
                         <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                         <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
@@ -550,7 +561,7 @@
 
                     <p class="research-authors">
                         <strong>Authors:</strong>
-                        <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
+                        <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                         <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                         <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a><sup title="Corresponding Author">#</sup>
                     </p>
@@ -613,7 +624,7 @@
 
                             <p class="conference-authors">
                                 <strong>Authors:</strong>
-                                <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
+                                <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                                 <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>,
                                 <a href="https://scholar.google.com/citations?user=nFcLzNQAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Menglong Xia</a>
                             </p>
@@ -635,7 +646,7 @@
                             <p class="conference-authors">
                                 <strong>Authors:</strong>
                                 <a href="https://scholar.google.com/citations?user=rIVSgeUAAAAJ&hl=zh-CN" target="_blank" rel="noopener noreferrer">Vicky Y. Chen</a>,
-                                <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer"><strong>Yibin Berry Zhou</strong></a>,
+                                <a class="author-highlight" href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=sra" target="_blank" rel="noopener noreferrer">Yibin Berry Zhou</a>,
                                 <a href="https://scholar.google.com/citations?user=BwN-284AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Pearl M.C. Lin</a>,
                                 <a href="https://scholar.google.com/citations?user=U6-ouN0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">Chen Jason Zhang</a>
                             </p>
@@ -673,7 +684,6 @@
     </a>
 
     <script>
-        // 保持菜单滚动位置
         let menu = document.getElementById('menu')
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
@@ -682,7 +692,6 @@
             }
         }
 
-        // Tab switching logic
         function openTab(evt, paperId, tabName) {
             var container = document.getElementById(paperId);
             var tabContents = container.getElementsByClassName("tab-content");
@@ -700,7 +709,6 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // 主题切换逻辑
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -711,7 +719,6 @@
             }
         });
 
-        // 锚点平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -726,7 +733,6 @@
             });
         });
 
-        // 返回顶部按钮可见性
         var mybutton = document.getElementById("top-link");
         window.onscroll = function () {
             if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
