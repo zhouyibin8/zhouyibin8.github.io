@@ -22,6 +22,8 @@
 
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
 
+    <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
+
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
 
     <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
@@ -60,6 +62,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <meta property="og:title" content="关于我 👋" />
 
@@ -186,77 +190,76 @@
 
         /* =========================
            Code Box
-           只保留一个代码框，无外层卡片，无横向滚动条
+           使用英文版代码框字体与质感
+           清除代码框外黑色断层
         ========================= */
-        .about-code {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
+        .highlight {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+        }
 
-            margin: 0;
-            padding: 34px 38px;
+        .highlight pre {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 34px 38px !important;
+            border-radius: 10px !important;
+            border: none !important;
+            background-color: #272822 !important;
+            color: #f8f8f2 !important;
 
-            border-radius: 12px;
-            border: none;
-            background: #272822;
-            color: #f8f8f2;
+            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
+            font-size: 1.2rem !important;
+            line-height: 1.72 !important;
 
-            font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace;
-            font-size: 1.18rem;
-            line-height: 1.7;
-
-            white-space: pre-wrap;
-            word-break: normal;
-            overflow-wrap: break-word;
+            white-space: pre-wrap !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
 
             overflow-x: hidden !important;
             overflow-y: visible !important;
             scrollbar-width: none !important;
         }
 
-        .about-code::-webkit-scrollbar {
+        .highlight pre::-webkit-scrollbar {
             display: none !important;
         }
 
-        .about-code code {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-
-            white-space: pre-wrap;
-            word-break: normal;
-            overflow-wrap: break-word;
-
-            overflow-x: hidden !important;
+        .highlight code {
+            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
+            font-size: inherit !important;
+            line-height: inherit !important;
+            white-space: pre-wrap !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
         }
 
-        .code-keyword {
-            color: #66d9ef;
+        .highlight code > span {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
         }
 
-        .code-class {
-            color: #a6e22e;
+        .highlight code > span > span {
+            display: inline !important;
         }
 
-        .code-function {
-            color: #a6e22e;
+        .highlight,
+        .highlight pre,
+        .highlight code {
+            scrollbar-width: none !important;
         }
 
-        .code-string {
-            color: #e6db74;
-        }
-
-        .code-number {
-            color: #ae81ff;
-        }
-
-        .code-operator {
-            color: #f92672;
+        .highlight::-webkit-scrollbar,
+        .highlight pre::-webkit-scrollbar,
+        .highlight code::-webkit-scrollbar {
+            display: none !important;
         }
 
         /* =========================
@@ -296,10 +299,10 @@
                 font-size: 1.05rem;
             }
 
-            .about-code {
-                padding: 24px 20px;
-                font-size: 1rem;
-                line-height: 1.65;
+            .highlight pre {
+                padding: 24px 20px !important;
+                font-size: 1rem !important;
+                line-height: 1.66 !important;
             }
         }
     </style>
@@ -342,7 +345,6 @@
 
                     <ul class="lang-switch">
                         <li>|</li>
-
                         <li>
                             <a href="https://zhouyibin8.github.io/en/about/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a>
                         </li>
@@ -377,25 +379,33 @@
             </header>
 
             <div class="post-content">
-                <pre class="about-code"><code><span class="code-keyword">class</span> <span class="code-class">Me</span>:
-    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):
-        self<span class="code-operator">.</span>name <span class="code-operator">=</span> <span class="code-string">"Yibin Zhou"</span>
-        self<span class="code-operator">.</span>prefer_name <span class="code-operator">=</span> <span class="code-string">"Berry"</span>
-        self<span class="code-operator">.</span>born_year <span class="code-operator">=</span> <span class="code-number">2000</span>
-        self<span class="code-operator">.</span>MBTI <span class="code-operator">=</span> <span class="code-string">"ENFJ"</span>
-        self<span class="code-operator">.</span>curr_location <span class="code-operator">=</span> <span class="code-string">"Hong Kong"</span>
-        self<span class="code-operator">.</span>bachelor_school <span class="code-operator">=</span> <span class="code-string">"Macau University of Science and Technology"</span>
-        self<span class="code-operator">.</span>master_school <span class="code-operator">=</span> <span class="code-string">"Columbia University"</span>
-        self<span class="code-operator">.</span>phd_school <span class="code-operator">=</span> <span class="code-string">"The Hong Kong Polytechnic University"</span>
-        self<span class="code-operator">.</span>college <span class="code-operator">=</span> <span class="code-string">"School of Hotel and Tourism Management"</span>
-        self<span class="code-operator">.</span>supervisor <span class="code-operator">=</span> <span class="code-string">"Dr. Jason Zhang"</span>
-        self<span class="code-operator">.</span>self_status <span class="code-operator">=</span> <span class="code-string">"PhD Student"</span>
-        self<span class="code-operator">.</span>research_interests <span class="code-operator">=</span> [
-            <span class="code-string">"AI in Tourism"</span>,
-            <span class="code-string">"Social Media"</span>,
-            <span class="code-string">"Destination Marketing"</span>,
-            <span class="code-string">"Visually Impaired Tourists"</span>
-        ]</code></pre>
+                <div class="highlight">
+                    <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:</span>
+<span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):</span>
+<span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berry&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>born_year <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span></span>
+<span>        self<span style="color:#f92672">.</span>MBTI <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ENFJ&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hong Kong&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> (</span>
+<span>            <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span></span>
+<span>        )</span>
+<span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> (</span>
+<span>            <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span></span>
+<span>        )</span>
+<span>        self<span style="color:#f92672">.</span>college <span style="color:#f92672">=</span> (</span>
+<span>            <span style="color:#e6db74">&#34;School of Hotel and Tourism Management&#34;</span></span>
+<span>        )</span>
+<span>        self<span style="color:#f92672">.</span>supervisor <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dr. Jason Zhang&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span></span>
+<span>        self<span style="color:#f92672">.</span>research_interests <span style="color:#f92672">=</span> [</span>
+<span>            <span style="color:#e6db74">&#34;AI in Tourism&#34;</span>,</span>
+<span>            <span style="color:#e6db74">&#34;Social Media&#34;</span>,</span>
+<span>            <span style="color:#e6db74">&#34;Destination Marketing&#34;</span>,</span>
+<span>            <span style="color:#e6db74">&#34;Visually Impaired Tourists&#34;</span>,</span>
+<span>        ]</span></code></pre>
+                </div>
             </div>
 
             <footer class="post-footer"></footer>
