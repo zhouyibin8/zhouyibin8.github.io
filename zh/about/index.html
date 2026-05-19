@@ -64,6 +64,10 @@
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
+        /* =========================
+           Header
+           与 Research 页面保持一致
+        ========================= */
         .header {
             padding-top: 12px;
             padding-bottom: 12px;
@@ -104,6 +108,10 @@
             padding: 9px 14px;
         }
 
+        /* =========================
+           Page Layout
+           与 Research 页面保持一致
+        ========================= */
         .main {
             max-width: 1320px;
             padding-top: 38px;
@@ -149,14 +157,19 @@
             font-size: 1rem;
         }
 
+        /* =========================
+           Code Box
+           浅色模式：浅灰代码框
+        ========================= */
         .code-only {
             width: 100%;
             box-sizing: border-box;
             margin: 0;
             padding: 34px 38px;
             border-radius: 10px;
-            background: #272822;
-            color: #f8f8f2;
+            background: #f6f6f6;
+            color: #2e2e33;
+            border: 1px solid #e5e5e5;
             overflow: hidden;
         }
 
@@ -207,29 +220,67 @@
         }
 
         .code-keyword {
-            color: #66d9ef;
+            color: #0086b3;
         }
 
         .code-class {
-            color: #a6e22e;
+            color: #63a35c;
         }
 
         .code-function {
-            color: #a6e22e;
+            color: #795da3;
         }
 
         .code-string {
-            color: #e6db74;
+            color: #183691;
         }
 
         .code-number {
-            color: #ae81ff;
+            color: #795da3;
         }
 
         .code-operator {
+            color: #a71d5d;
+        }
+
+        /* =========================
+           Dark Mode
+           深色模式：自动变回黑色代码框
+        ========================= */
+        body.dark .code-only {
+            background: #272822;
+            color: #f8f8f2;
+            border: none;
+        }
+
+        body.dark .code-keyword {
+            color: #66d9ef;
+        }
+
+        body.dark .code-class {
+            color: #a6e22e;
+        }
+
+        body.dark .code-function {
+            color: #a6e22e;
+        }
+
+        body.dark .code-string {
+            color: #e6db74;
+        }
+
+        body.dark .code-number {
+            color: #ae81ff;
+        }
+
+        body.dark .code-operator {
             color: #f92672;
         }
 
+        /* =========================
+           Responsive
+           与 Research 页面保持一致
+        ========================= */
         @media (max-width: 760px) {
             .nav {
                 padding-left: 18px;
