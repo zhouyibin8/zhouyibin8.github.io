@@ -63,8 +63,6 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
-
     <meta property="og:title" content="关于我 👋" />
 
     <meta property="og:description" content="周亦彬 Berry 的个人简介与学术背景。" />
@@ -136,6 +134,18 @@
         #menu a {
             font-size: 1.1rem;
             padding: 9px 14px;
+        }
+
+        .header,
+        .nav,
+        .logo a,
+        .logo-switches,
+        .lang-switch,
+        .lang-switch a,
+        #menu,
+        #menu a,
+        #menu span {
+            font-family: inherit !important;
         }
 
         /* =========================
@@ -223,16 +233,46 @@
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             font-size: 1.2rem !important;
             line-height: 1.72 !important;
-            overflow-x: auto !important;
+
+            overflow-x: hidden !important;
+            overflow-y: visible !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
         }
 
         .highlight code {
-            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
+            font-family: 'Ubuntu Mono', Menlo, Monaco, Consolas, monospace !important;
             font-size: inherit !important;
             line-height: inherit !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
         }
 
-        /* 防止主题默认代码块背景在圆角外露 */
+        .highlight code > span {
+            display: block !important;
+            white-space: pre-wrap !important;
+            word-break: break-word !important;
+            overflow-wrap: anywhere !important;
+        }
+
+        .highlight code > span > span {
+            display: inline !important;
+        }
+
+        .highlight,
+        .highlight pre,
+        .highlight code {
+            scrollbar-width: none !important;
+        }
+
+        .highlight::-webkit-scrollbar,
+        .highlight pre::-webkit-scrollbar,
+        .highlight code::-webkit-scrollbar {
+            display: none !important;
+        }
+
         .highlight div,
         .highlight table,
         .highlight td,
@@ -284,6 +324,10 @@
                 padding: 22px 18px !important;
                 font-size: 1rem !important;
                 line-height: 1.68 !important;
+                overflow-x: hidden !important;
+                white-space: pre-wrap !important;
+                word-break: break-word !important;
+                overflow-wrap: anywhere !important;
             }
         }
     </style>
