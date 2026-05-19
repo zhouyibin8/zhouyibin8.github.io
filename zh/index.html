@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="index, follow">
-    <title>Yibin&#39;s Blog</title>
+    <title>Yibin's Blog</title>
 
     <meta name="description" content="周亦彬 (Yibin Zhou) 的个人网站。香港理工大学 (PolyU SHTM) 博士研究生，主要研究方向为旅游人工智能 (AI in Tourism)、酒店管理及定量研究方法。">
     <meta name="author" content="Berry">
@@ -43,37 +43,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
-    <meta property="og:title" content="Yibin&#39;s Blog" />
+    <meta property="og:title" content="Yibin's Blog" />
     <meta property="og:description" content="周亦彬 (Yibin Zhou) 的个人网站。香港理工大学 (PolyU SHTM) 博士研究生，研究方向包括旅游AI与定量研究。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://zhouyibin8.github.io/zh/" />
     <meta property="og:site_name" content="Berry" />
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Yibin&#39;s Blog" />
+    <meta name="twitter:title" content="Yibin's Blog" />
     <meta name="twitter:description" content="" />
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Yibin's Blog",
-        "url": "https://zhouyibin8.github.io/",
-        "description": "香港理工大学 SHTM 博士生",
-        "thumbnailUrl": "https://zhouyibin8.github.io/k-48.png",
-        "sameAs": [
-            "https://www.linkedin.com/in/yibinzhou",
-            "https://scholar.google.com/citations?user=h90S_yIAAAAJ",
-            "https://orcid.org/0009-0008-5700-0331",
-            "mailto:yibin.zhou@connect.polyu.hk"
-        ]
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Yibin's Blog",
+            "url": "https://zhouyibin8.github.io/",
+            "description": "香港理工大学 SHTM 博士生",
+            "thumbnailUrl": "https://zhouyibin8.github.io/k-48.png",
+            "sameAs": [
+                "https://www.linkedin.com/in/yibinzhou",
+                "https://scholar.google.com/citations?user=h90S_yIAAAAJ",
+                "https://orcid.org/0009-0008-5700-0331",
+                "mailto:yibin.zhou@connect.polyu.hk"
+            ]
+        }
     </script>
 
     <style>
         /* =========================
-           Header
-           同步 Research 页的顶部比例
+           Header：保持类似 Research 的上方比例
         ========================= */
         .header {
             padding-top: 12px;
@@ -116,86 +115,79 @@
         }
 
         /* =========================
-           Homepage Layout
-           主体内容放大，但不改变整体结构
+           Home Profile：恢复原来紧凑感
+           照片保持 150 × 150 不变
         ========================= */
-        .main {
-            max-width: 1320px;
-            padding-top: 42px;
-            padding-left: 40px;
-            padding-right: 40px;
-        }
-
-        .profile {
-            min-height: calc(100vh - 210px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 10px;
-            padding-bottom: 30px;
-        }
-
         .profile_inner {
-            transform: translateY(-8px);
+            gap: 0 !important;
         }
 
         .profile_inner img {
-            width: 190px !important;
-            height: 190px !important;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 18px;
+            width: 150px !important;
+            height: 150px !important;
+            margin-bottom: 10px !important;
         }
 
         .profile_inner h1 {
-            font-size: 2.48rem;
-            line-height: 1.12;
-            margin-top: 0;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
+            font-size: 2rem !important;
+            line-height: 1.18 !important;
+            margin: 0 0 4px 0 !important;
         }
 
         .profile_inner > span {
-            display: inline-block;
-            font-size: 1.08rem;
-            line-height: 1.35;
-            margin-bottom: 12px;
-            color: var(--secondary);
+            display: block !important;
+            font-size: 1rem !important;
+            line-height: 1.25 !important;
+            margin: 0 0 3px 0 !important;
         }
 
         .social-icons {
-            gap: 12px;
-            margin-top: 0;
-            margin-bottom: 16px;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin: 0 0 5px 0 !important;
+            padding: 0 !important;
+            line-height: 1 !important;
         }
 
         .social-icons a {
-            width: 28px;
-            height: 28px;
+            width: 24px !important;
+            height: 24px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 1 !important;
         }
 
         .social-icons svg {
-            width: 23px;
-            height: 23px;
+            width: 22px !important;
+            height: 22px !important;
+            display: block !important;
         }
 
         .buttons {
-            gap: 10px;
-            margin-top: 0;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 10px !important;
+            margin-top: 0 !important;
         }
 
-        .button {
-            padding: 7px 17px;
-            border-radius: 8px;
-            font-size: 0.98rem;
+        .buttons .button {
+            margin: 0 !important;
+            padding: 6px 14px !important;
+            min-width: auto !important;
         }
 
-        .button-inner {
-            font-size: 0.98rem;
+        .buttons .button-inner {
+            font-size: 0.98rem !important;
+            line-height: 1.2 !important;
         }
 
         .footer {
-            margin-top: 34px;
             font-size: 1rem;
         }
 
@@ -218,61 +210,12 @@
                 transform: scale(1.04);
             }
 
-            .main {
-                padding-top: 24px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .profile {
-                min-height: calc(100vh - 190px);
-            }
-
-            .profile_inner img {
-                width: 150px !important;
-                height: 150px !important;
-                margin-bottom: 16px;
-            }
-
             .profile_inner h1 {
-                font-size: 2.05rem;
-                margin-bottom: 5px;
+                font-size: 1.75rem !important;
             }
 
             .profile_inner > span {
-                font-size: 0.98rem;
-                line-height: 1.3;
-                margin-bottom: 10px;
-            }
-
-            .social-icons {
-                gap: 10px;
-                margin-top: 0;
-                margin-bottom: 14px;
-            }
-
-            .social-icons a {
-                width: 26px;
-                height: 26px;
-            }
-
-            .social-icons svg {
-                width: 21px;
-                height: 21px;
-            }
-
-            .buttons {
-                gap: 8px;
-                margin-top: 0;
-            }
-
-            .button {
-                padding: 7px 14px;
-                font-size: 0.92rem;
-            }
-
-            .button-inner {
-                font-size: 0.92rem;
+                font-size: 0.95rem !important;
             }
         }
     </style>
@@ -289,7 +232,6 @@
         <nav class="nav">
             <div class="logo">
                 <a href="https://zhouyibin8.github.io/zh/" accesskey="h" title="Home (Alt + H)">Home</a>
-
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                         <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
@@ -297,7 +239,6 @@
                             stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
-
                         <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -312,17 +253,14 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </button>
-
                     <ul class="lang-switch">
                         <li>|</li>
                         <li>
-                            <a href="https://zhouyibin8.github.io/en/" title="English🇺🇸"
-                                aria-label="English🇺🇸">English🇺🇸</a>
+                            <a href="https://zhouyibin8.github.io/en/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a>
                         </li>
                     </ul>
                 </span>
             </div>
-
             <ul id="menu">
                 <li><a href="https://zhouyibin8.github.io/zh" title="主页"><span class="active">主页</span></a></li>
                 <li><a href="https://zhouyibin8.github.io/zh/about" title="关于"><span>关于</span></a></li>
@@ -336,37 +274,30 @@
     <main class="main">
         <div class="profile">
             <div class="profile_inner">
-                <img src="https://zhouyibin8.github.io/Selfie.png" alt="Selfie" height="190" width="190" />
-
+                <img src="https://zhouyibin8.github.io/Selfie.png" alt="Selfie" height="150" width="150" />
                 <h1>周亦彬</h1>
-
                 <span>Welcome to 🧊's Space</span>
 
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/yibinzhou" target="_blank" rel="noopener noreferrer me" title="Linkedin">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                             <rect x="2" y="9" width="4" height="12"></rect>
                             <circle cx="4" cy="4" r="2"></circle>
                         </svg>
                     </a>
-
                     <a href="https://scholar.google.com/citations?user=h90S_yIAAAAJ&hl=zh-CN&oi=ao" target="_blank" rel="noopener noreferrer me" title="Google Scholar">
                         <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                            <path d="M12 24a7 7 0 0 1-7-7v-7.69l7 4 7-4V17a7 7 0 0 1-7 7zm0-13.31l-7-4L12 3l7 3.69zM21 10.5V17h2v-7.81l-2 1.31z"/>
+                            <path d="M12 24a7 7 0 0 1-7-7v-7.69l7 4 7-4V17a7 7 0 0 1-7 7zm0-13.31l-7-4L12 3l7 3.69zM21 10.5V17h2v-7.81l-2 1.31z" />
                         </svg>
                     </a>
-
                     <a href="https://orcid.org/0009-0008-5700-0331" target="_blank" rel="noopener noreferrer me" title="ORCID">
                         <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.541 0 .983.442.983.983s-.442.983-.983.983-.983-.442-.983-.983.442-.983.983-.983zm-.541 3.268h1.082V18H6.828V7.646zm6.338 0c2.722 0 3.75 1.761 3.75 3.705 0 2.459-1.391 3.705-3.75 3.705h-2.115V7.646h2.115zm-1.033 1.033v5.339h1.033c1.556 0 2.683-.819 2.683-2.67s-1.127-2.669-2.683-2.669h-1.033z"/>
+                            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.541 0 .983.442.983.983s-.442.983-.983.983-.983-.442-.983-.983.442-.983.983-.983zm-.541 3.268h1.082V18H6.828V7.646zm6.338 0c2.722 0 3.75 1.761 3.75 3.705 0 2.459-1.391 3.705-3.75 3.705h-2.115V7.646h2.115zm-1.033 1.033v5.339h1.033c1.556 0 2.683-.819 2.683-2.67s-1.127-2.669-2.683-2.669h-1.033z" />
                         </svg>
                     </a>
-
                     <a href="mailto:yibin.zhou@connect.polyu.hk" target="_blank" rel="noopener noreferrer me" title="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
@@ -383,10 +314,8 @@
     </main>
 
     <footer class="footer">
-        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin&#39;s Blog</a></span>
-
+        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
         <span id="busuanzi_container">
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             Visitors: <span id="busuanzi_value_site_uv"></span>
@@ -402,10 +331,8 @@
 
     <script>
         let menu = document.getElementById('menu')
-
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-
             menu.onscroll = function () {
                 localStorage.setItem("menu-scroll-position", menu.scrollLeft);
             }
@@ -414,9 +341,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
-
                 var id = this.getAttribute("href").substr(1);
-
                 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
                         behavior: "smooth"
@@ -424,7 +349,6 @@
                 } else {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
                 }
-
                 if (id === "top") {
                     history.replaceState(null, null, " ");
                 } else {
@@ -436,7 +360,6 @@
 
     <script>
         var mybutton = document.getElementById("top-link");
-
         window.onscroll = function () {
             if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
                 mybutton.style.visibility = "visible";
