@@ -3,67 +3,330 @@
 
 <head>
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta name="robots" content="index, follow">
-    <title>About me 👋 | Yibin&#39;s Blog</title>
+
+    <title>About me 👋 | Yibin's Blog</title>
+
     <meta name="keywords" content="About, Yibin, Berry">
-    <meta name="description" content="Biography and Academic Background of Yibin Zhou (Berry)">
+
+    <meta name="description" content="Biography and academic background of Yibin Zhou Berry.">
+
     <meta name="author" content="Berry">
+
     <link rel="canonical" href="https://zhouyibin8.github.io/en/about/">
+
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
-    <script defer crossorigin="anonymous" src="/assets/js/highlight.min.f61a30837a1dd79c8e15931b0916e2469274f1900212a78e5fcc9b3d40026a16.js" integrity="sha256-9howg3od15yOFZMbCRbiRpJ08ZACEqeOX8ybPUACahY=" onload="hljs.initHighlightingOnLoad();"></script>
+
     <link rel="icon" href="https://zhouyibin8.github.io/k-48.png">
+
     <link rel="icon" type="image/png" sizes="16x16" href="https://zhouyibin8.github.io/k-48.png">
+
     <link rel="icon" type="image/png" sizes="32x32" href="https://zhouyibin8.github.io/k-48.png">
+
     <link rel="apple-touch-icon" href="https://zhouyibin8.github.io/k-48.png">
+
     <link rel="mask-icon" href="https://zhouyibin8.github.io/k-48.png">
+
     <meta name="theme-color" content="#2e2e33">
+
     <meta name="msapplication-TileColor" content="#2e2e33">
+
     <link rel="alternate" hreflang="en" href="https://zhouyibin8.github.io/en/about/">
+
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/about/">
+
     <noscript>
         <style>
-            #theme-toggle, .top-link { display: none; }
+            #theme-toggle,
+            .top-link {
+                display: none;
+            }
         </style>
     </noscript>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
 
     <style>
-        /* 1. 整体向上移动 (严格同步中文版 -50px) */
-        article.post-single {
-            margin-top: -50px !important;
+        /* =========================
+           Header
+           Same style as Research page
+        ========================= */
+        .header {
+            padding-top: 12px;
+            padding-bottom: 12px;
         }
 
-        /* 2. 底部强力拉升 (严格同步中文版 -60px) */
-        .footer {
-            margin-top: -60px !important;
+        .nav {
+            max-width: 1280px;
+            padding-left: 36px;
+            padding-right: 36px;
         }
 
-        /* 3. 代码框对齐补丁 (严格同步中文版) */
-        .highlight {
-            width: 100% !important;
+        .logo a {
+            font-size: 1.16rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
         }
 
-        /* 4. 链接样式 (严格同步中文版) */
+        .logo-switches {
+            align-items: center;
+            gap: 12px;
+        }
+
+        #theme-toggle {
+            transform: scale(1.18);
+            margin-left: 8px;
+        }
+
+        .lang-switch a {
+            font-size: 1.04rem;
+        }
+
+        #menu {
+            gap: 8px;
+        }
+
+        #menu a {
+            font-size: 1.1rem;
+            padding: 9px 14px;
+        }
+
+        /* =========================
+           Page Layout
+           Same style as Research page
+        ========================= */
+        .main {
+            max-width: 1320px;
+            padding-top: 38px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .post-single {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+
+        .post-header {
+            margin-bottom: 38px;
+        }
+
+        .post-title {
+            font-size: 2.35rem;
+            line-height: 1.25;
+        }
+
+        .post-meta {
+            font-size: 1.04rem;
+        }
+
+        .post-content {
+            font-family: inherit;
+            font-size: 1.13rem;
+        }
+
         .post-content a {
             color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: normal;
         }
+
         .post-content a:hover {
             text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 72px;
+            font-size: 1rem;
+        }
+
+        /* =========================
+           Code Box
+           Light mode: soft gray code box
+        ========================= */
+        .code-only {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 34px 38px;
+            border-radius: 10px;
+            background: #f6f6f6;
+            color: #2e2e33;
+            border: 1px solid #e5e5e5;
+            overflow: hidden;
+        }
+
+        .code-only pre {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            overflow: visible !important;
+            white-space: pre-wrap !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
+        }
+
+        .code-only code {
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+            color: inherit !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            font-family: 'Ubuntu Mono', 'Code New Roman', Menlo, Monaco, Consolas, monospace !important;
+            font-size: 1.2rem !important;
+            line-height: 1.62 !important;
+            white-space: pre-wrap !important;
+            word-break: normal !important;
+            overflow-wrap: break-word !important;
+            overflow: visible !important;
+        }
+
+        .code-only,
+        .code-only pre,
+        .code-only code {
+            scrollbar-width: none !important;
+        }
+
+        .code-only::-webkit-scrollbar,
+        .code-only pre::-webkit-scrollbar,
+        .code-only code::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        .code-keyword {
+            color: #0086b3;
+        }
+
+        .code-class {
+            color: #63a35c;
+        }
+
+        .code-function {
+            color: #795da3;
+        }
+
+        .code-string {
+            color: #183691;
+        }
+
+        .code-number {
+            color: #795da3;
+        }
+
+        .code-operator {
+            color: #a71d5d;
+        }
+
+        /* =========================
+           Dark Mode
+           Dark mode: black code box
+        ========================= */
+        body.dark .code-only {
+            background: #272822;
+            color: #f8f8f2;
+            border: none;
+        }
+
+        body.dark .code-keyword {
+            color: #66d9ef;
+        }
+
+        body.dark .code-class {
+            color: #a6e22e;
+        }
+
+        body.dark .code-function {
+            color: #a6e22e;
+        }
+
+        body.dark .code-string {
+            color: #e6db74;
+        }
+
+        body.dark .code-number {
+            color: #ae81ff;
+        }
+
+        body.dark .code-operator {
+            color: #f92672;
+        }
+
+        /* =========================
+           Responsive
+           Same style as Research page
+        ========================= */
+        @media (max-width: 760px) {
+            .nav {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .logo a {
+                font-size: 1.04rem;
+            }
+
+            #menu a {
+                font-size: 0.98rem;
+                padding: 6px 9px;
+            }
+
+            #theme-toggle {
+                transform: scale(1.04);
+            }
+
+            .main {
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .post-title {
+                font-size: 1.85rem;
+            }
+
+            .post-content {
+                font-size: 1.05rem;
+            }
+
+            .code-only {
+                padding: 24px 20px;
+            }
+
+            .code-only code {
+                font-size: 1rem !important;
+                line-height: 1.58 !important;
+            }
         }
     </style>
 </head>
 
-<body class=" dark" id="top">
+<body class="dark" id="top">
     <script>
         if (localStorage.getItem("pref-theme") === "light") {
             document.body.classList.remove('dark')
@@ -74,12 +337,18 @@
         <nav class="nav">
             <div class="logo">
                 <a href="https://zhouyibin8.github.io/en/" accesskey="h" title="Home (Alt + H)">Home</a>
+
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -91,11 +360,16 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </button>
-                    <ul class="lang-switch"><li>|</li>
-                        <li><a href="https://zhouyibin8.github.io/zh/about/" title="中文🇨🇳" aria-label="中文🇨🇳">中文🇨🇳</a></li>
+
+                    <ul class="lang-switch">
+                        <li>|</li>
+                        <li>
+                            <a href="https://zhouyibin8.github.io/zh/about/" title="中文🇨🇳" aria-label="中文🇨🇳">中文🇨🇳</a>
+                        </li>
                     </ul>
                 </span>
             </div>
+
             <ul id="menu">
                 <li><a href="https://zhouyibin8.github.io/en/" title="Home"><span>Home</span></a></li>
                 <li><a href="https://zhouyibin8.github.io/en/about" title="About"><span class="active">About</span></a></li>
@@ -109,40 +383,53 @@
     <main class="main">
         <article class="post-single">
             <header class="post-header">
-                <br><br>
                 <h1 class="post-title">About me 👋</h1>
-                <div class="post-meta"><span>2026.01.10</span> · Berry | Language: <a href="https://zhouyibin8.github.io/zh/about/">中文🇨🇳</a></div>
+
+                <div class="post-meta">
+                    <span title='2026.01.10'>2026.01.10</span>&nbsp;·&nbsp;Berry&nbsp;|&nbsp;
+
+                    <ul class="i18n_list">Language:
+                        <li>
+                            <a href="https://zhouyibin8.github.io/zh/about/">中文🇨🇳</a>
+                        </li>
+                    </ul>
+                </div>
             </header>
 
             <div class="post-content">
-                <section>
-                    <p>I am currently a PhD student at the <a href="https://www.polyu.edu.hk/shtm/" target="_blank">School of Hotel and Tourism Management (SHTM), The Hong Kong Polytechnic University</a>. Under the supervision of <a href="https://www.polyu.edu.hk/shtm/people/academic-staff/jason-zhang/" target="_blank">Dr. Jason Zhang</a>, I explore complex social phenomena through an <strong>interdisciplinary lens</strong>. I integrate computer science methods, including <strong>machine learning</strong> and <strong>computer vision</strong>, with <strong>econometrics</strong> and <strong>qualitative research methods</strong>. My research interests focus on: <strong>AI for Tourism</strong>, <strong>Social Media</strong>, and <strong>Marginalized Communities</strong>.</p>
-                </section>
-
-                <div class="highlight">
-                    <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Me</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Yibin Zhou&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>prefer_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Berry&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>born_year <span style="color:#f92672">=</span> <span style="color:#ae81ff">2000</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>MBTI <span style="color:#f92672">=</span> ENFJ
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>curr_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hong Kong&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bachelor_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Macau University of Science and Technology&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>master_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Columbia University&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>phd_school <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The Hong Kong Polytechnic University&#34;</span>
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>self_status <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;PhD Student&#34;</span>
-</span></span></code></pre>
+                <div class="code-only">
+<pre><code><span class="code-keyword">class</span> <span class="code-class">Me</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self):
+        self<span class="code-operator">.</span>name <span class="code-operator">=</span> <span class="code-string">"Yibin Zhou"</span>
+        self<span class="code-operator">.</span>prefer_name <span class="code-operator">=</span> <span class="code-string">"Berry"</span>
+        self<span class="code-operator">.</span>born_year <span class="code-operator">=</span> <span class="code-number">2000</span>
+        self<span class="code-operator">.</span>MBTI <span class="code-operator">=</span> <span class="code-string">"ENFJ"</span>
+        self<span class="code-operator">.</span>curr_location <span class="code-operator">=</span> <span class="code-string">"Hong Kong"</span>
+        self<span class="code-operator">.</span>bachelor_school <span class="code-operator">=</span> <span class="code-string">"Macau University of Science and Technology"</span>
+        self<span class="code-operator">.</span>master_school <span class="code-operator">=</span> <span class="code-string">"Columbia University"</span>
+        self<span class="code-operator">.</span>phd_school <span class="code-operator">=</span> <span class="code-string">"The Hong Kong Polytechnic University"</span>
+        self<span class="code-operator">.</span>college <span class="code-operator">=</span> <span class="code-string">"School of Hotel and Tourism Management"</span>
+        self<span class="code-operator">.</span>supervisor <span class="code-operator">=</span> <span class="code-string">"Dr. Jason Zhang"</span>
+        self<span class="code-operator">.</span>self_status <span class="code-operator">=</span> <span class="code-string">"PhD Student"</span>
+        self<span class="code-operator">.</span>research_interests <span class="code-operator">=</span> [
+            <span class="code-string">"AI in Tourism"</span>,
+            <span class="code-string">"Social Media"</span>,
+            <span class="code-string">"Destination Marketing"</span>,
+            <span class="code-string">"Visually Impaired Tourists"</span>
+        ]</code></pre>
                 </div>
             </div>
+
             <footer class="post-footer"></footer>
         </article>
     </main>
 
     <footer class="footer">
-        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/en/">Yibin&#39;s Blog</a></span>
+        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/en/">Yibin's Blog</a></span>
+
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
         <span id="busuanzi_container">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             Visitors: <span id="busuanzi_value_site_uv"></span>
             Views: <span id="busuanzi_value_site_pv"></span>
         </span>
@@ -155,8 +442,8 @@
     </a>
 
     <script>
-        // 保持菜单滚动位置
         let menu = document.getElementById('menu')
+
         if (menu) {
             menu.scrollLeft = localStorage.getItem("menu-scroll-position");
             menu.onscroll = function () {
@@ -164,7 +451,6 @@
             }
         }
 
-        // 统一的主题切换逻辑
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -175,11 +461,12 @@
             }
         });
 
-        // 锚点平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
+
                 var id = this.getAttribute("href").substr(1);
+
                 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
                         behavior: "smooth"
@@ -187,11 +474,17 @@
                 } else {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
                 }
+
+                if (id === "top") {
+                    history.replaceState(null, null, " ");
+                } else {
+                    history.pushState(null, null, `#${id}`);
+                }
             });
         });
 
-        // 返回顶部按钮可见性
         var mybutton = document.getElementById("top-link");
+
         window.onscroll = function () {
             if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
                 mybutton.style.visibility = "visible";
@@ -203,4 +496,5 @@
         };
     </script>
 </body>
+
 </html>
