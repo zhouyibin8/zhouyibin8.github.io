@@ -65,6 +65,87 @@
   ]
 }
 </script>
+
+<style>
+    /* =========================
+       Header
+       Sync with Research style
+    ========================= */
+    .header {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .nav {
+        max-width: 1280px;
+        padding-left: 36px;
+        padding-right: 36px;
+    }
+
+    .logo a {
+        font-size: 1.16rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+    }
+
+    .logo-switches {
+        align-items: center;
+        gap: 12px;
+    }
+
+    #theme-toggle {
+        transform: scale(1.18);
+        margin-left: 8px;
+    }
+
+    .lang-switch a {
+        font-size: 1.04rem;
+    }
+
+    #menu {
+        gap: 8px;
+    }
+
+    #menu a {
+        font-size: 1.1rem;
+        padding: 9px 14px;
+    }
+
+    /* =========================
+       Home Profile
+       Keep original compact layout, only enlarge photo
+    ========================= */
+    .profile_inner img {
+        width: 180px !important;
+        height: 180px !important;
+        object-fit: cover;
+    }
+
+    @media (max-width: 760px) {
+        .nav {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .logo a {
+            font-size: 1.04rem;
+        }
+
+        #menu a {
+            font-size: 0.98rem;
+            padding: 6px 9px;
+        }
+
+        #theme-toggle {
+            transform: scale(1.04);
+        }
+
+        .profile_inner img {
+            width: 160px !important;
+            height: 160px !important;
+        }
+    }
+</style>
 </head>
 
 <body class="list dark" id="top">
@@ -80,12 +161,12 @@
             <a href="https://zhouyibin8.github.io/en/" accesskey="h" title="Home (Alt + H)">Home</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -119,7 +200,7 @@
 <main class="main"><div class="profile">
     <div class="profile_inner">
         <img src="https://zhouyibin8.github.io/Selfie.png" alt="Selfie"
-            height="150" width="150" />
+            height="180" width="180" />
         <h1>Yibin Zhou</h1>
         <span>Welcome to 🧊's Space</span><div class="social-icons">
     <a href="https://www.linkedin.com/in/yibinzhou" target="_blank" rel="noopener noreferrer me" title="Linkedin">
@@ -157,7 +238,7 @@
     </div>
 </div>
     </main>
-    
+
 <footer class="footer">
     <span>&copy; 2026 <a href="https://zhouyibin8.github.io/en/">Yibin&#39;s Blog</a></span>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
