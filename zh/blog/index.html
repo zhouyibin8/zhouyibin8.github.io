@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="index, follow">
-    <title>生活 🛤️ | Yibin&#39;s Blog</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="生活 🛤️ - Yibin&#39;s Blog">
+    <title>生活 🛤️ | Yibin's Blog</title>
+    <meta name="keywords" content="Travel, Shows, Life, Yibin, Berry">
+    <meta name="description" content="周亦彬 Berry 的生活记录，包含旅行、演出与日常片段。">
     <meta name="author" content="Berry">
     <link rel="canonical" href="https://zhouyibin8.github.io/zh/blog/">
     <link crossorigin="anonymous" href="/assets/css/stylesheet.min.5fba7659f49a2f7ca0ce86b7611a869462aadd4a57aa486975cf60e413fa7b0f.css" integrity="sha256-X7p2WfSaL3ygzoa3YRqGlGKq3UpXqkhpdc9g5BP6ew8=" rel="preload stylesheet" as="style">
@@ -24,7 +24,10 @@
     <link rel="alternate" hreflang="zh" href="https://zhouyibin8.github.io/zh/blog/">
     <noscript>
         <style>
-            #theme-toggle, .top-link { display: none; }
+            #theme-toggle,
+            .top-link {
+                display: none;
+            }
         </style>
     </noscript>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
@@ -35,7 +38,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/code-new-roman" rel="stylesheet">
     <meta property="og:title" content="生活 🛤️" />
-    <meta property="og:description" content="" />
+    <meta property="og:description" content="周亦彬 Berry 的生活记录，包含旅行、演出与日常片段。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://zhouyibin8.github.io/zh/blog/" />
     <meta property="og:site_name" content="Berry" />
@@ -43,21 +46,250 @@
     <meta property="article:modified_time" content="2023-10-13T12:44:55-04:00" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="生活 🛤️" />
-    <meta name="twitter:description" content="" />
+    <meta name="twitter:description" content="周亦彬 Berry 的生活记录。" />
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "生活 🛤️",
-          "item": "https://zhouyibin8.github.io/zh/blog/"
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "生活 🛤️",
+                "item": "https://zhouyibin8.github.io/zh/blog/"
+            }]
         }
-      ]
-    }
     </script>
+    <style>
+        .header {
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+        .nav {
+            max-width: 1280px;
+            padding-left: 36px;
+            padding-right: 36px;
+        }
+        .logo a {
+            font-size: 1.16rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        .logo-switches {
+            align-items: center;
+            gap: 12px;
+        }
+        #theme-toggle {
+            transform: scale(1.18);
+            margin-left: 8px;
+        }
+        .lang-switch a {
+            font-size: 1.04rem;
+        }
+        #menu {
+            gap: 8px;
+        }
+        #menu a {
+            font-size: 1.1rem;
+            padding: 9px 14px;
+        }
+        .main {
+            max-width: 1320px;
+            padding-top: 38px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .life-page {
+            max-width: 1160px;
+            margin: 0 auto;
+        }
+        .page-header {
+            margin-bottom: 36px;
+        }
+        .page-header h1 {
+            font-size: 2.35rem;
+            line-height: 1.25;
+            margin-bottom: 14px;
+        }
+        .life-intro {
+            color: var(--secondary);
+            font-size: 1.13rem;
+            line-height: 1.85;
+            margin: 0;
+            max-width: 860px;
+        }
+        .footer {
+            margin-top: 72px;
+            font-size: 1rem;
+        }
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 30px;
+            margin-top: 34px;
+        }
+        .life-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+            padding: 34px 34px 30px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(var(--entry), 0.48);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .life-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+        body:not(.dark) .life-card:hover {
+            border-color: rgba(0, 0, 0, 0.18);
+        }
+        .life-card::before {
+            content: "";
+            position: absolute;
+            right: -54px;
+            top: -54px;
+            width: 156px;
+            height: 156px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.055;
+            pointer-events: none;
+        }
+        .life-card::after {
+            content: "";
+            position: absolute;
+            right: 26px;
+            bottom: 24px;
+            width: 74px;
+            height: 74px;
+            border-radius: 22px;
+            border: 1px solid var(--border);
+            opacity: 0.34;
+            transform: rotate(10deg);
+            pointer-events: none;
+        }
+        .life-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: rgba(var(--entry), 0.72);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 28px;
+        }
+        .life-card h2 {
+            font-size: 1.72rem;
+            line-height: 1.35;
+            margin: 0 0 14px;
+            color: var(--primary);
+        }
+        .life-card p {
+            color: var(--secondary);
+            font-size: 1.08rem;
+            line-height: 1.78;
+            margin: 0 0 28px;
+            max-width: 92%;
+        }
+        .life-card-link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .life-card-link::after {
+            content: "→";
+            transition: transform 0.2s ease;
+        }
+        .life-card:hover .life-card-link::after {
+            transform: translateX(4px);
+        }
+        .life-card-full-link {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+        }
+        .life-card-content {
+            position: relative;
+            z-index: 2;
+        }
+        .life-note {
+            margin-top: 30px;
+            padding: 22px 26px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: var(--secondary);
+            background: rgba(var(--entry), 0.35);
+            font-size: 1.06rem;
+            line-height: 1.78;
+        }
+        .life-note strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        @media (max-width: 860px) {
+            .life-grid {
+                grid-template-columns: 1fr;
+            }
+            .life-card {
+                min-height: 260px;
+            }
+        }
+        @media (max-width: 760px) {
+            .nav {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+            .logo a {
+                font-size: 1.04rem;
+            }
+            #menu a {
+                font-size: 0.98rem;
+                padding: 6px 9px;
+            }
+            #theme-toggle {
+                transform: scale(1.04);
+            }
+            .main {
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .page-header h1 {
+                font-size: 1.85rem;
+            }
+            .life-intro {
+                font-size: 1.04rem;
+            }
+            .life-card {
+                padding: 26px 22px;
+            }
+            .life-icon {
+                width: 54px;
+                height: 54px;
+                font-size: 1.7rem;
+                margin-bottom: 22px;
+            }
+            .life-card h2 {
+                font-size: 1.38rem;
+            }
+            .life-card p,
+            .life-note {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="list dark" id="top">
@@ -66,17 +298,16 @@
             document.body.classList.remove('dark')
         }
     </script>
-
     <header class="header">
         <nav class="nav">
             <div class="logo">
                 <a href="https://zhouyibin8.github.io/zh/" accesskey="h" title="Home (Alt + H)">Home</a>
                 <span class="logo-switches">
                     <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
-                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -88,10 +319,9 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                     </button>
-                    <ul class="lang-switch"><li>|</li>
-                        <li>
-                            <a href="https://zhouyibin8.github.io/en/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a>
-                        </li>
+                    <ul class="lang-switch">
+                        <li>|</li>
+                        <li><a href="https://zhouyibin8.github.io/en/blog/" title="English🇺🇸" aria-label="English🇺🇸">English🇺🇸</a></li>
                     </ul>
                 </span>
             </div>
@@ -106,47 +336,45 @@
     </header>
 
     <main class="main">
-        <header class="page-header">
-            <div class="breadcrumbs"></div>
-            <h1>生活 🛤️</h1>
-        </header>
-
-        <article class="post-entry">
-            <header class="entry-header">
-                <h2>旅行 🧳</h2>
+        <section class="life-page">
+            <header class="page-header">
+                <h1>生活 🛤️</h1>
+                <p class="life-intro">这里记录一些研究之外的生活切片。旅行、演出、城市漫游和偶然遇见的瞬间，都是理解世界的另一种方式。</p>
             </header>
-            <section class="entry-content">
-                <p></p>
-            </section>
-            <a class="entry-link" aria-label="post link to 旅行 🧳" href="https://zhouyibin8.github.io/zh/blog/travel/"></a>
-        </article>
-
-        <article class="post-entry">
-            <header class="entry-header">
-                <h2>演出 🎸</h2>
-            </header>
-            <section class="entry-content">
-                <p></p>
-            </section>
-            <a class="entry-link" aria-label="post link to 演出 🎸" href="https://zhouyibin8.github.io/zh/blog/show/"></a>
-        </article>
+            <div class="life-grid">
+                <article class="life-card">
+                    <div class="life-card-content">
+                        <div class="life-icon">🧳</div>
+                        <h2>旅行</h2>
+                        <p>记录在不同城市、街区与风景之间移动的片段，也保存那些不一定宏大、但值得回看的日常瞬间。</p>
+                        <span class="life-card-link">进入旅行记录</span>
+                    </div>
+                    <a class="life-card-full-link" aria-label="post link to 旅行 🧳" href="https://zhouyibin8.github.io/zh/blog/travel/"></a>
+                </article>
+                <article class="life-card">
+                    <div class="life-card-content">
+                        <div class="life-icon">🎸</div>
+                        <h2>演出</h2>
+                        <p>音乐、剧场、现场表演和舞台记忆。相比结果，我更喜欢记录灯光亮起来之前和散场之后的情绪。</p>
+                        <span class="life-card-link">进入演出记录</span>
+                    </div>
+                    <a class="life-card-full-link" aria-label="post link to 演出 🎸" href="https://zhouyibin8.github.io/zh/blog/show/"></a>
+                </article>
+            </div>
+            <div class="life-note"><strong>Life as archive.</strong> 学术训练让我习惯分析结构，生活记录则提醒我保留感受。它们并不冲突，只是从不同方向靠近同一个世界。</div>
+        </section>
     </main>
 
     <footer class="footer">
-        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin&#39;s Blog</a></span>
+        <span>&copy; 2026 <a href="https://zhouyibin8.github.io/zh/">Yibin's Blog</a></span>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container">
-            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-            Visitors: <span id="busuanzi_value_site_uv"></span> Views: <span id="busuanzi_value_site_pv"></span>
-        </span>
+        <span id="busuanzi_container">Visitors: <span id="busuanzi_value_site_uv"></span> Views: <span id="busuanzi_value_site_pv"></span></span>
     </footer>
-
     <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
             <path d="M12 6H0l6-6z" />
         </svg>
     </a>
-
     <script>
         let menu = document.getElementById('menu')
         if (menu) {
@@ -155,15 +383,12 @@
                 localStorage.setItem("menu-scroll-position", menu.scrollLeft);
             }
         }
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
                 e.preventDefault();
                 var id = this.getAttribute("href").substr(1);
                 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                        behavior: "smooth"
-                    });
+                    document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({ behavior: "smooth" });
                 } else {
                     document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
                 }
@@ -174,7 +399,6 @@
                 }
             });
         });
-
         var mybutton = document.getElementById("top-link");
         window.onscroll = function () {
             if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
@@ -185,7 +409,6 @@
                 mybutton.style.opacity = "0";
             }
         };
-
         document.getElementById("theme-toggle").addEventListener("click", () => {
             if (document.body.className.includes("dark")) {
                 document.body.classList.remove('dark');
@@ -197,5 +420,4 @@
         })
     </script>
 </body>
-
 </html>
