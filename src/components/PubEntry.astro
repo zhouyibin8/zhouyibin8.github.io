@@ -20,7 +20,13 @@ const link = p.url ?? doiUrl(p.doi);
 const apa = apaCitation(p);
 const bib = bibtex(p, entry.id);
 const statusLabel =
-  p.status === 'in-press' ? t(lang, 'inPress') : p.status === 'under-review' ? t(lang, 'underReview') : undefined;
+  p.status === 'in-press'
+    ? t(lang, 'inPress')
+    : p.status === 'accepted'
+      ? t(lang, 'accepted')
+      : p.status === 'under-review'
+        ? t(lang, 'underReview')
+        : undefined;
 ---
 
 <article class:list={['pub', 'entry', { 'has-figure': p.figure && !compact }]} id={id}>

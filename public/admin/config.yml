@@ -163,6 +163,7 @@ collections:
         options:
           - { label: Published, value: published }
           - { label: In press, value: in-press }
+          - { label: Conditionally accepted, value: accepted }
           - { label: Under review, value: under-review }
           - { label: Working paper, value: working-paper }
       - { name: venue, label: Journal / venue, hint: 'For working papers, write e.g. "Working paper" or a target journal.' }

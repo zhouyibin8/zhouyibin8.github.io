@@ -6,7 +6,12 @@ import { themes } from './lib/themes';
 // The editor at /admin may write an empty string or null for a field left blank.
 // These helpers treat all of those as "not set" so a blank field never breaks the build.
 const blank = (v: unknown) => v === '' || v === null;
-const text = () => z.string().nullish().transform((v) => (v ? v : undefined));
+// Numbers are accepted too: YAML reads an unquoted 2025.04 as a number.
+const text = () =>
+  z
+    .union([z.string(), z.number()])
+    .nullish()
+    .transform((v) => (v === null || v === undefined || v === '' ? undefined : String(v)));
 const list = <T extends z.ZodType>(item: T) =>
   z.preprocess((v) => (blank(v) ? undefined : v), z.array(item).optional()).transform((v) => v ?? []);
 const optImage = (image: () => z.ZodType) =>
@@ -86,7 +91,7 @@ const publications = defineCollection({
       title: z.string(),
       authors: list(z.string()),
       year: z.coerce.number().int(),
-      status: z.enum(['published', 'in-press', 'under-review', 'working-paper']).default('published'),
+      status: z.enum(['published', 'in-press', 'accepted', 'under-review', 'working-paper']).default('published'),
       venue: z.string(),
       volume: text(),
       issue: text(),

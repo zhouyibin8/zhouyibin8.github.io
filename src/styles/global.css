@@ -305,25 +305,38 @@ p {
 }
 
 .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
   color: var(--ink);
   text-decoration: none;
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   white-space: nowrap;
 }
 
-.brand-mark {
-  width: 1.85rem;
-  height: 1.85rem;
-  border-radius: 7px;
+.mode-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: 0.15rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-2);
+  font-size: 1.05rem;
+  cursor: pointer;
 }
 
-[data-theme='night'] .brand-mark {
-  outline: 1px solid #3a3b40;
+.mode-toggle:hover {
+  color: var(--ink);
+  background: var(--surface-2);
+}
+
+/* Show the icon for the mode you would switch to. */
+[data-theme='night'] .mode-toggle .icon-moon,
+[data-theme='day'] .mode-toggle .icon-sun {
+  display: none;
 }
 
 .nav {

@@ -2,37 +2,72 @@ sections:
   - title: Education
     title_zh: 教育背景
     entries:
-      - heading: PhD in Hotel and Tourism Management
-        heading_zh: 酒店及旅游业管理 哲学博士
-        subheading: The Hong Kong Polytechnic University
-        subheading_zh: 香港理工大学
-        period: 2025.01 – 2028.01 (expected)
-        period_zh: 2025.01 – 2028.01（预计）
+      - heading: Doctor of Philosophy in Tourism and Hotel Technology Management
+        heading_zh: 酒店及旅游技术管理 哲学博士
+        subheading: School of Hotel and Tourism Management (SHTM), The Hong Kong Polytechnic University · Hong Kong SAR
+        subheading_zh: 香港理工大学 酒店及旅游业管理学院（SHTM）· 中国香港特别行政区
+        period: 2025.06 – 2028.06 (expected)
+        period_zh: 2025.06 – 2028.06（预计）
         logo: /src/assets/cv/polyu.png
+        description: "Supervisor: Jason Zhang (SHTM & COMP) · Co-supervisors: Faye Hao (SHTM), Daniel Leung (SHTM)"
+        description_zh: 导师：Jason Zhang（SHTM & COMP）· 联合导师：Faye Hao（SHTM）、Daniel Leung（SHTM）
         links:
           - label: SHTM PhD Programme
             label_zh: SHTM 博士项目
             url: https://www.polyu.edu.hk/shtm/study/research-postgraduate-programme/doctor-of-philosophy-in-hotel-and-tourism-management/
-      - heading: M.S. in Learning Analytics (STEM)
+      - heading: Master of Science in Learning Analytics (STEM)
         heading_zh: 学习分析 理学硕士（STEM）
-        subheading: Columbia University
-        subheading_zh: 哥伦比亚大学
-        period: 2023.09 – 2024.10
+        subheading: Department of Human Development, Columbia University · New York, NY
+        subheading_zh: 哥伦比亚大学 人类发展系 · 美国纽约
+        period: 2023.08 – 2024.10
         logo: /src/assets/cv/columbia.png
+        description: "Capstone project: *Course2Skills: Understanding Postsecondary Student Success Through Curricular Content Analytics* (supervised by Renzhe Yu)"
+        description_zh: "毕业项目：*Course2Skills: Understanding Postsecondary Student Success Through Curricular Content Analytics*（导师：Renzhe Yu）"
         links:
           - label: Learning Analytics Programme
             label_zh: 学习分析项目
             url: https://www.tc.columbia.edu/human-development/learning-analytics/
-      - heading: Bachelor in International Tourism Management
+      - heading: Bachelor of International Tourism Management
         heading_zh: 国际旅游管理 学士
-        subheading: Macau University of Science and Technology
-        subheading_zh: 澳门科技大学
+        subheading: Faculty of Hospitality and Tourism Management (FHTM), Macau University of Science and Technology · Macau SAR
+        subheading_zh: 澳门科技大学 酒店与旅游管理学院（FHTM）· 中国澳门特别行政区
         period: 2019.09 – 2023.06
         logo: /src/assets/cv/must.png
+        description: First Class Honours · Dean's Honour List, MUST-FHTM (academic years 2021 and 2022)
+        description_zh: 一等荣誉学位 · 澳门科技大学酒店与旅游管理学院院长嘉许名单（2021、2022 学年）
         links:
           - label: Programme Curriculum
             label_zh: 课程设置
             url: https://www.must.edu.mo/fhtm/programme/bachelors-degree-programme/curriculum
+  - title: Teaching
+    title_zh: 教学经历
+    entries:
+      - heading: HTM4362 Artificial Intelligence in Tourism and Hospitality
+        subheading: Tutor · The Hong Kong Polytechnic University
+        subheading_zh: 导修导师 · 香港理工大学
+        period: 2026.01 – 2026.06
+      - heading: HTM568 Smart Tourism and Big Data Analytics
+        subheading: Teaching Assistant · The Hong Kong Polytechnic University
+        subheading_zh: 教学助理 · 香港理工大学
+        period: 2026.06 – 2026.09
+      - heading: Becoming an Effective Teaching Assistant
+        heading_zh: Becoming an Effective Teaching Assistant 培训
+        subheading: Training certification · The Hong Kong Polytechnic University
+        subheading_zh: 培训认证 · 香港理工大学
+        period: "2025.04"
+      - heading: BITM1311 Business Statistics
+        heading_zh: BITM1311 商务统计
+        subheading: Teaching Assistant · Macau University of Science and Technology
+        subheading_zh: 教学助理 · 澳门科技大学
+        period: 2021.09 – 2021.12
+  - title: Academic Service
+    title_zh: 学术服务
+    entries:
+      - heading: Ad hoc Reviewer
+        heading_zh: 特邀审稿人
+        subheading: Journal of Hospitality and Tourism Research (SSCI, JCR Q1)
+        period: 2026 – present
+        period_zh: 2026 – 至今
   - title: Experience
     title_zh: 工作经历
     entries:
@@ -80,15 +115,7 @@ sections:
         subheading: Market Research Department · Remote
         subheading_zh: 市场研究部 · 远程
         period: 2020.01 – 2020.05
-  - title: Teaching
-    title_zh: 教学经历
-    entries:
-      - heading: BITM1311 Business Statistics
-        heading_zh: BITM1311 商务统计
-        subheading: Teaching Assistant · Macau University of Science and Technology
-        subheading_zh: 教学助理 · 澳门科技大学
-        period: 2021.09 – 2021.12
-  - title: Service & Community
+  - title: Community Involvement
     title_zh: 社区参与
     entries:
       - heading: Columbia University Chinese Students and Scholars Association (CUCSSA)

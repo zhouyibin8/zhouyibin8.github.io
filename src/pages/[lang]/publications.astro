@@ -15,7 +15,7 @@ const pubs = await getPublications();
 const talks = await getTalks();
 
 const groups = [
-  { key: 'journal', title: t(lang, 'journalArticles'), items: pubs.filter((p) => ['published', 'in-press'].includes(p.data.status)) },
+  { key: 'journal', title: t(lang, 'journalArticles'), items: pubs.filter((p) => ['published', 'in-press', 'accepted'].includes(p.data.status)) },
   { key: 'review', title: t(lang, 'underReview'), items: pubs.filter((p) => p.data.status === 'under-review') },
   { key: 'working', title: t(lang, 'workingPapers'), items: pubs.filter((p) => p.data.status === 'working-paper') },
 ].filter((g) => g.items.length > 0);
