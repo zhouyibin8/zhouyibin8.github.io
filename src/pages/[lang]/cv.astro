@@ -16,7 +16,6 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 
 <Base lang={lang} path="cv/" title={t(lang, 'cv')}>
   <header class="page-head">
-    <p class="eyebrow">{pick(lang, profile.name, profile.name_zh)}</p>
     <h1 class="page-title">{t(lang, 'cv')}</h1>
     {
       profile.cv_pdf && (
@@ -34,9 +33,9 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     sections.map((s) => (
       <section class="section cv-section" id={slug(s.title)}>
         <h2 class="section-title">{pick(lang, s.title, s.title_zh)}</h2>
-        <ol class="cv-list" role="list">
+        <ol class="entries" role="list">
           {s.entries.map((e) => (
-            <li class="cv-item">
+            <li class="cv-item entry">
               <p class="cv-period">{pick(lang, e.period ?? '', e.period_zh)}</p>
               <div class:list={['cv-main', { 'with-logo': e.logo }]}>
                 {e.logo && (
@@ -69,20 +68,9 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
 </Base>
 
 <style>
-  .cv-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
   .cv-item {
     display: grid;
     gap: 0.3rem 2rem;
-    padding-block: 1.15rem;
-    border-top: 1px solid var(--rule);
-  }
-  .cv-item:first-child {
-    border-top: 0;
-    padding-top: 0.25rem;
   }
   @media (min-width: 48rem) {
     .cv-item {

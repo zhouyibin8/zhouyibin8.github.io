@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { themes } from './lib/themes';
 
 // The editor at /admin may write an empty string or null for a field left blank.
 // These helpers treat all of those as "not set" so a blank field never breaks the build.
@@ -47,7 +48,7 @@ const profile = defineCollection({
       bio: z.string(),
       bio_zh: text(),
       interests: list(z.object({ en: z.string(), zh: text() })),
-      home_news_count: z.number().int().default(6),
+      theme: z.enum(themes).catch('night').default('night'),
     }),
 });
 
@@ -116,15 +117,6 @@ const talks = defineCollection({
   }),
 });
 
-const news = defineCollection({
-  loader: glob({ pattern: '**/*.{yml,yaml}', base: './src/content/news' }),
-  schema: z.object({
-    date: z.coerce.date(),
-    text: z.string(),
-    text_zh: text(),
-  }),
-});
-
 const travel = defineCollection({
   loader: glob({ pattern: '**/*.{yml,yaml}', base: './src/content/travel' }),
   schema: ({ image }) =>
@@ -149,4 +141,4 @@ const shows = defineCollection({
     }),
 });
 
-export const collections = { profile, cv, publications, talks, news, travel, shows };
+export const collections = { profile, cv, publications, talks, travel, shows };

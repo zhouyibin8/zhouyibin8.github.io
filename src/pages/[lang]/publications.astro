@@ -28,7 +28,6 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
 
 <Base lang={lang} path="publications/" title={t(lang, 'publications')}>
   <header class="page-head">
-    <p class="eyebrow">{lang === 'zh' ? '研究' : 'Research'}</p>
     <h1 class="page-title">{t(lang, 'publications')}</h1>
     {
       profile.scholar && (
@@ -48,7 +47,7 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
         <h2 class="section-title">
           {g.title} <span class="count">{g.items.length}</span>
         </h2>
-        <div>
+        <div class="entries">
           {g.items.map((entry) => (
             <PubEntry entry={entry} lang={lang} highlight={profile.highlight_author} />
           ))}
@@ -63,9 +62,9 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
         <h2 class="section-title">
           {t(lang, 'presentations')} <span class="count">{talks.length}</span>
         </h2>
-        <ol class="talks" role="list">
+        <ol class="entries" role="list">
           {talks.map(({ data: x }) => (
-            <li class="talk">
+            <li class="talk entry">
               <p class="talk-kind">{kindLabel[x.kind]}</p>
               <h3 class="talk-title">{x.url ? <a href={x.url}>{x.title}</a> : x.title}</h3>
               <p class="talk-authors">
@@ -92,19 +91,6 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
 </Base>
 
 <style>
-  .talks {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .talk {
-    padding-block: 1.4rem;
-    border-top: 1px solid var(--rule);
-  }
-  .talk:first-child {
-    border-top: 0;
-    padding-top: 0.25rem;
-  }
   .talk-kind {
     font-family: var(--sans);
     font-size: 0.7rem;

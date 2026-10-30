@@ -23,7 +23,7 @@ const statusLabel =
   p.status === 'in-press' ? t(lang, 'inPress') : p.status === 'under-review' ? t(lang, 'underReview') : undefined;
 ---
 
-<article class:list={['pub', { 'has-figure': p.figure && !compact }]} id={id}>
+<article class:list={['pub', 'entry', { 'has-figure': p.figure && !compact }]} id={id}>
   {
     p.figure && !compact && (
       <a class="pub-figure" href={link ?? `#${id}`} tabindex="-1" aria-hidden="true">
@@ -128,16 +128,13 @@ const statusLabel =
   .pub {
     display: grid;
     gap: 1.5rem;
-    padding-block: 1.6rem;
-    border-top: 1px solid var(--rule);
-  }
-  .pub:first-child {
-    border-top: 0;
-    padding-top: 0.25rem;
   }
   @media (min-width: 48rem) {
     .pub.has-figure {
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: minmax(0, 1fr) 220px;
+    }
+    .pub.has-figure .pub-figure {
+      order: 2;
     }
   }
   .pub-figure {
@@ -145,15 +142,14 @@ const statusLabel =
     align-self: start;
     background: #fff;
     border: 1px solid var(--rule);
-    border-radius: 6px;
+    border-radius: 10px;
     padding: 0.5rem;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     transition: box-shadow 0.2s, transform 0.2s;
   }
   .pub-figure:hover {
-    box-shadow: var(--shadow);
-    transform: translateY(-1px);
+    border-color: var(--accent);
   }
   .pub-figure img {
     width: 100%;
@@ -165,8 +161,15 @@ const statusLabel =
       display: none;
     }
   }
+  /* The minimal style is text only. */
+  :global([data-theme='minimal']) .pub-figure {
+    display: none;
+  }
+  :global([data-theme='minimal']) .pub.has-figure {
+    grid-template-columns: 1fr;
+  }
   .pub-title {
-    font-size: 1.2rem;
+    font-size: 1.22rem;
     line-height: 1.35;
     font-weight: 600;
   }
@@ -204,8 +207,8 @@ const statusLabel =
   .pub-panel {
     margin-top: 1rem;
     padding: 1.1rem 1.25rem;
-    background: var(--paper-2);
-    border-radius: 8px;
+    background: var(--surface-2);
+    border-radius: 10px;
     font-size: 0.98rem;
     line-height: 1.7;
     color: var(--ink-2);
@@ -245,7 +248,7 @@ const statusLabel =
     padding-right: 4.5rem;
   }
   pre.cite-text {
-    font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+    font-family: var(--mono);
     font-size: 0.78rem;
     line-height: 1.55;
     white-space: pre-wrap;

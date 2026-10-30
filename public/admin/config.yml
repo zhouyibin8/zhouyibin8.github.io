@@ -80,7 +80,17 @@ collections:
             fields:
               - { name: en, label: English }
               - { name: zh, label: 中文, required: false }
-          - { name: home_news_count, label: Number of news items on the home page, widget: number, value_type: int, default: 6, min: 0, max: 30 }
+          - name: theme
+            label: Site style · 网站风格
+            widget: select
+            default: night
+            hint: Changes the look of the whole site. Content stays the same.
+            options:
+              - { label: 1 · Night — dark cards (like the old site), value: night }
+              - { label: 2 · Day — light cards, value: day }
+              - { label: 3 · Sidebar — profile column on every page, value: sidebar }
+              - { label: 4 · Minimal — white and quiet, value: minimal }
+              - { label: 5 · Slate — modern and bright, value: slate }
 
       - name: cv
         label: CV · 简历
@@ -123,24 +133,6 @@ collections:
                       - { name: label, label: Label }
                       - { name: label_zh, label: 链接文字（中文）, required: false }
                       - { name: url, label: URL }
-
-  # ---------------------------------------------------------------- News
-  - name: news
-    label: News · 动态
-    label_singular: News item
-    icon: campaign
-    folder: src/content/news
-    extension: yml
-    format: yml
-    create: true
-    identifier_field: text
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    summary: '{{date}} · {{text}}'
-    sortable_fields: { fields: [date], default: { field: date, direction: descending } }
-    fields:
-      - { name: date, label: Date · 日期, widget: datetime, type: date }
-      - { name: text, label: Text (English), widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], minimal: true }
-      - { name: text_zh, label: 内容（中文）, widget: markdown, required: false, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], minimal: true }
 
   # ---------------------------------------------------------------- Publications
   - name: publications

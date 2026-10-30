@@ -19,11 +19,6 @@ export async function getTalks() {
   return all.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 
-export async function getNews() {
-  const all = await getCollection('news');
-  return all.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-}
-
 export async function getTravel() {
   return (await getCollection('travel')).sort(byLooseDateDesc);
 }
