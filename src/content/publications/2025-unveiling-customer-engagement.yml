@@ -1,0 +1,35 @@
+title: "Unveiling Customer Engagement in Destination Marketing: A Multimodal Approach to Analyzing Official Promotional Videos"
+authors:
+  - Yibin Berry Zhou
+  - Chen Jason Zhang
+  - "Menglong Xia#"
+year: 2025
+status: published
+venue: International Journal of Tourism Research
+volume: "27"
+issue: "6"
+pages: e70152
+doi: 10.1002/jtr.70152
+badge: SSCI Q1 · IF 5.9
+keywords:
+  - Customer engagement
+  - Video analysis
+  - Destination promotional video
+  - Multimodal
+  - Tourism destination marketing
+  - Machine learning
+figure: /src/assets/publications/dpv-framework.png
+selected: true
+citation: "Zhou, Y. B., Zhang, C. J., & Xia, M. (2025). Unveiling customer engagement in destination marketing: A multimodal approach to analyzing official promotional videos. International Journal of Tourism Research, 27(6), e70152."
+abstract: >-
+  This study examines how features of official destination promotional videos (DPVs) shape customer engagement
+  (CE) on social media. Using 5,037 Instagram videos from 54 U.S. national parks, we apply machine learning and
+  computer vision to extract video content, visual features, multimodal cues (text, audio, thumbnails), and post
+  metadata. LightGBM with SHAP analyses shows that thumbnail–video contrasts, color coherence, and emotional cues
+  significantly influence CE. Simpler, familiar content drives passive engagement (likes), whereas emotionally
+  resonant, high-aesthetic content fosters active engagement (comments). Beyond method, this study contributes a
+  dual-pathway theoretical framework that integrates cognitive load, elaboration likelihood, and media richness
+  theories to explain how multimodal features jointly shape CE. Practical implications highlight balancing
+  content simplicity and depth, ensuring visual and emotional consistency, and optimizing posting strategies.
+  Overall, this research advances destination marketing by providing a scalable and theory-informed framework
+  for analyzing social media videos.

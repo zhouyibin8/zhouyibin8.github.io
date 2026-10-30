@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { getCv, getProfile } from '../../lib/data';
+import { mdInline } from '../../lib/format';
+import { langPaths, pick, t, type Lang } from '../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const lang = Astro.params.lang as Lang;
+const profile = await getProfile();
+const sections = await getCv();
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+<Base lang={lang} path="cv/" title={t(lang, 'cv')}>
+  <header class="page-head">
+    <p class="eyebrow">{pick(lang, profile.name, profile.name_zh)}</p>
+    <h1 class="page-title">{t(lang, 'cv')}</h1>
+    {
+      profile.cv_pdf && (
+        <p class="page-lede">
+          <a class="btn btn-primary" href={profile.cv_pdf}>
+            <Icon name="file" />
+            {t(lang, 'downloadCv')}
+          </a>
+        </p>
+      )
+    }
+  </header>
+
+  {
+    sections.map((s) => (
+      <section class="section cv-section" id={slug(s.title)}>
+        <h2 class="section-title">{pick(lang, s.title, s.title_zh)}</h2>
+        <ol class="cv-list" role="list">
+          {s.entries.map((e) => (
+            <li class="cv-item">
+              <p class="cv-period">{pick(lang, e.period ?? '', e.period_zh)}</p>
+              <div class:list={['cv-main', { 'with-logo': e.logo }]}>
+                {e.logo && (
+                  <Image class="cv-logo" src={e.logo} alt="" width={96} height={96} widths={[48, 96]} sizes="48px" />
+                )}
+                <div>
+                  <h3 class="cv-heading">{pick(lang, e.heading, e.heading_zh)}</h3>
+                  {e.subheading && <p class="cv-sub">{pick(lang, e.subheading, e.subheading_zh)}</p>}
+                  {e.description && (
+                    <p class="cv-desc" set:html={mdInline(pick(lang, e.description, e.description_zh))} />
+                  )}
+                  {e.links.length > 0 && (
+                    <p class="cv-links">
+                      {e.links.map((l) => (
+                        <a href={l.url}>
+                          {pick(lang, l.label, l.label_zh)}
+                          <Icon name="external" />
+                        </a>
+                      ))}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</Base>
+
+<style>
+  .cv-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .cv-item {
+    display: grid;
+    gap: 0.3rem 2rem;
+    padding-block: 1.15rem;
+    border-top: 1px solid var(--rule);
+  }
+  .cv-item:first-child {
+    border-top: 0;
+    padding-top: 0.25rem;
+  }
+  @media (min-width: 48rem) {
+    .cv-item {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+  .cv-period {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 0.25rem;
+  }
+  .cv-main.with-logo {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+  .cv-main :global(.cv-logo) {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 4px;
+  }
+  .cv-heading {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+  .cv-sub {
+    margin: 0.15rem 0 0;
+    color: var(--ink-2);
+    font-size: 1rem;
+  }
+  .cv-desc {
+    margin: 0.45rem 0 0;
+    font-size: 1rem;
+    color: var(--ink-2);
+    max-width: var(--measure);
+  }
+  .cv-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    margin: 0.5rem 0 0;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+  }
+  .cv-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    text-decoration: none;
+  }
+  .cv-links a:hover {
+    text-decoration: underline;
+  }
+</style>

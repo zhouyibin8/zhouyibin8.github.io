@@ -1,0 +1,20 @@
+---
+// Sends visitors to the Chinese site when their browser prefers Chinese, otherwise to English.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Yibin Zhou</title>
+    <link rel="canonical" href="https://zhouyibin8.github.io/en/" />
+    <script is:inline>
+      var langs = navigator.languages || [navigator.language || ''];
+      location.replace(String(langs[0]).toLowerCase().indexOf('zh') === 0 ? '/zh/' : '/en/');
+    </script>
+    <meta http-equiv="refresh" content="1; url=/en/" />
+  </head>
+  <body>
+    <a href="/en/">English</a> · <a href="/zh/">中文</a>
+  </body>
+</html>

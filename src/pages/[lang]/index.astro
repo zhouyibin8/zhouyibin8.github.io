@@ -1,0 +1,271 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PubEntry from '../../components/PubEntry.astro';
+import { getNews, getProfile, getPublications } from '../../lib/data';
+import { md, mdInline, monthYear } from '../../lib/format';
+import { langPaths, pick, t, type Lang } from '../../lib/i18n';
+
+export const getStaticPaths = langPaths;
+
+const lang = Astro.params.lang as Lang;
+const profile = await getProfile();
+const pubs = await getPublications();
+const selected = pubs.filter((p) => p.data.selected);
+const news = (await getNews()).slice(0, profile.home_news_count);
+
+const name = pick(lang, profile.name, profile.name_zh);
+const links = [
+  profile.email && { href: `mailto:${profile.email}`, label: t(lang, 'email'), icon: 'mail' as const },
+  profile.scholar && { href: profile.scholar, label: 'Google Scholar', icon: 'scholar' as const },
+  profile.orcid && { href: profile.orcid, label: 'ORCID', icon: 'orcid' as const },
+  profile.linkedin && { href: profile.linkedin, label: 'LinkedIn', icon: 'linkedin' as const },
+  profile.github && { href: profile.github, label: 'GitHub', icon: 'github' as const },
+  profile.researchgate && { href: profile.researchgate, label: 'ResearchGate', icon: 'researchgate' as const },
+].filter((l) => !!l);
+---
+
+<Base lang={lang} path="">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">{pick(lang, profile.position, profile.position_zh)}</p>
+      <h1 class="hero-name">
+        {name}
+        {profile.preferred_name && lang === 'en' && <span class="aka">({profile.preferred_name})</span>}
+      </h1>
+      {lang === 'zh' && profile.name_zh && <p class="hero-alt">{profile.name}</p>}
+      <p class="hero-affil">
+        {pick(lang, profile.department, profile.department_zh)}<br />
+        {pick(lang, profile.university, profile.university_zh)}
+      </p>
+      {
+        (profile.tagline || profile.tagline_zh) && (
+          <p class="hero-tagline">{pick(lang, profile.tagline ?? '', profile.tagline_zh)}</p>
+        )
+      }
+      <ul class="hero-links" role="list">
+        {
+          links.map((l) => (
+            <li>
+              <a class="btn" href={l.href}>
+                <Icon name={l.icon} />
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+        {
+          profile.cv_pdf && (
+            <li>
+              <a class="btn btn-primary" href={profile.cv_pdf}>
+                <Icon name="file" />
+                {t(lang, 'cv')}
+              </a>
+            </li>
+          )
+        }
+      </ul>
+    </div>
+    {
+      profile.photo && (
+        <div class="hero-photo">
+          <Image
+            src={profile.photo}
+            alt={name}
+            widths={[280, 560, 840]}
+            sizes="(min-width: 48rem) 280px, 60vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      )
+    }
+  </section>
+
+  <section class="section intro">
+    <div class="prose bio" set:html={md(pick(lang, profile.bio, profile.bio_zh))} />
+    {
+      profile.interests.length > 0 && (
+        <aside class="interests">
+          <h2 class="eyebrow">{t(lang, 'researchInterests')}</h2>
+          <ul role="list">
+            {profile.interests.map((i) => (
+              <li>{pick(lang, i.en, i.zh)}</li>
+            ))}
+          </ul>
+        </aside>
+      )
+    }
+  </section>
+
+  {
+    news.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">{t(lang, 'news')}</h2>
+        <ol class="news" role="list">
+          {news.map((n) => (
+            <li>
+              <time datetime={n.data.date.toISOString().slice(0, 10)}>{monthYear(n.data.date, lang)}</time>
+              <span set:html={mdInline(pick(lang, n.data.text, n.data.text_zh))} />
+            </li>
+          ))}
+        </ol>
+      </section>
+    )
+  }
+
+  {
+    selected.length > 0 && (
+      <section class="section">
+        <h2 class="section-title">{t(lang, 'selectedPublications')}</h2>
+        <div>
+          {selected.map((entry) => (
+            <PubEntry entry={entry} lang={lang} highlight={profile.highlight_author} />
+          ))}
+        </div>
+        <p class="section-more">
+          <a href={`/${lang}/publications/`}>{t(lang, 'allPublications')} →</a>
+        </p>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (min-width: 48rem) {
+    .hero {
+      grid-template-columns: 1fr 280px;
+      gap: 4rem;
+    }
+  }
+  .hero-name {
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .aka {
+    display: inline-block;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.55em;
+    letter-spacing: 0;
+    margin-left: 0.15em;
+  }
+  .hero-alt {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 1.15rem;
+  }
+  .hero-affil {
+    margin: 1.25rem 0 0;
+    font-size: 1.2rem;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .hero-tagline {
+    margin: 1.25rem 0 0;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.75rem 0 0;
+  }
+  .hero-links .btn {
+    font-size: 0.84rem;
+    padding: 0.5rem 0.9rem;
+  }
+  .hero-photo {
+    order: -1;
+    width: min(60vw, 240px);
+  }
+  @media (min-width: 48rem) {
+    .hero-photo {
+      order: 0;
+      width: 100%;
+    }
+  }
+  .hero-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 35%;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+  }
+
+  .intro {
+    display: grid;
+    gap: 2.5rem;
+  }
+  @media (min-width: 60rem) {
+    .intro {
+      grid-template-columns: 1fr 15rem;
+      gap: 4rem;
+    }
+  }
+  .bio {
+    font-size: 1.15rem;
+  }
+  .bio :global(strong) {
+    font-weight: 600;
+  }
+  .interests {
+    align-self: start;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.25rem;
+  }
+  .interests ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .interests li {
+    padding: 0.3rem 0;
+    font-size: 1.05rem;
+  }
+
+  .news {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: var(--measure);
+  }
+  .news li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .news li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .news time {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    padding-top: 0.2rem;
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 30rem) {
+    .news li {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+  }
+</style>

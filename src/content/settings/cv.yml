@@ -1,0 +1,123 @@
+sections:
+  - title: Education
+    title_zh: 教育背景
+    entries:
+      - heading: PhD in Hotel and Tourism Management
+        heading_zh: 酒店及旅游业管理 哲学博士
+        subheading: The Hong Kong Polytechnic University
+        subheading_zh: 香港理工大学
+        period: 2025.01 – 2028.01 (expected)
+        period_zh: 2025.01 – 2028.01（预计）
+        logo: /src/assets/cv/polyu.png
+        links:
+          - label: SHTM PhD Programme
+            label_zh: SHTM 博士项目
+            url: https://www.polyu.edu.hk/shtm/study/research-postgraduate-programme/doctor-of-philosophy-in-hotel-and-tourism-management/
+      - heading: M.S. in Learning Analytics (STEM)
+        heading_zh: 学习分析 理学硕士（STEM）
+        subheading: Columbia University
+        subheading_zh: 哥伦比亚大学
+        period: 2023.09 – 2024.10
+        logo: /src/assets/cv/columbia.png
+        links:
+          - label: Learning Analytics Programme
+            label_zh: 学习分析项目
+            url: https://www.tc.columbia.edu/human-development/learning-analytics/
+      - heading: Bachelor in International Tourism Management
+        heading_zh: 国际旅游管理 学士
+        subheading: Macau University of Science and Technology
+        subheading_zh: 澳门科技大学
+        period: 2019.09 – 2023.06
+        logo: /src/assets/cv/must.png
+        links:
+          - label: Programme Curriculum
+            label_zh: 课程设置
+            url: https://www.must.edu.mo/fhtm/programme/bachelors-degree-programme/curriculum
+  - title: Experience
+    title_zh: 工作经历
+    entries:
+      - heading: Wynn Palace & Wynn Macau
+        heading_zh: 永利皇宫 & 永利澳门
+        subheading: Strategic Development Department · Macau SAR, China
+        subheading_zh: 战略发展部 · 中国澳门特别行政区
+        period: 2023.01 – 2023.06
+        description: Web crawling–based data mining project on Dianping.
+        description_zh: 基于网页爬虫的大众点评数据挖掘项目。
+        links:
+          - label: GitHub
+            url: https://github.com/zhouyibin8/wp
+      - heading: Savills
+        heading_zh: 第一太平戴维斯 Savills
+        subheading: Research Department · Shenzhen, Guangdong
+        subheading_zh: 研究部 · 广东深圳
+        period: 2022.05 – 2022.08
+        description: Supported commercial real estate and Grade-A office market research, with outputs including the Greater Bay Area Grade-A Office Price Index and the South China property market review.
+        description_zh: 参与商业地产与写字楼市场研究，相关成果包括大湾区甲级写字楼价格指数研究及华南区房地产市场回顾与展望。
+        links:
+          - label: Research report
+            label_zh: 研究报告
+            url: https://www.savills.co.uk/research_articles/229130/208565-1
+          - label: WeChat article
+            label_zh: 微信文章
+            url: https://mp.weixin.qq.com/s/FEHFetpJtHsLDzWQakS4zA
+      - heading: Asian Advertising Association (AdAsia)
+        heading_zh: 亚洲广告学会 AdAsia
+        subheading: Event Planning and Execution Department · Macau SAR, China
+        subheading_zh: 活动策划与执行部 · 中国澳门特别行政区
+        period: 2021.09 – 2021.12
+        description: Event planning, execution support, and online communication projects, including a live-streamed guided tour of Macau.
+        description_zh: 参与活动策划、执行支持与线上传播工作，相关项目包括澳门直播导览。
+        links:
+          - label: YouTube
+            url: https://www.youtube.com/live/qykR03V3nzM
+      - heading: Vanke
+        heading_zh: 万科
+        subheading: Marketing Planning Department · Changsha, Hunan
+        subheading_zh: 营销策划部 · 湖南长沙
+        period: 2021.06 – 2021.08
+      - heading: Qiwu Technology
+        heading_zh: 齐悟科技
+        subheading: Market Research Department · Remote
+        subheading_zh: 市场研究部 · 远程
+        period: 2020.01 – 2020.05
+  - title: Teaching
+    title_zh: 教学经历
+    entries:
+      - heading: BITM1311 Business Statistics
+        heading_zh: BITM1311 商务统计
+        subheading: Teaching Assistant · Macau University of Science and Technology
+        subheading_zh: 教学助理 · 澳门科技大学
+        period: 2021.09 – 2021.12
+  - title: Service & Community
+    title_zh: 社区参与
+    entries:
+      - heading: Columbia University Chinese Students and Scholars Association (CUCSSA)
+        heading_zh: 哥伦比亚大学中国学生学者联谊会 CUCSSA
+        subheading: Community Development and Engagement Member · New York, USA
+        subheading_zh: 社区发展与参与部成员 · 美国纽约
+        period: 2023.09 – 2024.06
+      - heading: Pacific Asia Travel Association (PATA)
+        heading_zh: 亚太旅游协会 PATA
+        subheading: Member, Macau Student Chapter · Macau SAR, China
+        subheading_zh: 澳门学生分会成员 · 中国澳门特别行政区
+        period: 2021.10 – 2022.08
+      - heading: Student Association, Faculty of Hospitality and Tourism Management, MUST
+        heading_zh: 澳门科技大学酒店与旅游管理学院学生会
+        subheading: Minister of Public Relations · Macau SAR, China
+        subheading_zh: 公关部部长 · 中国澳门特别行政区
+        period: 2019.09 – 2021.12
+  - title: Skills
+    title_zh: 技能
+    entries:
+      - heading: Languages
+        heading_zh: 语言
+        description: Mandarin (native) · English (TOEFL 104) · Cantonese (basic)
+        description_zh: 普通话（母语）· 英语（TOEFL 104）· 粤语（基础交流）
+      - heading: Research & computing
+        heading_zh: 研究与计算机
+        description: Python · R · SPSS · Matlab · Excel · PowerPoint · Word · Photoshop · CapCut
+        description_zh: Python · R · SPSS · Matlab · Excel · PowerPoint · Word · Photoshop · 剪映
+      - heading: Interests
+        heading_zh: 兴趣爱好
+        description: Music, film, photography, food, piano, Chinese painting
+        description_zh: 音乐、电影、摄影、美食、钢琴、国画

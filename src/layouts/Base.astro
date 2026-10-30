@@ -1,0 +1,116 @@
+---
+import '../styles/global.css';
+import { getEntry } from 'astro:content';
+import { htmlLang, otherLang, pick, t, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  /** Page path without the language prefix, e.g. "" for home or "publications/". */
+  path: string;
+  title?: string;
+  description?: string;
+}
+
+const { lang, path, title, description } = Astro.props;
+const profile = (await getEntry('profile', 'profile'))!.data;
+const name = pick(lang, profile.name, profile.name_zh);
+const pageTitle = title ? `${title} · ${name}` : `${name} · ${pick(lang, profile.position, profile.position_zh)}`;
+const metaDescription =
+  description ??
+  `${pick(lang, profile.position, profile.position_zh)}, ${pick(lang, profile.department, profile.department_zh)}, ${pick(
+    lang,
+    profile.university,
+    profile.university_zh,
+  )}.`;
+const site = Astro.site!;
+const canonical = new URL(`/${lang}/${path}`, site).href;
+const alternate = new URL(`/${otherLang(lang)}/${path}`, site).href;
+
+const nav = [
+  { href: `/${lang}/`, label: t(lang, 'home'), key: '' },
+  { href: `/${lang}/publications/`, label: t(lang, 'publications'), key: 'publications/' },
+  { href: `/${lang}/cv/`, label: t(lang, 'cv'), key: 'cv/' },
+  { href: `/${lang}/life/`, label: t(lang, 'life'), key: 'life/' },
+];
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  alternateName: profile.preferred_name,
+  jobTitle: profile.position,
+  affiliation: { '@type': 'CollegeOrUniversity', name: profile.university },
+  email: profile.email ? `mailto:${profile.email}` : undefined,
+  url: new URL('/en/', site).href,
+  sameAs: [profile.scholar, profile.orcid, profile.linkedin, profile.github, profile.researchgate].filter(Boolean),
+};
+const builtAt = new Date();
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={htmlLang[lang]} href={canonical} />
+    <link rel="alternate" hreflang={htmlLang[otherLang(lang)]} href={alternate} />
+    <link rel="alternate" hreflang="x-default" href={new URL(`/en/${path}`, site).href} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#fbf8f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14120f" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/icon-512.png', site).href} />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{lang === 'zh' ? '跳到正文' : 'Skip to content'}</a>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href={`/${lang}/`}>
+          <img class="brand-mark" src="/apple-touch-icon.png" alt="" width="30" height="30" />
+          <span class="brand-name">{name}</span>
+        </a>
+        <nav class="nav" aria-label={lang === 'zh' ? '主导航' : 'Main'}>
+          {
+            nav.map((item) => (
+              <a href={item.href} aria-current={item.key === path ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+          <a
+            class="lang-switch"
+            href={`/${otherLang(lang)}/${path}`}
+            hreflang={htmlLang[otherLang(lang)]}
+            lang={htmlLang[otherLang(lang)]}
+            title={t(lang, 'switchLabel')}
+            aria-label={t(lang, 'switchLabel')}
+          >
+            {t(lang, 'switchTo')}
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© {builtAt.getFullYear()} {profile.name}</span>
+        <span>
+          {t(lang, 'lastUpdated')}{lang === 'zh' ? '：' : ': '}<time datetime={builtAt.toISOString().slice(0, 10)}>{builtAt.toISOString().slice(0, 10)}</time>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

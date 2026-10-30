@@ -1,0 +1,261 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Authors from './Authors.astro';
+import Icon from './Icon.astro';
+import { apaCitation, bibtex, doiUrl } from '../lib/format';
+import { t, type Lang } from '../lib/i18n';
+
+interface Props {
+  entry: CollectionEntry<'publications'>;
+  lang: Lang;
+  highlight: string;
+  compact?: boolean;
+}
+
+const { entry, lang, highlight, compact = false } = Astro.props;
+const p = entry.data;
+const id = `pub-${entry.id.replace(/[^a-z0-9-]/gi, '-')}`;
+const link = p.url ?? doiUrl(p.doi);
+const apa = apaCitation(p);
+const bib = bibtex(p, entry.id);
+const statusLabel =
+  p.status === 'in-press' ? t(lang, 'inPress') : p.status === 'under-review' ? t(lang, 'underReview') : undefined;
+---
+
+<article class:list={['pub', { 'has-figure': p.figure && !compact }]} id={id}>
+  {
+    p.figure && !compact && (
+      <a class="pub-figure" href={link ?? `#${id}`} tabindex="-1" aria-hidden="true">
+        <Image src={p.figure} alt="" widths={[240, 480]} sizes="(min-width: 48rem) 200px, 100vw" />
+      </a>
+    )
+  }
+  <div class="pub-body">
+    <h3 class="pub-title">
+      {link ? <a href={link}>{p.title}</a> : p.title}
+    </h3>
+    <p class="pub-authors"><Authors authors={p.authors} highlight={highlight} /></p>
+    <p class="pub-venue">
+      <span><em>{p.venue}</em>{[p.volume && `${p.volume}${p.issue ? `(${p.issue})` : ''}`, p.pages].filter(Boolean).map((s) => `, ${s}`).join('')}</span>
+      <span class="pub-year">· {p.year}</span>
+      {statusLabel && <span class="chip">{statusLabel}</span>}
+      {p.badge && <span class="chip">{p.badge}</span>}
+    </p>
+
+    <div class="pub-actions">
+      {
+        link && (
+          <a class="btn" href={link}>
+            <Icon name="external" />
+            {t(lang, 'paper')}
+          </a>
+        )
+      }
+      {
+        p.pdf && (
+          <a class="btn" href={p.pdf}>
+            <Icon name="file" />
+            {t(lang, 'pdf')}
+          </a>
+        )
+      }
+      {
+        p.abstract && (
+          <button class="btn" type="button" aria-expanded="false" aria-controls={`${id}-abstract`} data-toggle>
+            <Icon name="text" />
+            {t(lang, 'abstract')}
+          </button>
+        )
+      }
+      <button class="btn" type="button" aria-expanded="false" aria-controls={`${id}-cite`} data-toggle>
+        <Icon name="quote" />
+        {t(lang, 'cite')}
+      </button>
+    </div>
+
+    {
+      p.abstract && (
+        <div class="pub-panel" id={`${id}-abstract`} hidden>
+          <p>{p.abstract}</p>
+          {p.keywords.length > 0 && (
+            <p class="pub-keywords">
+              <span>{t(lang, 'keywords')}:</span> {p.keywords.join(' · ')}
+            </p>
+          )}
+        </div>
+      )
+    }
+    <div class="pub-panel pub-cite" id={`${id}-cite`} hidden>
+      <div class="cite-block">
+        <p class="cite-label">APA</p>
+        <p class="cite-text">{apa}</p>
+        <button class="btn copy" type="button" data-copy={apa} data-done={t(lang, 'copied')}>{t(lang, 'copy')}</button>
+      </div>
+      <div class="cite-block">
+        <p class="cite-label">BibTeX</p>
+        <pre class="cite-text">{bib}</pre>
+        <button class="btn copy" type="button" data-copy={bib} data-done={t(lang, 'copied')}>{t(lang, 'copy')}</button>
+      </div>
+    </div>
+  </div>
+</article>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const toggle = target.closest<HTMLButtonElement>('[data-toggle]');
+    if (toggle) {
+      const panel = document.getElementById(toggle.getAttribute('aria-controls')!);
+      if (!panel) return;
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+      return;
+    }
+    const copy = target.closest<HTMLButtonElement>('[data-copy]');
+    if (copy) {
+      const label = copy.textContent;
+      navigator.clipboard?.writeText(copy.dataset.copy ?? '').then(() => {
+        copy.textContent = copy.dataset.done ?? '✓';
+        setTimeout(() => (copy.textContent = label), 1600);
+      });
+    }
+  });
+</script>
+
+<style>
+  .pub {
+    display: grid;
+    gap: 1.5rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .pub:first-child {
+    border-top: 0;
+    padding-top: 0.25rem;
+  }
+  @media (min-width: 48rem) {
+    .pub.has-figure {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+  .pub-figure {
+    display: block;
+    align-self: start;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 0.5rem;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .pub-figure:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+  }
+  .pub-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @media (max-width: 47.99rem) {
+    .pub-figure {
+      display: none;
+    }
+  }
+  .pub-title {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+  .pub-title a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .pub-title a:hover {
+    color: var(--accent);
+  }
+  .pub-authors,
+  .pub-venue {
+    margin: 0.35rem 0 0;
+    font-size: 1rem;
+  }
+  .pub-venue {
+    color: var(--ink-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.1rem 0.5rem;
+  }
+  .pub-venue em {
+    color: var(--ink);
+  }
+  .pub-year {
+    color: var(--muted);
+  }
+  .pub-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+  .pub-panel {
+    margin-top: 1rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--paper-2);
+    border-radius: 8px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .pub-panel p:last-child {
+    margin-bottom: 0;
+  }
+  .pub-keywords {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .pub-keywords span {
+    font-weight: 600;
+  }
+  .pub-cite {
+    display: grid;
+    gap: 1rem;
+  }
+  .pub-cite[hidden] {
+    display: none;
+  }
+  .cite-block {
+    position: relative;
+  }
+  .cite-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.3rem;
+  }
+  .cite-text {
+    margin: 0;
+    padding-right: 4.5rem;
+  }
+  pre.cite-text {
+    font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.72rem;
+  }
+</style>

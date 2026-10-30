@@ -1,0 +1,38 @@
+---
+import { splitAuthor } from '../lib/format';
+
+interface Props {
+  authors: string[];
+  highlight: string;
+}
+const { authors, highlight } = Astro.props;
+const list = authors.map(splitAuthor);
+---
+
+<span class="authors">
+  {
+    list.map((a, i) => (
+      <>
+        {a.name === highlight ? <strong class="me">{a.name}</strong> : <span>{a.name}</span>}
+        {a.marks && <sup>{a.marks}</sup>}
+        {i < list.length - 1 && ', '}
+      </>
+    ))
+  }
+</span>
+
+<style>
+  .authors {
+    color: var(--ink-2);
+  }
+  .me {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  sup {
+    font-family: var(--sans);
+    font-size: 0.65em;
+    margin-left: 0.05em;
+    color: var(--muted);
+  }
+</style>

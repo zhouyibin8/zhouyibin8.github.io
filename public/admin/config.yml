@@ -1,0 +1,272 @@
+# Sveltia CMS configuration — the editor at https://zhouyibin8.github.io/admin/
+# Every save commits to the main branch; GitHub Actions then rebuilds the site (about 1–2 minutes).
+# Field names must match the schemas in src/content.config.ts.
+
+backend:
+  name: github
+  repo: zhouyibin8/zhouyibin8.github.io
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+site_url: https://zhouyibin8.github.io/en/
+display_url: https://zhouyibin8.github.io/en/
+logo:
+  src: /apple-touch-icon.png
+
+# PDFs and other downloads. Images used on pages go to src/assets so Astro can optimise them.
+media_folder: /public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  maxlength: 60
+
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  # ---------------------------------------------------------------- Profile & CV
+  - name: settings
+    label: Profile & CV · 个人信息与简历
+    icon: person
+    files:
+      - name: profile
+        label: Profile · 个人信息
+        file: src/content/settings/profile.yml
+        media_folder: /src/assets/profile
+        public_folder: /src/assets/profile
+        fields:
+          - { name: name, label: Name (English) }
+          - { name: name_zh, label: 中文姓名, required: false, hint: Shown on the Chinese site. Leave empty to show the English name. }
+          - { name: preferred_name, label: Preferred name, required: false, hint: 'Shown as "(Berry)" next to your name.' }
+          - { name: highlight_author, label: Your name as it appears in author lists, hint: Bolded in every publication and talk. }
+          - { name: position, label: Position }
+          - { name: position_zh, label: 职位（中文）, required: false }
+          - { name: department, label: Department }
+          - { name: department_zh, label: 院系（中文）, required: false }
+          - { name: university, label: University }
+          - { name: university_zh, label: 学校（中文）, required: false }
+          - { name: location, label: Location, required: false }
+          - { name: location_zh, label: 所在地（中文）, required: false }
+          - { name: photo, label: Photo · 照片, widget: image, required: false, hint: A portrait works best (it is cropped to 4:5). }
+          - { name: email, label: Email, required: false }
+          - { name: scholar, label: Google Scholar URL, required: false }
+          - { name: orcid, label: ORCID URL, required: false }
+          - { name: linkedin, label: LinkedIn URL, required: false }
+          - { name: github, label: GitHub URL, required: false }
+          - { name: researchgate, label: ResearchGate URL, required: false }
+          - name: cv_pdf
+            label: CV (PDF) · 简历 PDF
+            widget: file
+            required: false
+            media_folder: /public/uploads
+            public_folder: /uploads
+            hint: Adds a "Download CV" button to the home and CV pages.
+          - { name: tagline, label: Tagline, required: false, hint: One short line under your affiliation. }
+          - { name: tagline_zh, label: 一句话简介（中文）, required: false }
+          - { name: bio, label: Biography, widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - { name: bio_zh, label: 个人简介（中文）, widget: markdown, required: false, buttons: [bold, italic, link], editor_components: [], modes: [rich_text] }
+          - name: interests
+            label: Research interests · 研究兴趣
+            widget: list
+            required: false
+            summary: '{{fields.en}} · {{fields.zh}}'
+            fields:
+              - { name: en, label: English }
+              - { name: zh, label: 中文, required: false }
+          - { name: home_news_count, label: Number of news items on the home page, widget: number, value_type: int, default: 6, min: 0, max: 30 }
+
+      - name: cv
+        label: CV · 简历
+        file: src/content/settings/cv.yml
+        media_folder: /src/assets/cv
+        public_folder: /src/assets/cv
+        fields:
+          - name: sections
+            label: Sections · 板块
+            label_singular: Section
+            widget: list
+            summary: '{{fields.title}} · {{fields.title_zh}}'
+            collapsed: true
+            fields:
+              - { name: title, label: Section title, hint: 'e.g. Education, Awards, Grants' }
+              - { name: title_zh, label: 板块标题（中文）, required: false }
+              - name: entries
+                label: Entries · 条目
+                label_singular: Entry
+                widget: list
+                summary: '{{fields.period}} · {{fields.heading}}'
+                collapsed: true
+                fields:
+                  - { name: heading, label: Heading, hint: 'Degree, job title, award name, …' }
+                  - { name: heading_zh, label: 标题（中文）, required: false }
+                  - { name: subheading, label: Subheading, required: false, hint: Institution · place }
+                  - { name: subheading_zh, label: 副标题（中文）, required: false }
+                  - { name: period, label: Period, required: false, hint: 'e.g. 2023.09 – 2024.06' }
+                  - { name: period_zh, label: 时间（中文）, required: false, hint: Only needed if it differs from the English. }
+                  - { name: logo, label: Logo, widget: image, required: false }
+                  - { name: description, label: Description, widget: text, required: false }
+                  - { name: description_zh, label: 描述（中文）, widget: text, required: false }
+                  - name: links
+                    label: Links · 链接
+                    label_singular: Link
+                    widget: list
+                    required: false
+                    summary: '{{fields.label}}'
+                    fields:
+                      - { name: label, label: Label }
+                      - { name: label_zh, label: 链接文字（中文）, required: false }
+                      - { name: url, label: URL }
+
+  # ---------------------------------------------------------------- News
+  - name: news
+    label: News · 动态
+    label_singular: News item
+    icon: campaign
+    folder: src/content/news
+    extension: yml
+    format: yml
+    create: true
+    identifier_field: text
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{date}} · {{text}}'
+    sortable_fields: { fields: [date], default: { field: date, direction: descending } }
+    fields:
+      - { name: date, label: Date · 日期, widget: datetime, type: date }
+      - { name: text, label: Text (English), widget: markdown, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], minimal: true }
+      - { name: text_zh, label: 内容（中文）, widget: markdown, required: false, buttons: [bold, italic, link], editor_components: [], modes: [rich_text], minimal: true }
+
+  # ---------------------------------------------------------------- Publications
+  - name: publications
+    label: Publications · 论文
+    label_singular: Publication
+    icon: article
+    folder: src/content/publications
+    extension: yml
+    format: yml
+    create: true
+    media_folder: /src/assets/publications
+    public_folder: /src/assets/publications
+    slug: '{{fields.year}}-{{slug}}'
+    summary: '{{year}} · {{title}}'
+    sortable_fields: { fields: [year, title], default: { field: year, direction: descending } }
+    fields:
+      - { name: title, label: Title }
+      - name: authors
+        label: Authors · 作者
+        widget: list
+        field: { name: author, label: Author }
+        hint: 'In order. Add # after a name for corresponding author, e.g. "Menglong Xia#".'
+      - { name: year, label: Year, widget: number, value_type: int, min: 1990, max: 2100 }
+      - name: status
+        label: Status · 状态
+        widget: select
+        default: published
+        options:
+          - { label: Published, value: published }
+          - { label: In press, value: in-press }
+          - { label: Under review, value: under-review }
+          - { label: Working paper, value: working-paper }
+      - { name: venue, label: Journal / venue, hint: 'For working papers, write e.g. "Working paper" or a target journal.' }
+      - { name: volume, label: Volume, required: false }
+      - { name: issue, label: Issue, required: false }
+      - { name: pages, label: Pages / article number, required: false }
+      - { name: doi, label: DOI, required: false, hint: 'Just the DOI, e.g. 10.1002/jtr.70152' }
+      - { name: url, label: Paper link, required: false, hint: 'Publisher page. If empty, the DOI link is used.' }
+      - name: pdf
+        label: PDF
+        widget: file
+        required: false
+        media_folder: /public/uploads/papers
+        public_folder: /uploads/papers
+        hint: Only upload a PDF you are allowed to share (e.g. an accepted manuscript).
+      - { name: badge, label: Badge, required: false, hint: 'Short label, e.g. "SSCI Q1 · IF 8.0"' }
+      - { name: keywords, label: Keywords, widget: list, required: false, field: { name: keyword, label: Keyword } }
+      - { name: abstract, label: Abstract, widget: text, required: false }
+      - { name: figure, label: Figure / graphical abstract, widget: image, required: false }
+      - { name: citation, label: Citation (APA), widget: text, required: false, hint: Leave empty to generate it automatically. }
+      - { name: selected, label: Show on home page (selected), widget: boolean, default: false }
+
+  # ---------------------------------------------------------------- Talks
+  - name: talks
+    label: Presentations · 学术会议
+    label_singular: Presentation
+    icon: podium
+    folder: src/content/talks
+    extension: yml
+    format: yml
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{date}} · {{title}}'
+    sortable_fields: { fields: [date, title], default: { field: date, direction: descending } }
+    fields:
+      - { name: title, label: Title }
+      - name: authors
+        label: Authors · 作者
+        widget: list
+        field: { name: author, label: Author }
+      - name: kind
+        label: Type · 类型
+        widget: select
+        default: presentation
+        options:
+          - { label: Conference presentation, value: presentation }
+          - { label: Invited talk, value: invited }
+          - { label: Poster, value: poster }
+          - { label: Panel, value: panel }
+      - { name: event, label: Conference / event }
+      - { name: date, label: Date (first day) · 日期, widget: datetime, type: date }
+      - { name: date_text, label: Date as displayed, required: false, hint: 'Optional, e.g. "18–19 May 2026"' }
+      - { name: location, label: Location, required: false }
+      - { name: url, label: Link, required: false }
+
+  # ---------------------------------------------------------------- Life
+  - name: travel
+    label: Travel · 旅行
+    label_singular: Place
+    icon: travel_explore
+    folder: src/content/travel
+    extension: yml
+    format: yml
+    create: true
+    media_folder: /src/assets/travel
+    public_folder: /src/assets/travel
+    identifier_field: place
+    slug: '{{slug}}'
+    summary: '{{date}} · {{place}} · {{place_zh}}'
+    sortable_fields: { fields: [date, place], default: { field: date, direction: descending } }
+    thumbnail: photo
+    fields:
+      - { name: place, label: Place (English) }
+      - { name: place_zh, label: 地点（中文）, required: false }
+      - { name: region, label: Country / region, required: false }
+      - { name: region_zh, label: 国家 / 地区（中文）, required: false }
+      - { name: date, label: Date · 时间, pattern: ['^\d{4}(\.\d{1,2})?(\s*[-–]\s*\d{4}(\.\d{1,2})?)?$', 'Use 2024.12, 2024, or 2019-2023'] }
+      - { name: photo, label: Photo · 照片, widget: image, hint: Any size; the site resizes it automatically. }
+
+  - name: shows
+    label: Shows · 演出
+    label_singular: Show
+    icon: music_note
+    folder: src/content/shows
+    extension: yml
+    format: yml
+    create: true
+    media_folder: /src/assets/shows
+    public_folder: /src/assets/shows
+    identifier_field: name
+    slug: '{{slug}}-{{uuid_shorter}}'
+    summary: '{{date}} · {{name}} · {{name_zh}}'
+    sortable_fields: { fields: [date, name], default: { field: date, direction: descending } }
+    thumbnail: photo
+    fields:
+      - { name: name, label: Artist / show (English) }
+      - { name: name_zh, label: 名称（中文）, required: false }
+      - { name: date, label: Date · 时间, pattern: ['^\d{4}(\.\d{1,2})?(\s*[-–]\s*\d{4}(\.\d{1,2})?)?$', 'Use 2024.12 or 2024'] }
+      - { name: photo, label: Photo · 照片, widget: image, hint: Any size; the site resizes it automatically. }

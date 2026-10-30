@@ -1,0 +1,40 @@
+name: Yibin Zhou
+name_zh: ""
+preferred_name: Berry
+highlight_author: Yibin Berry Zhou
+position: PhD Student
+position_zh: 博士研究生
+department: School of Hotel and Tourism Management
+department_zh: 酒店及旅游业管理学院
+university: The Hong Kong Polytechnic University
+university_zh: 香港理工大学
+location: Hong Kong
+location_zh: 中国香港
+photo: /src/assets/profile/portrait.jpg
+email: yibin.zhou@connect.polyu.hk
+scholar: https://scholar.google.com/citations?user=h90S_yIAAAAJ
+orcid: https://orcid.org/0009-0008-5700-0331
+linkedin: https://www.linkedin.com/in/yibinzhou
+github: https://github.com/zhouyibin8
+researchgate: ""
+cv_pdf: ""
+tagline: Tourism, data, and the stories people tell about places.
+tagline_zh: 旅游、数据，以及人们讲述地方的方式。
+bio: |-
+  I am a PhD student at the School of Hotel and Tourism Management, The Hong Kong Polytechnic University, supervised by [Dr. Jason Chen Zhang](https://scholar.google.com/citations?user=U6-ouN0AAAAJ). My research focuses on **AI in tourism**, **social media**, **destination marketing**, and **visually impaired tourists**, integrating computer science, econometrics, and interdisciplinary perspectives to understand tourism and social phenomena.
+
+  Before PolyU, I earned an M.S. in Learning Analytics from Columbia University and a bachelor's degree in International Tourism Management from Macau University of Science and Technology. Along the way I worked on strategy and research projects at Wynn Palace, Savills, and Vanke.
+bio_zh: |-
+  我是香港理工大学酒店及旅游业管理学院的博士研究生，导师为 [Jason Chen Zhang 博士](https://scholar.google.com/citations?user=U6-ouN0AAAAJ)。我的研究聚焦于**旅游人工智能**、**社交媒体**、**目的地营销**与**视障游客**，并尝试结合计算机科学、计量经济学与跨学科视角理解旅游与社会现象。
+
+  此前，我在哥伦比亚大学获得学习分析理学硕士学位，在澳门科技大学获得国际旅游管理学士学位，并曾在永利皇宫、第一太平戴维斯（Savills）和万科参与战略与研究工作。
+interests:
+  - en: AI in Tourism
+    zh: 旅游人工智能
+  - en: Social Media
+    zh: 社交媒体
+  - en: Destination Marketing
+    zh: 目的地营销
+  - en: Visually Impaired Tourists
+    zh: 视障游客
+home_news_count: 6
