@@ -4,7 +4,7 @@ import { Image, getImage } from 'astro:assets';
 import Authors from './Authors.astro';
 import Icon from './Icon.astro';
 import { apaCitation, bibtex, doiUrl } from '../lib/format';
-import { t, type Lang } from '../lib/i18n';
+import { pick, t, type Lang } from '../lib/i18n';
 
 interface Props {
   entry: CollectionEntry<'publications'>;
@@ -19,6 +19,7 @@ const id = `pub-${entry.id.replace(/[^a-z0-9-]/gi, '-')}`;
 const link = p.url ?? doiUrl(p.doi);
 const apa = apaCitation(p);
 const bib = bibtex(p, entry.id);
+const badge = p.badge ? pick(lang, p.badge, p.badge_zh) : p.badge_zh;
 const figureFull =
   p.figure && !compact ? (await getImage({ src: p.figure, width: Math.min(1600, p.figure.width), format: 'webp' })).src : undefined;
 const statusLabel =
@@ -50,7 +51,7 @@ const statusLabel =
       </span>
       <span class="pub-year">· {p.year}</span>
       {statusLabel && <span class="chip">{statusLabel}</span>}
-      {p.badge && <span class="chip">{p.badge}</span>}
+      {badge && <span class="chip">{badge}</span>}
     </p>
 
     <div class="pub-actions">

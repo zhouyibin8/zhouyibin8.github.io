@@ -106,6 +106,7 @@ const publications = defineCollection({
       url: text(),
       pdf: text(),
       badge: text(),
+      badge_zh: text(),
       keywords: list(z.string()),
       abstract: text(),
       figure: optImage(image),

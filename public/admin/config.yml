@@ -197,6 +197,7 @@ collections:
         public_folder: /uploads/papers
         hint: Only upload a PDF you are allowed to share (e.g. an accepted manuscript).
       - { name: badge, label: Badge, required: false, hint: 'Short label, e.g. "SSCI Q1 · IF 8.0"' }
+      - { name: badge_zh, label: 标签（中文）, required: false, hint: '只在中文页显示，例如“SSCI · JCR Q1 · 中科院一区Top · IF 8.0”。留空则显示英文标签。' }
       - { name: keywords, label: Keywords, widget: list, required: false, field: { name: keyword, label: Keyword } }
       - { name: abstract, label: Abstract, widget: text, required: false }
       - { name: figure, label: Figure / graphical abstract, widget: image, required: false }
