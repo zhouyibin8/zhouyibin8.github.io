@@ -6,10 +6,8 @@ sections:
         heading_zh: 酒店及旅游技术管理 哲学博士
         subheading: |-
           School of Hotel and Tourism Management (SHTM)
-          The Hong Kong Polytechnic University · Hong Kong SAR
-        subheading_zh: |-
-          香港理工大学 酒店及旅游业管理学院（SHTM）
-          中国香港特别行政区
+          The Hong Kong Polytechnic University
+        subheading_zh: 香港理工大学 酒店及旅游业管理学院（SHTM）
         period: 2025.06 – 2028.06 (expected)
         period_zh: 2025.06 – 2028.06（预计）
         logo: /src/assets/cv/polyu.png
@@ -27,10 +25,8 @@ sections:
         heading_zh: 学习分析 理学硕士（STEM）
         subheading: |-
           Department of Human Development
-          Columbia University · New York, NY
-        subheading_zh: |-
-          哥伦比亚大学 人类发展系
-          美国纽约
+          Columbia University
+        subheading_zh: 哥伦比亚大学 人类发展系
         period: 2023.08 – 2024.10
         logo: /src/assets/cv/columbia.png
         description: Supervised by Renzhe Yu
@@ -42,11 +38,9 @@ sections:
       - heading: Bachelor of International Tourism Management
         heading_zh: 国际旅游管理 学士
         subheading: |-
-          Faculty of Hospitality and Tourism Management (FHTM)
-          Macau University of Science and Technology · Macau SAR
-        subheading_zh: |-
-          澳门科技大学 酒店与旅游管理学院（FHTM）
-          中国澳门特别行政区
+          Faculty of Hospitality and Tourism Management
+          Macau University of Science and Technology
+        subheading_zh: 澳门科技大学 酒店与旅游管理学院
         period: 2019.09 – 2023.06
         logo: /src/assets/cv/must.png
         description: First Class Honours · Dean's Honour List, MUST-FHTM (academic years 2021 and 2022)
