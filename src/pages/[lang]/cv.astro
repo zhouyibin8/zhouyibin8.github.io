@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import { getCv, getProfile } from '../../lib/data';
 import { mdLines } from '../../lib/format';
 import { langPaths, pick, t, type Lang } from '../../lib/i18n';
@@ -12,6 +13,7 @@ const lang = Astro.params.lang as Lang;
 const profile = await getProfile();
 const sections = await getCv();
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const navItems = sections.map((s) => ({ id: slug(s.title), label: pick(lang, s.title, s.title_zh) }));
 ---
 
 <Base lang={lang} path="cv/" title={t(lang, 'cv')}>
@@ -29,42 +31,71 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     }
   </header>
 
-  {
-    sections.map((s) => (
-      <section class="section cv-section" id={slug(s.title)}>
-        <h2 class="section-title">{pick(lang, s.title, s.title_zh)}</h2>
-        <ol class="entries" role="list">
-          {s.entries.map((e) => (
-            <li class="cv-item entry">
-              <p class="cv-period">{pick(lang, e.period ?? '', e.period_zh)}</p>
-              <div class:list={['cv-main', { 'with-logo': e.logo }]}>
-                {e.logo && (
-                  <Image class="cv-logo" src={e.logo} alt="" width={96} height={96} widths={[48, 96]} sizes="48px" />
-                )}
-                <div>
-                  <h3 class="cv-heading">{pick(lang, e.heading, e.heading_zh)}</h3>
-                  {e.subheading && <p class="cv-sub" set:html={mdLines(pick(lang, e.subheading, e.subheading_zh))} />}
-                  {e.description && (
-                    <p class="cv-desc" set:html={mdLines(pick(lang, e.description, e.description_zh))} />
-                  )}
-                  {e.links.length > 0 && (
-                    <p class="cv-links">
-                      {e.links.map((l) => (
-                        <a href={l.url}>
-                          {pick(lang, l.label, l.label_zh)}
-                          <Icon name="external" />
-                        </a>
-                      ))}
-                    </p>
-                  )}
+  <SectionNav items={navItems} label={t(lang, 'onThisPage')}>
+    {
+      sections.map((s) => (
+        <section class="section cv-section" id={slug(s.title)}>
+          <h2 class="section-title">{pick(lang, s.title, s.title_zh)}</h2>
+          {s.entries.every((e) => !e.period) ? (
+            // Undated sections (e.g. Skills) read as one card of label → details rows.
+            <dl class="entry cv-facts">
+              {s.entries.map((e) => (
+                <div class="cv-fact">
+                  <dt>{pick(lang, e.heading, e.heading_zh)}</dt>
+                  <dd>
+                    {e.subheading && <p class="cv-sub" set:html={mdLines(pick(lang, e.subheading, e.subheading_zh))} />}
+                    {e.description && (
+                      <p class="cv-desc" set:html={mdLines(pick(lang, e.description, e.description_zh))} />
+                    )}
+                    {e.links.length > 0 && (
+                      <p class="cv-links">
+                        {e.links.map((l) => (
+                          <a href={l.url}>
+                            {pick(lang, l.label, l.label_zh)}
+                            <Icon name="external" />
+                          </a>
+                        ))}
+                      </p>
+                    )}
+                  </dd>
                 </div>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-    ))
-  }
+              ))}
+            </dl>
+          ) : (
+            <ol class="entries" role="list">
+              {s.entries.map((e) => (
+                <li class="cv-item entry">
+                  <p class="cv-period">{pick(lang, e.period ?? '', e.period_zh)}</p>
+                  <div class:list={['cv-main', { 'with-logo': e.logo }]}>
+                    {e.logo && (
+                      <Image class="cv-logo" src={e.logo} alt="" width={96} height={96} widths={[48, 96]} sizes="48px" />
+                    )}
+                    <div>
+                      <h3 class="cv-heading">{pick(lang, e.heading, e.heading_zh)}</h3>
+                      {e.subheading && <p class="cv-sub" set:html={mdLines(pick(lang, e.subheading, e.subheading_zh))} />}
+                      {e.description && (
+                        <p class="cv-desc" set:html={mdLines(pick(lang, e.description, e.description_zh))} />
+                      )}
+                      {e.links.length > 0 && (
+                        <p class="cv-links">
+                          {e.links.map((l) => (
+                            <a href={l.url}>
+                              {pick(lang, l.label, l.label_zh)}
+                              <Icon name="external" />
+                            </a>
+                          ))}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
+      ))
+    }
+  </SectionNav>
 </Base>
 
 <style>
@@ -76,6 +107,37 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     .cv-item {
       grid-template-columns: 11rem 1fr;
     }
+  }
+  .cv-facts {
+    margin: 0;
+  }
+  .cv-fact {
+    display: grid;
+    gap: 0.2rem 2rem;
+  }
+  .cv-fact + .cv-fact {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media (min-width: 48rem) {
+    .cv-fact {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+  .cv-fact dt {
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding-top: 0.15rem;
+  }
+  .cv-fact dd {
+    margin: 0;
+  }
+  .cv-fact .cv-sub:first-child,
+  .cv-fact .cv-desc:first-child {
+    margin-top: 0;
   }
   .cv-period {
     margin: 0;

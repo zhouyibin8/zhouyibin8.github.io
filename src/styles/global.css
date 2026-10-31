@@ -183,7 +183,8 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  /* Room for the sticky header (and the section pills where a page has them) when jumping to a section. */
+  scroll-padding-top: calc(var(--header-h, 4.25rem) + var(--toc-h, 0px) + 1.25rem);
   background: var(--bg);
 }
 

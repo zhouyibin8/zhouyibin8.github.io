@@ -1,0 +1,213 @@
+---
+interface Props {
+  /** One link per section on the page: the section's id, its title and an optional count. */
+  items: { id: string; label: string; count?: number }[];
+  label: string;
+}
+const { items, label } = Astro.props;
+---
+
+<!--
+  Page contents for long pages. Where there is room it is a sticky list beside the content;
+  on narrower screens it becomes a sticky row of pills under the header. The section you are
+  reading is highlighted either way.
+-->
+<div class="toc-wrap">
+  <div class="toc-layout">
+    <nav class="toc" aria-label={label}>
+      <p class="toc-title">{label}</p>
+      <ol role="list">
+        {
+          items.map((i) => (
+            <li>
+              <a href={`#${i.id}`} data-toc={i.id}>
+                <span>{i.label}</span>
+                {i.count !== undefined && <span class="toc-count">{i.count}</span>}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <div class="toc-content">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const header = document.querySelector<HTMLElement>('.site-header');
+  const nav = document.querySelector<HTMLElement>('.toc');
+  const list = nav?.querySelector<HTMLElement>('ol');
+  const links = [...(nav?.querySelectorAll<HTMLAnchorElement>('a[data-toc]') ?? [])];
+  const sections = links.map((a) => document.getElementById(a.dataset.toc!)).filter((s) => s !== null);
+  let horizontal = false;
+  let current = '';
+
+  // The header and (on narrow screens) the pill row cover the top of the page, so in-page
+  // jumps and the highlight both account for their heights.
+  function measure() {
+    if (!nav || !list) return;
+    horizontal = getComputedStyle(list).flexDirection === 'row';
+    root.style.setProperty('--header-h', `${header?.offsetHeight ?? 68}px`);
+    root.style.setProperty('--toc-h', horizontal ? `${nav.offsetHeight}px` : '0px');
+  }
+
+  function highlight() {
+    const offset = (header?.offsetHeight ?? 68) + (horizontal ? nav!.offsetHeight : 0) + 32;
+    const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    let active = sections[0]?.id ?? '';
+    for (const s of sections) if (s.getBoundingClientRect().top - offset <= 0) active = s.id;
+    if (atBottom && sections.length) active = sections[sections.length - 1].id;
+    if (active === current) return;
+    current = active;
+    for (const a of links) {
+      const on = a.dataset.toc === active;
+      if (on) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+      if (on && horizontal && list) list.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+    }
+  }
+
+  let queued = false;
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      highlight();
+    });
+  };
+
+  measure();
+  highlight();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    measure();
+    current = '';
+    highlight();
+  });
+</script>
+
+<style>
+  .toc-wrap {
+    container-type: inline-size;
+  }
+
+  /* Narrow: a sticky row of pills under the header. */
+  .toc {
+    position: sticky;
+    top: var(--header-h, 4.25rem);
+    z-index: 40;
+    margin: 0 calc(-1 * var(--gutter)) 1.75rem;
+    padding: 0.65rem var(--gutter);
+    background: var(--bg);
+    border-bottom: 1px solid var(--header-border);
+  }
+  .toc-title {
+    display: none;
+  }
+  .toc ol {
+    display: flex;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc ol::-webkit-scrollbar {
+    display: none;
+  }
+  .toc a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.38rem 0.85rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.84rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      color 0.15s,
+      background-color 0.15s,
+      border-color 0.15s;
+  }
+  .toc a:hover {
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+  .toc a[aria-current='true'] {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: transparent;
+    font-weight: 600;
+  }
+  .toc-count {
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Wide: a sticky contents list beside the sections. */
+  @container (min-width: 60rem) {
+    .toc-layout {
+      display: grid;
+      grid-template-columns: 12rem minmax(0, 1fr);
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .toc {
+      top: calc(var(--header-h, 4.25rem) + 2rem);
+      margin: 0;
+      padding: 0;
+      background: none;
+      border: 0;
+    }
+    .toc-title {
+      display: block;
+      margin: 0 0 0.75rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .toc ol {
+      flex-direction: column;
+      gap: 0;
+      overflow: visible;
+      border-left: 1px solid var(--rule);
+    }
+    .toc a {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-left: -1px;
+      padding: 0.42rem 0 0.42rem 1rem;
+      border: 0;
+      border-left: 2px solid transparent;
+      border-radius: 0;
+      font-size: 0.88rem;
+      white-space: normal;
+      line-height: 1.4;
+    }
+    .toc a:hover {
+      border-left-color: var(--muted);
+    }
+    .toc a[aria-current='true'] {
+      background: none;
+      border-left-color: var(--accent);
+    }
+  }
+
+  .toc-content > :global(:first-child) {
+    margin-top: 0;
+  }
+</style>

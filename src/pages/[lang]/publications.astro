@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Authors from '../../components/Authors.astro';
 import Icon from '../../components/Icon.astro';
 import PubEntry from '../../components/PubEntry.astro';
+import SectionNav from '../../components/SectionNav.astro';
 import { getProfile, getPublications, getTalks } from '../../lib/data';
 import { fullDate } from '../../lib/format';
 import { langPaths, t, type Lang } from '../../lib/i18n';
@@ -23,6 +24,10 @@ const groups = [
 const hasCorresponding = [...pubs.flatMap((p) => p.data.authors), ...talks.flatMap((x) => x.data.authors)].some((a) =>
   a.trim().endsWith('#'),
 );
+const navItems = [
+  ...groups.map((g) => ({ id: g.key, label: g.title, count: g.items.length })),
+  ...(talks.length > 0 ? [{ id: 'presentations', label: t(lang, 'presentations'), count: talks.length }] : []),
+];
 const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'invited'), poster: t(lang, 'poster'), panel: t(lang, 'panel') };
 ---
 
@@ -41,53 +46,55 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
     }
   </header>
 
-  {
-    groups.map((g) => (
-      <section class="section" id={g.key}>
-        <h2 class="section-title">
-          {g.title} <span class="count">{g.items.length}</span>
-        </h2>
-        <div class="entries">
-          {g.items.map((entry) => (
-            <PubEntry entry={entry} lang={lang} highlight={profile.highlight_author} />
-          ))}
-        </div>
-      </section>
-    ))
-  }
+  <SectionNav items={navItems} label={t(lang, 'onThisPage')}>
+    {
+      groups.map((g) => (
+        <section class="section" id={g.key}>
+          <h2 class="section-title">
+            {g.title} <span class="count">{g.items.length}</span>
+          </h2>
+          <div class="entries">
+            {g.items.map((entry) => (
+              <PubEntry entry={entry} lang={lang} highlight={profile.highlight_author} />
+            ))}
+          </div>
+        </section>
+      ))
+    }
 
-  {
-    talks.length > 0 && (
-      <section class="section" id="presentations">
-        <h2 class="section-title">
-          {t(lang, 'presentations')} <span class="count">{talks.length}</span>
-        </h2>
-        <ol class="entries" role="list">
-          {talks.map(({ data: x }) => (
-            <li class="talk entry">
-              <p class="talk-kind">{kindLabel[x.kind]}</p>
-              <h3 class="talk-title">{x.url ? <a href={x.url}>{x.title}</a> : x.title}</h3>
-              <p class="talk-authors">
-                <Authors authors={x.authors} highlight={profile.highlight_author} />
-              </p>
-              <p class="talk-meta">
-                <em>{x.event}</em>
-                <span>{x.date_text ?? fullDate(x.date, lang)}</span>
-                {x.location && (
-                  <span class="talk-loc">
-                    <Icon name="pin" />
-                    {x.location}
-                  </span>
-                )}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
-    )
-  }
+    {
+      talks.length > 0 && (
+        <section class="section" id="presentations">
+          <h2 class="section-title">
+            {t(lang, 'presentations')} <span class="count">{talks.length}</span>
+          </h2>
+          <ol class="entries" role="list">
+            {talks.map(({ data: x }) => (
+              <li class="talk entry">
+                <p class="talk-kind">{kindLabel[x.kind]}</p>
+                <h3 class="talk-title">{x.url ? <a href={x.url}>{x.title}</a> : x.title}</h3>
+                <p class="talk-authors">
+                  <Authors authors={x.authors} highlight={profile.highlight_author} />
+                </p>
+                <p class="talk-meta">
+                  <em>{x.event}</em>
+                  <span>{x.date_text ?? fullDate(x.date, lang)}</span>
+                  {x.location && (
+                    <span class="talk-loc">
+                      <Icon name="pin" />
+                      {x.location}
+                    </span>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
 
-  {hasCorresponding && <p class="footnote">{t(lang, 'correspondingNote')}</p>}
+    {hasCorresponding && <p class="footnote">{t(lang, 'correspondingNote')}</p>}
+  </SectionNav>
 </Base>
 
 <style>
