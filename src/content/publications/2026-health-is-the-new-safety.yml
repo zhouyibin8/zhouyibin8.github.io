@@ -11,8 +11,8 @@ volume: '41'
 pages: '101121'
 doi: 10.1016/j.jdmm.2026.101121
 url: https://www.sciencedirect.com/science/article/pii/S2212571X26000399
-badge: SSCI · JCR Q1 · IF 8.0
-badge_zh: SSCI · JCR Q1 · 中科院一区TOP · IF 8.0
+badge: SSCI · JCR Q1 · SHTM A · IF 8.0
+badge_zh: SSCI · JCR Q1 · SHTM A · 中科院一区TOP · IF 8.0
 keywords:
   - Public health
   - Destination vulnerability
@@ -23,3 +23,4 @@ keywords:
 abstract: Tourism is highly vulnerable to health crises, yet little is known about how structural public health risks shape long-term demand. This study develops a composite Destination Public Health Vulnerability (DPHV) index that integrates exposure, sensitivity, and adaptive capacity, and links it to international tourism demand. Drawing on a global panel of 196 countries from 2000 to 2019, two-way fixed effects models, distributed lag models, and spatial Durbin models are employed, complemented by robustness checks leveraging the 2003 SARS outbreak. Results show that higher DPHV significantly reduces per capita tourist arrivals, with effects persisting for up to three years, underscoring the enduring impact of health-related risk perceptions. Resilience features, including cultural heritage and sanitation infrastructure, partially buffer these negative effects, whereas political stability provides a comparatively weaker safeguard. Spatial Durbin models reveal that health shocks primarily depress demand domestically rather than diffusing broadly across neighboring destinations. By conceptualizing public health vulnerability as a multidimensional construct and linking it to global tourism demand, this study advances destination vulnerability theory and highlights the role of resilience assets in mitigating health risks. These insights offer practical guidance for policymakers and destination managers seeking to sustain competitiveness in an increasingly crisis-prone global tourism system.
 figure: /src/assets/publications/dphv-framework.png
 citation: 'Zhou, Y. B., Huang, Z., Zhang, C. J., & Xia, M. (2026). Health is the new safety: Destination public health vulnerability, resilience, and international tourism. *Journal of Destination Marketing & Management*, *41*, 101121. https://doi.org/10.1016/j.jdmm.2026.101121'
+selected: false
