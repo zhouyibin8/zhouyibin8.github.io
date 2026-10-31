@@ -43,8 +43,8 @@ sections:
         subheading_zh: 澳门科技大学 酒店与旅游管理学院
         period: 2019.09 – 2023.06
         logo: /src/assets/cv/must.png
-        description: First Class Honours · Dean's Honour List, MUST-FHTM (academic years 2021 and 2022)
-        description_zh: 一等荣誉学位 · 澳门科技大学酒店与旅游管理学院院长嘉许名单（2021、2022 学年）
+        description: First Class Honours
+        description_zh: 一等荣誉学位
         links:
           - label: Programme Curriculum
             label_zh: 课程设置
