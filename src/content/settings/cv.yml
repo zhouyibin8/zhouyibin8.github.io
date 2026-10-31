@@ -9,8 +9,12 @@ sections:
         period: 2025.06 – 2028.06 (expected)
         period_zh: 2025.06 – 2028.06（预计）
         logo: /src/assets/cv/polyu.png
-        description: "Supervisor: Jason Zhang (SHTM & COMP) · Co-supervisors: Faye Hao (SHTM), Daniel Leung (SHTM)"
-        description_zh: 导师：Jason Zhang（SHTM & COMP）· 联合导师：Faye Hao（SHTM）、Daniel Leung（SHTM）
+        description: |-
+          Supervisor: Jason Zhang (SHTM & COMP)
+          Co-supervisors: Faye Hao (SHTM), Daniel Leung (SHTM)
+        description_zh: |-
+          导师：Jason Zhang（SHTM & COMP）· 
+          联合导师：Faye Hao（SHTM）、Daniel Leung（SHTM）
         links:
           - label: SHTM PhD Programme
             label_zh: SHTM 博士项目
@@ -21,8 +25,8 @@ sections:
         subheading_zh: 哥伦比亚大学 人类发展系 · 美国纽约
         period: 2023.08 – 2024.10
         logo: /src/assets/cv/columbia.png
-        description: "Capstone project: *Course2Skills: Understanding Postsecondary Student Success Through Curricular Content Analytics* (supervised by Renzhe Yu)"
-        description_zh: "毕业项目：*Course2Skills: Understanding Postsecondary Student Success Through Curricular Content Analytics*（导师：Renzhe Yu）"
+        description: Supervised by Renzhe Yu
+        description_zh: 导师：Renzhe Yu
         links:
           - label: Learning Analytics Programme
             label_zh: 学习分析项目
@@ -54,7 +58,7 @@ sections:
         heading_zh: Becoming an Effective Teaching Assistant 培训
         subheading: Training certification · The Hong Kong Polytechnic University
         subheading_zh: 培训认证 · 香港理工大学
-        period: "2025.04"
+        period: '2025.04'
       - heading: BITM1311 Business Statistics
         heading_zh: BITM1311 商务统计
         subheading: Teaching Assistant · Macau University of Science and Technology
