@@ -17,10 +17,6 @@ sections:
         description_zh: |-
           导师：Jason Zhang（SHTM & COMP）· 
           联合导师：Faye Hao（SHTM）、Daniel Leung（SHTM）
-        links:
-          - label: SHTM PhD Programme
-            label_zh: SHTM 博士项目
-            url: https://www.polyu.edu.hk/shtm/study/research-postgraduate-programme/doctor-of-philosophy-in-hotel-and-tourism-management/
       - heading: Master of Science in Learning Analytics (STEM)
         heading_zh: 学习分析 理学硕士（STEM）
         subheading: |-
@@ -31,10 +27,6 @@ sections:
         logo: /src/assets/cv/columbia.png
         description: Supervised by Renzhe Yu
         description_zh: 导师：Renzhe Yu
-        links:
-          - label: Learning Analytics Programme
-            label_zh: 学习分析项目
-            url: https://www.tc.columbia.edu/human-development/learning-analytics/
       - heading: Bachelor of International Tourism Management
         heading_zh: 国际旅游管理 学士
         subheading: |-
@@ -45,10 +37,6 @@ sections:
         logo: /src/assets/cv/must.png
         description: First Class Honours
         description_zh: 一等荣誉学位
-        links:
-          - label: Programme Curriculum
-            label_zh: 课程设置
-            url: https://www.must.edu.mo/fhtm/programme/bachelors-degree-programme/curriculum
   - title: Teaching
     title_zh: 教学经历
     entries:
