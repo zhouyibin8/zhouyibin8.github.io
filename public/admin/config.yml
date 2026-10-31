@@ -94,6 +94,25 @@ collections:
             default: true
             hint: Turn off to hide the Life page (travel and shows) from the menu and the site. Your photos stay saved.
 
+      - name: home
+        label: Home page · 主页
+        file: src/content/settings/home.yml
+        fields:
+          - name: selected_publications
+            label: Selected publications · 主页精选论文
+            label_singular: Publication
+            widget: list
+            required: false
+            hint: Shown on the home page in this order. Add a paper, drag to reorder, or remove one. 按此顺序显示在主页，可添加、拖动排序或删除。
+            field:
+              name: publication
+              label: Publication · 论文
+              widget: relation
+              collection: publications
+              value_field: '{{slug}}'
+              search_fields: [title]
+              display_fields: [title]
+
       - name: coauthors
         label: Co-author links · 合作者链接
         file: src/content/settings/coauthors.yml
@@ -202,7 +221,6 @@ collections:
       - { name: abstract, label: Abstract, widget: text, required: false }
       - { name: figure, label: Figure / graphical abstract, widget: image, required: false }
       - { name: citation, label: Citation (APA), widget: text, required: false, hint: 'Leave empty to generate it automatically. To write your own, put the journal and volume in *asterisks* for italics.' }
-      - { name: selected, label: Show on home page (selected), widget: boolean, default: false }
 
   # ---------------------------------------------------------------- Talks
   - name: talks

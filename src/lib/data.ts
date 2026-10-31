@@ -29,6 +29,13 @@ export async function getPublications() {
   );
 }
 
+/** Publications chosen in /admin → Home page, in the order listed there. Unknown names are skipped. */
+export async function getSelectedPublications() {
+  const ids = (await getEntry('home', 'home'))?.data.selected_publications ?? [];
+  const byId = new Map((await getPublications()).map((p) => [p.id, p]));
+  return ids.map((id) => byId.get(id)).filter((p) => p !== undefined);
+}
+
 export async function getTalks() {
   const all = await getCollection('talks');
   return all.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ProfileLinks from '../../components/ProfileLinks.astro';
 import PubEntry from '../../components/PubEntry.astro';
-import { getProfile, getPublications } from '../../lib/data';
+import { getProfile, getSelectedPublications } from '../../lib/data';
 import { md } from '../../lib/format';
 import { langPaths, pick, t, type Lang } from '../../lib/i18n';
 import { homeLayout } from '../../lib/themes';
@@ -13,7 +13,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const profile = await getProfile();
 const layout = homeLayout[profile.theme];
-const selected = (await getPublications()).filter((p) => p.data.selected);
+const selected = await getSelectedPublications();
 
 const name = pick(lang, profile.name, profile.name_zh);
 const position = pick(lang, profile.position, profile.position_zh);

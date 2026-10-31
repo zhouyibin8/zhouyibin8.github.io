@@ -55,6 +55,14 @@ const profile = defineCollection({
     }),
 });
 
+// Home page: publications listed under "Selected publications", in this order (file names without .yml).
+const home = defineCollection({
+  loader: glob({ pattern: 'home.yml', base: './src/content/settings' }),
+  schema: z.object({
+    selected_publications: list(z.string()),
+  }),
+});
+
 // Homepages for co-authors' names in author lists, matched by the name exactly as written there.
 const coauthors = defineCollection({
   loader: glob({ pattern: 'coauthors.yml', base: './src/content/settings' }),
@@ -111,7 +119,6 @@ const publications = defineCollection({
       abstract: text(),
       figure: optImage(image),
       citation: text(),
-      selected: z.boolean().default(false),
     }),
 });
 
@@ -153,4 +160,4 @@ const shows = defineCollection({
     }),
 });
 
-export const collections = { profile, coauthors, cv, publications, talks, travel, shows };
+export const collections = { profile, home, coauthors, cv, publications, talks, travel, shows };
