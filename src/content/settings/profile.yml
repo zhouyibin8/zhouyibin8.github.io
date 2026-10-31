@@ -1,8 +1,8 @@
 name: Yibin Zhou
 preferred_name: Berry
 highlight_author: Yibin Berry Zhou
-position: PhD Student
-position_zh: 博士研究生
+position: PhD Candidate
+position_zh: 博士候选人
 department: School of Hotel and Tourism Management
 department_zh: 酒店及旅游业管理学院
 university: The Hong Kong Polytechnic University
@@ -32,4 +32,4 @@ interests:
     zh: 目的地营销
   - en: Visually Impaired Tourists
     zh: 视障游客
-theme: night
+theme: minimal
