@@ -80,35 +80,16 @@ sections:
         subheading: Strategic Development Department · Macau SAR, China
         subheading_zh: 战略发展部 · 中国澳门特别行政区
         period: 2023.01 – 2023.06
-        description: Web crawling–based data mining project on Dianping.
-        description_zh: 基于网页爬虫的大众点评数据挖掘项目。
-        links:
-          - label: GitHub
-            url: https://github.com/zhouyibin8/wp
       - heading: Savills
         heading_zh: 第一太平戴维斯 Savills
         subheading: Research Department · Shenzhen, Guangdong
         subheading_zh: 研究部 · 广东深圳
         period: 2022.05 – 2022.08
-        description: Supported commercial real estate and Grade-A office market research, with outputs including the Greater Bay Area Grade-A Office Price Index and the South China property market review.
-        description_zh: 参与商业地产与写字楼市场研究，相关成果包括大湾区甲级写字楼价格指数研究及华南区房地产市场回顾与展望。
-        links:
-          - label: Research report
-            label_zh: 研究报告
-            url: https://www.savills.co.uk/research_articles/229130/208565-1
-          - label: WeChat article
-            label_zh: 微信文章
-            url: https://mp.weixin.qq.com/s/FEHFetpJtHsLDzWQakS4zA
       - heading: Asian Advertising Association (AdAsia)
         heading_zh: 亚洲广告学会 AdAsia
         subheading: Event Planning and Execution Department · Macau SAR, China
         subheading_zh: 活动策划与执行部 · 中国澳门特别行政区
         period: 2021.09 – 2021.12
-        description: Event planning, execution support, and online communication projects, including a live-streamed guided tour of Macau.
-        description_zh: 参与活动策划、执行支持与线上传播工作，相关项目包括澳门直播导览。
-        links:
-          - label: YouTube
-            url: https://www.youtube.com/live/qykR03V3nzM
       - heading: Vanke
         heading_zh: 万科
         subheading: Marketing Planning Department · Changsha, Hunan
@@ -117,7 +98,7 @@ sections:
       - heading: Qiwu Technology
         heading_zh: 齐悟科技
         subheading: Market Research Department · Remote
-        subheading_zh: 市场研究部 · 远程
+        subheading_zh: 市场研究部
         period: 2020.01 – 2020.05
   - title: Community Involvement
     title_zh: 社区参与
