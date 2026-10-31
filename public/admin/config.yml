@@ -133,8 +133,8 @@ collections:
                 fields:
                   - { name: heading, label: Heading, hint: 'Degree, job title, award name, …' }
                   - { name: heading_zh, label: 标题（中文）, required: false }
-                  - { name: subheading, label: Subheading, required: false, hint: Institution · place }
-                  - { name: subheading_zh, label: 副标题（中文）, required: false }
+                  - { name: subheading, label: Subheading, widget: text, required: false, hint: 'Institution · place. Press Enter to start a new line.' }
+                  - { name: subheading_zh, label: 副标题（中文）, widget: text, required: false, hint: 按回车换行。 }
                   - { name: period, label: Period, required: false, hint: 'e.g. 2023.09 – 2024.06' }
                   - { name: period_zh, label: 时间（中文）, required: false, hint: Only needed if it differs from the English. }
                   - { name: logo, label: Logo, widget: image, required: false }

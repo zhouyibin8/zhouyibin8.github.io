@@ -43,7 +43,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
                 )}
                 <div>
                   <h3 class="cv-heading">{pick(lang, e.heading, e.heading_zh)}</h3>
-                  {e.subheading && <p class="cv-sub">{pick(lang, e.subheading, e.subheading_zh)}</p>}
+                  {e.subheading && <p class="cv-sub" set:html={mdLines(pick(lang, e.subheading, e.subheading_zh))} />}
                   {e.description && (
                     <p class="cv-desc" set:html={mdLines(pick(lang, e.description, e.description_zh))} />
                   )}
@@ -106,9 +106,10 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
     line-height: 1.4;
   }
   .cv-sub {
-    margin: 0.15rem 0 0;
+    margin: 0.2rem 0 0;
     color: var(--ink-2);
     font-size: 1rem;
+    line-height: 1.5;
   }
   .cv-desc {
     margin: 0.45rem 0 0;
