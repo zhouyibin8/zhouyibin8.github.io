@@ -57,10 +57,7 @@ collections:
           - { name: photo, label: Photo · 照片, widget: image, required: false, hint: A portrait works best (it is cropped to 4:5). }
           - { name: email, label: Email, required: false }
           - { name: scholar, label: Google Scholar URL, required: false }
-          - { name: orcid, label: ORCID URL, required: false }
           - { name: linkedin, label: LinkedIn URL, required: false }
-          - { name: github, label: GitHub URL, required: false }
-          - { name: researchgate, label: ResearchGate URL, required: false }
           - name: cv_pdf
             label: CV (PDF) · 简历 PDF
             widget: file
@@ -91,6 +88,26 @@ collections:
               - { label: 3 · Sidebar — profile column on every page, value: sidebar }
               - { label: 4 · Minimal — white and quiet, value: minimal }
               - { label: 5 · Slate — modern and bright, value: slate }
+          - name: show_life
+            label: Show Life page · 显示生活页
+            widget: boolean
+            default: true
+            hint: Turn off to hide the Life page (travel and shows) from the menu and the site. Your photos stay saved.
+
+      - name: coauthors
+        label: Co-author links · 合作者链接
+        file: src/content/settings/coauthors.yml
+        fields:
+          - name: people
+            label: Co-authors · 合作者
+            label_singular: Co-author
+            widget: list
+            required: false
+            summary: '{{fields.name}}'
+            hint: Names in author lists link to these pages. Your own name links to your Google Scholar URL from Profile.
+            fields:
+              - { name: name, label: Name, hint: 'Exactly as written in author lists, e.g. "Chen Jason Zhang" (without #).' }
+              - { name: url, label: Homepage URL }
 
       - name: cv
         label: CV · 简历
@@ -183,7 +200,7 @@ collections:
       - { name: keywords, label: Keywords, widget: list, required: false, field: { name: keyword, label: Keyword } }
       - { name: abstract, label: Abstract, widget: text, required: false }
       - { name: figure, label: Figure / graphical abstract, widget: image, required: false }
-      - { name: citation, label: Citation (APA), widget: text, required: false, hint: Leave empty to generate it automatically. }
+      - { name: citation, label: Citation (APA), widget: text, required: false, hint: 'Leave empty to generate it automatically. To write your own, put the journal and volume in *asterisks* for italics.' }
       - { name: selected, label: Show on home page (selected), widget: boolean, default: false }
 
   # ---------------------------------------------------------------- Talks

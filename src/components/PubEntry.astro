@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Authors from './Authors.astro';
 import Icon from './Icon.astro';
 import { apaCitation, bibtex, doiUrl } from '../lib/format';
@@ -19,6 +19,8 @@ const id = `pub-${entry.id.replace(/[^a-z0-9-]/gi, '-')}`;
 const link = p.url ?? doiUrl(p.doi);
 const apa = apaCitation(p);
 const bib = bibtex(p, entry.id);
+const figureFull =
+  p.figure && !compact ? (await getImage({ src: p.figure, width: Math.min(1600, p.figure.width), format: 'webp' })).src : undefined;
 const statusLabel =
   p.status === 'in-press'
     ? t(lang, 'inPress')
@@ -31,10 +33,10 @@ const statusLabel =
 
 <article class:list={['pub', 'entry', { 'has-figure': p.figure && !compact }]} id={id}>
   {
-    p.figure && !compact && (
-      <a class="pub-figure" href={link ?? `#${id}`} tabindex="-1" aria-hidden="true">
+    p.figure && figureFull && (
+      <button class="pub-figure" type="button" data-full={figureFull} data-caption={p.title} aria-label={t(lang, 'enlargeFigure')}>
         <Image src={p.figure} alt="" widths={[240, 480]} sizes="(min-width: 48rem) 200px, 100vw" />
-      </a>
+      </button>
     )
   }
   <div class="pub-body">
@@ -43,7 +45,9 @@ const statusLabel =
     </h3>
     <p class="pub-authors"><Authors authors={p.authors} highlight={highlight} /></p>
     <p class="pub-venue">
-      <span><em>{p.venue}</em>{[p.volume && `${p.volume}${p.issue ? `(${p.issue})` : ''}`, p.pages].filter(Boolean).map((s) => `, ${s}`).join('')}</span>
+      <span>
+        <em>{p.venue}</em>{p.volume && <>, <em>{p.volume}</em></>}{p.issue && `(${p.issue})`}{p.pages && `, ${p.pages}`}
+      </span>
       <span class="pub-year">· {p.year}</span>
       {statusLabel && <span class="chip">{statusLabel}</span>}
       {p.badge && <span class="chip">{p.badge}</span>}
@@ -95,8 +99,8 @@ const statusLabel =
     <div class="pub-panel pub-cite" id={`${id}-cite`} hidden>
       <div class="cite-block">
         <p class="cite-label">APA</p>
-        <p class="cite-text">{apa}</p>
-        <button class="btn copy" type="button" data-copy={apa} data-done={t(lang, 'copied')}>{t(lang, 'copy')}</button>
+        <p class="cite-text" set:html={apa.html} />
+        <button class="btn copy" type="button" data-copy={apa.text} data-copy-html={apa.html} data-done={t(lang, 'copied')}>{t(lang, 'copy')}</button>
       </div>
       <div class="cite-block">
         <p class="cite-label">BibTeX</p>
@@ -122,7 +126,19 @@ const statusLabel =
     const copy = target.closest<HTMLButtonElement>('[data-copy]');
     if (copy) {
       const label = copy.textContent;
-      navigator.clipboard?.writeText(copy.dataset.copy ?? '').then(() => {
+      const text = copy.dataset.copy ?? '';
+      const html = copy.dataset.copyHtml;
+      // With HTML on the clipboard, italics survive pasting into Word or Google Docs.
+      const write =
+        html && typeof ClipboardItem !== 'undefined'
+          ? navigator.clipboard.write([
+              new ClipboardItem({
+                'text/plain': new Blob([text], { type: 'text/plain' }),
+                'text/html': new Blob([html], { type: 'text/html' }),
+              }),
+            ])
+          : navigator.clipboard?.writeText(text);
+      write?.then(() => {
         copy.textContent = copy.dataset.done ?? '✓';
         setTimeout(() => (copy.textContent = label), 1600);
       });
@@ -145,6 +161,8 @@ const statusLabel =
   }
   .pub-figure {
     display: block;
+    width: 100%;
+    cursor: zoom-in;
     align-self: start;
     background: #fff;
     border: 1px solid var(--rule);

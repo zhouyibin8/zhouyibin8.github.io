@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import Icon from '../components/Icon.astro';
+import Lightbox from '../components/Lightbox.astro';
 import ProfileLinks from '../components/ProfileLinks.astro';
 import { getProfile } from '../lib/data';
 import { htmlLang, otherLang, pick, t, type Lang } from '../lib/i18n';
@@ -35,8 +36,8 @@ const nav = [
   { href: `/${lang}/`, label: t(lang, 'home'), key: '' },
   { href: `/${lang}/publications/`, label: t(lang, 'publications'), key: 'publications/' },
   { href: `/${lang}/cv/`, label: t(lang, 'cv'), key: 'cv/' },
-  { href: `/${lang}/life/`, label: t(lang, 'life'), key: 'life/' },
-];
+  profile.show_life && { href: `/${lang}/life/`, label: t(lang, 'life'), key: 'life/' },
+].filter((item) => !!item);
 
 const person = {
   '@context': 'https://schema.org',
@@ -47,7 +48,7 @@ const person = {
   affiliation: { '@type': 'CollegeOrUniversity', name: profile.university },
   email: profile.email ? `mailto:${profile.email}` : undefined,
   url: new URL('/en/', site).href,
-  sameAs: [profile.scholar, profile.orcid, profile.linkedin, profile.github, profile.researchgate].filter(Boolean),
+  sameAs: [profile.scholar, profile.linkedin].filter(Boolean),
 };
 const builtAt = new Date().toISOString().slice(0, 10);
 ---
@@ -147,6 +148,7 @@ const builtAt = new Date().toISOString().slice(0, 10);
         <span>{t(lang, 'lastUpdated')}{lang === 'zh' ? '：' : ': '}<time datetime={builtAt}>{builtAt}</time></span>
       </div>
     </footer>
+    <Lightbox lang={lang} />
     {
       hasModeToggle && (
         <script is:inline>

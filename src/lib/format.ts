@@ -59,17 +59,27 @@ function apaName(full: string) {
   return initials ? `${last}, ${initials}` : last;
 }
 
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * APA 7 reference as plain text and as HTML with the journal name and volume in italics.
+ * A hand-written citation may mark italics with *asterisks*.
+ */
 export function apaCitation(p: PubForCite) {
-  if (p.citation) return p.citation;
+  if (p.citation) return { text: p.citation.replace(/\*/g, ''), html: mdInline(p.citation) };
   const names = p.authors.map(apaName);
   const authors =
     names.length <= 1 ? names.join('') : `${names.slice(0, -1).join(', ')}, & ${names[names.length - 1]}`;
-  let s = `${authors} (${p.year}). ${p.title}. ${p.venue}`;
-  if (p.volume) s += `, ${p.volume}${p.issue ? `(${p.issue})` : ''}`;
-  if (p.pages) s += `, ${p.pages}`;
-  s += '.';
-  if (p.doi) s += ` ${doiUrl(p.doi)}`;
-  return s;
+  const parts: [string, boolean][] = [[`${authors} (${p.year}). ${p.title}. `, false], [p.venue, true]];
+  if (p.volume) parts.push([', ', false], [p.volume, true]);
+  if (p.issue) parts.push([`(${p.issue})`, false]);
+  if (p.pages) parts.push([`, ${p.pages}`, false]);
+  parts.push(['.', false]);
+  if (p.doi) parts.push([` ${doiUrl(p.doi)}`, false]);
+  return {
+    text: parts.map(([s]) => s).join(''),
+    html: parts.map(([s, italic]) => (italic ? `<em>${escapeHtml(s)}</em>` : escapeHtml(s))).join(''),
+  };
 }
 
 export function bibtex(p: PubForCite, id: string) {

@@ -1,11 +1,11 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
-import Icon from '../../components/Icon.astro';
-import { getShows, getTravel } from '../../lib/data';
+import { getProfile, getShows, getTravel } from '../../lib/data';
 import { langPaths, pick, t, type Lang } from '../../lib/i18n';
 
-export const getStaticPaths = langPaths;
+// Hidden from /admin → Profile → "Show Life page": the page is not built at all.
+export const getStaticPaths = async () => ((await getProfile()).show_life ? langPaths() : []);
 
 const lang = Astro.params.lang as Lang;
 
@@ -67,6 +67,7 @@ const galleries = [
               <button
                 class="tile"
                 type="button"
+                aria-label={item.title}
                 data-full={item.full}
                 data-caption={[item.title, item.sub, item.date].filter(Boolean).join(' · ')}
               >
@@ -87,35 +88,7 @@ const galleries = [
       </section>
     ))
   }
-
-  <dialog class="lightbox" aria-label={t(lang, 'life')}>
-    <form method="dialog">
-      <button class="lightbox-close" aria-label={t(lang, 'close')}><Icon name="x" /></button>
-    </form>
-    <figure>
-      <img alt="" />
-      <figcaption></figcaption>
-    </figure>
-  </dialog>
 </Base>
-
-<script>
-  const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
-  const img = dialog?.querySelector('img');
-  const caption = dialog?.querySelector('figcaption');
-  document.querySelectorAll<HTMLButtonElement>('.tile').forEach((tile) => {
-    tile.addEventListener('click', () => {
-      if (!dialog || !img || !caption) return;
-      img.src = tile.dataset.full ?? '';
-      img.alt = tile.querySelector('img')?.alt ?? '';
-      caption.textContent = tile.dataset.caption ?? '';
-      dialog.showModal();
-    });
-  });
-  dialog?.addEventListener('click', (e) => {
-    if (e.target === dialog) dialog.close();
-  });
-</script>
 
 <style>
   .tabs {
@@ -202,48 +175,5 @@ const galleries = [
     font-size: 0.75rem;
     color: var(--muted);
     margin-top: 0.15rem;
-  }
-
-  .lightbox {
-    border: 0;
-    padding: 0;
-    background: transparent;
-    max-width: min(92vw, 1100px);
-    max-height: 92vh;
-    overflow: visible;
-  }
-  .lightbox::backdrop {
-    background: rgb(12 10 8 / 0.86);
-  }
-  .lightbox figure {
-    margin: 0;
-  }
-  .lightbox img {
-    max-width: 100%;
-    max-height: 82vh;
-    margin-inline: auto;
-    border-radius: 6px;
-  }
-  .lightbox figcaption {
-    margin-top: 0.75rem;
-    text-align: center;
-    color: #efe8de;
-    font-family: var(--sans);
-    font-size: 0.9rem;
-  }
-  .lightbox-close {
-    position: absolute;
-    top: -2.75rem;
-    right: 0;
-    width: 2.25rem;
-    height: 2.25rem;
-    display: grid;
-    place-items: center;
-    border: 0;
-    border-radius: 999px;
-    background: rgb(255 255 255 / 0.12);
-    color: #fff;
-    font-size: 1.1rem;
-    cursor: pointer;
   }
 </style>

@@ -1,4 +1,5 @@
 ---
+import { getAuthorLinks } from '../lib/data';
 import { splitAuthor } from '../lib/format';
 
 interface Props {
@@ -6,14 +7,23 @@ interface Props {
   highlight: string;
 }
 const { authors, highlight } = Astro.props;
-const list = authors.map(splitAuthor);
+const links = await getAuthorLinks();
+const list = authors.map(splitAuthor).map((a) => ({ ...a, url: links.get(a.name) }));
 ---
 
 <span class="authors">
   {
     list.map((a, i) => (
       <>
-        {a.name === highlight ? <strong class="me">{a.name}</strong> : <span>{a.name}</span>}
+        {a.url ? (
+          <a class:list={['author-link', { me: a.name === highlight }]} href={a.url}>
+            {a.name}
+          </a>
+        ) : a.name === highlight ? (
+          <strong class="me">{a.name}</strong>
+        ) : (
+          <span>{a.name}</span>
+        )}
         {a.marks && <sup>{a.marks}</sup>}
         {i < list.length - 1 && ', '}
       </>
@@ -28,6 +38,16 @@ const list = authors.map(splitAuthor);
   .me {
     color: var(--ink);
     font-weight: 600;
+  }
+  .author-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 0.2em;
+  }
+  .author-link:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
   }
   sup {
     font-family: var(--sans);

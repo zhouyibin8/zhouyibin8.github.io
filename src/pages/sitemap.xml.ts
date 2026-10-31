@@ -1,9 +1,9 @@
 import type { APIRoute } from 'astro';
+import { getProfile } from '../lib/data';
 import { languages } from '../lib/i18n';
 
-const pages = ['', 'publications/', 'cv/', 'life/'];
-
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
+  const pages = ['', 'publications/', 'cv/', ...((await getProfile()).show_life ? ['life/'] : [])];
   const urls = languages.flatMap((lang) =>
     pages.map((p) => `  <url><loc>${new URL(`/${lang}/${p}`, site).href}</loc></url>`),
   );

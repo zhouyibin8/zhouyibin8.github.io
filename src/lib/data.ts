@@ -5,6 +5,15 @@ export async function getProfile() {
   return (await getEntry('profile', 'profile'))!.data;
 }
 
+/** Name → homepage for author lists. You link to your own Google Scholar page. */
+export async function getAuthorLinks() {
+  const profile = await getProfile();
+  const people = (await getEntry('coauthors', 'coauthors'))?.data.people ?? [];
+  const links = new Map(people.map((p) => [p.name, p.url]));
+  if (profile.scholar && !links.has(profile.highlight_author)) links.set(profile.highlight_author, profile.scholar);
+  return links;
+}
+
 export async function getCv() {
   return (await getEntry('cv', 'cv'))?.data.sections ?? [];
 }

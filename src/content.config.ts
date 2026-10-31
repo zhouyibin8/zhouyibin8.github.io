@@ -43,10 +43,7 @@ const profile = defineCollection({
       photo: optImage(image),
       email: text(),
       scholar: text(),
-      orcid: text(),
       linkedin: text(),
-      github: text(),
-      researchgate: text(),
       cv_pdf: text(),
       tagline: text(),
       tagline_zh: text(),
@@ -54,7 +51,16 @@ const profile = defineCollection({
       bio_zh: text(),
       interests: list(z.object({ en: z.string(), zh: text() })),
       theme: z.enum(themes).catch('night').default('night'),
+      show_life: z.boolean().nullish().transform((v) => v ?? true),
     }),
+});
+
+// Homepages for co-authors' names in author lists, matched by the name exactly as written there.
+const coauthors = defineCollection({
+  loader: glob({ pattern: 'coauthors.yml', base: './src/content/settings' }),
+  schema: z.object({
+    people: list(z.object({ name: z.string(), url: z.string() })),
+  }),
 });
 
 const cv = defineCollection({
@@ -146,4 +152,4 @@ const shows = defineCollection({
     }),
 });
 
-export const collections = { profile, cv, publications, talks, travel, shows };
+export const collections = { profile, coauthors, cv, publications, talks, travel, shows };

@@ -23,8 +23,8 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
 const quick = [
   { href: `/${lang}/publications/`, label: t(lang, 'publications') },
   { href: `/${lang}/cv/`, label: t(lang, 'cv') },
-  { href: `/${lang}/life/`, label: t(lang, 'life') },
-];
+  profile.show_life && { href: `/${lang}/life/`, label: t(lang, 'life') },
+].filter((q) => !!q);
 ---
 
 <Base lang={lang} path="">

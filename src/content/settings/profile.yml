@@ -12,9 +12,7 @@ location_zh: 中国香港
 photo: /src/assets/profile/portrait.jpg
 email: yibin.zhou@connect.polyu.hk
 scholar: https://scholar.google.com/citations?user=h90S_yIAAAAJ
-orcid: https://orcid.org/0009-0008-5700-0331
 linkedin: https://www.linkedin.com/in/yibinzhou
-github: https://github.com/zhouyibin8
 bio: |-
   I am a PhD student at the School of Hotel and Tourism Management, The Hong Kong Polytechnic University, supervised by [Dr. Jason Chen Zhang](https://scholar.google.com/citations?user=U6-ouN0AAAAJ). My research focuses on **AI in tourism**, **social media**, **destination marketing**, and **visually impaired tourists**, integrating computer science, econometrics, and interdisciplinary perspectives to understand tourism and social phenomena.
 
@@ -33,3 +31,4 @@ interests:
   - en: Visually Impaired Tourists
     zh: 视障游客
 theme: night
+show_life: true
