@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import { getCv, getProfile } from '../../lib/data';
-import { mdInline } from '../../lib/format';
+import { mdLines } from '../../lib/format';
 import { langPaths, pick, t, type Lang } from '../../lib/i18n';
 
 export const getStaticPaths = langPaths;
@@ -45,7 +45,7 @@ const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(
                   <h3 class="cv-heading">{pick(lang, e.heading, e.heading_zh)}</h3>
                   {e.subheading && <p class="cv-sub">{pick(lang, e.subheading, e.subheading_zh)}</p>}
                   {e.description && (
-                    <p class="cv-desc" set:html={mdInline(pick(lang, e.description, e.description_zh))} />
+                    <p class="cv-desc" set:html={mdLines(pick(lang, e.description, e.description_zh))} />
                   )}
                   {e.links.length > 0 && (
                     <p class="cv-links">

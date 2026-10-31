@@ -3,6 +3,8 @@ import type { Lang } from './i18n';
 
 export const md = (s?: string) => (s ? (marked.parse(s, { async: false }) as string) : '');
 export const mdInline = (s?: string) => (s ? (marked.parseInline(s, { async: false }) as string) : '');
+/** Like mdInline, but a line break typed in /admin stays a line break. */
+export const mdLines = (s?: string) => (s ? (marked.parseInline(s, { async: false, breaks: true }) as string) : '');
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
