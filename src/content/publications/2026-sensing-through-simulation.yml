@@ -6,10 +6,23 @@ authors:
   - Chen Jason Zhang
   - Menglong Xia#
 year: 2026
-status: accepted
+status: published
 venue: International Journal of Contemporary Hospitality Management
+url: https://www.emerald.com/ijchm/article-abstract/doi/10.1108/IJCHM-01-2026-0045/1407015/Sensing-through-simulation-Alt-Text-descriptive?redirectedFrom=fulltext
 badge: SSCI · JCR Q1 · SHTM A+ · IF 11.3
 badge_zh: SSCI · JCR Q1 · SHTM A+ · 中科院一区TOP · IF 11.3
+abstract: |-
+  Purpose
+  This study aims to examine how alternative text (Alt-text) descriptive granularity influences purchase intention among visually impaired consumers in digital restaurant environments. This study further investigates the roles of message framing, health consciousness, restaurant trust and perceived healthfulness through the lens of digital embodiment.
+
+  Design/methodology/approach
+  A qualitative pretest with 18 visually impaired participants informed stimulus development, followed by four between-subjects experiments (n = 868). The studies manipulated Alt-text descriptive granularity and promotion- versus prevention-focused framing, while health consciousness was measured in Studies 2–4. Studies 3 and 4 tested restaurant trust and perceived healthfulness as mediating mechanisms.
+
+  Findings
+  Highly descriptive Alt-text increases purchase intention. The effect is stronger under promotion-focused framing and becomes stronger as health consciousness increases. Restaurant trust and perceived healthfulness emerge as complementary relationship- and product-oriented mediating mechanisms. The overall pattern is consistent with an embodied-cognition account of accessible descriptive information.
+
+  Originality/value
+  This research extends digital accessibility beyond technical compliance by conceptualizing descriptive Alt-text as a basis for digital embodiment. It also shows that accessibility quality can shape both persuasive communication and consumer evaluations of service providers and menu items.
 figure: /src/assets/publications/sensing-through-simulation-model.png
 citation: 'Zhou, Y. B., Chen, V. Y., Lin, P. M. C., Zhang, C. J., & Xia, M. (2026). Sensing through simulation: Alt-text descriptive granularity and digital embodiment for visually impaired consumers. *International Journal of Contemporary Hospitality Management*. Conditionally accepted.'
 selected: false
