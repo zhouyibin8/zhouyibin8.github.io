@@ -18,15 +18,25 @@ export async function getCv() {
   return (await getEntry('cv', 'cv'))?.data.sections ?? [];
 }
 
+/**
+ * Publications in the order set in /admin → Publication order. Papers not yet in that list
+ * come first (newest year first), so a new paper is easy to spot until it is placed.
+ */
 export async function getPublications() {
   const all = await getCollection('publications');
+  const order = (await getEntry('publicationOrder', 'publication-order'))?.data.order ?? [];
+  const position = new Map(order.map((id, i) => [id, i]));
   const rank = { accepted: 0, 'in-press': 0, published: 1, 'under-review': 2, 'working-paper': 3 };
-  return all.sort(
-    (a, b) =>
+  return all.sort((a, b) => {
+    const pa = position.get(a.id) ?? -1;
+    const pb = position.get(b.id) ?? -1;
+    if (pa !== pb) return pa - pb;
+    return (
       b.data.year - a.data.year ||
       rank[a.data.status] - rank[b.data.status] ||
-      a.data.title.localeCompare(b.data.title),
-  );
+      a.data.title.localeCompare(b.data.title)
+    );
+  });
 }
 
 /** Publications chosen in /admin → Home page, in the order listed there. Unknown names are skipped. */

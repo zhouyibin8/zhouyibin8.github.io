@@ -113,6 +113,25 @@ collections:
               search_fields: [title]
               display_fields: [title]
 
+      - name: publication-order
+        label: Publication order · 论文排序
+        file: src/content/settings/publication-order.yml
+        fields:
+          - name: order
+            label: Order on the Publications page · 论文页顺序
+            label_singular: Publication
+            widget: list
+            required: false
+            hint: Drag to reorder. Papers keep their group (journal articles, under review, …) and follow this order inside it. A new paper not in this list shows at the top until you add it here. 拖动排序；新论文未加入此列表前显示在最上方。
+            field:
+              name: publication
+              label: Publication · 论文
+              widget: relation
+              collection: publications
+              value_field: '{{slug}}'
+              search_fields: [title]
+              display_fields: [title]
+
       - name: coauthors
         label: Co-author links · 合作者链接
         file: src/content/settings/coauthors.yml

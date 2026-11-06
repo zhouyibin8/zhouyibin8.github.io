@@ -63,6 +63,14 @@ const home = defineCollection({
   }),
 });
 
+// Publications page: papers in this order within each group (file names without .yml).
+const publicationOrder = defineCollection({
+  loader: glob({ pattern: 'publication-order.yml', base: './src/content/settings' }),
+  schema: z.object({
+    order: list(z.string()),
+  }),
+});
+
 // Homepages for co-authors' names in author lists, matched by the name exactly as written there.
 const coauthors = defineCollection({
   loader: glob({ pattern: 'coauthors.yml', base: './src/content/settings' }),
@@ -160,4 +168,4 @@ const shows = defineCollection({
     }),
 });
 
-export const collections = { profile, home, coauthors, cv, publications, talks, travel, shows };
+export const collections = { profile, home, publicationOrder, coauthors, cv, publications, talks, travel, shows };
