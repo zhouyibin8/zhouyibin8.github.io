@@ -162,6 +162,17 @@ const builtAt = new Date().toISOString().slice(0, 10);
         </script>
       )
     }
+    <script is:inline>
+      // Links to other sites, and uploaded files such as PDFs, open in a new tab.
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var url = new URL(a.href, location.href);
+        var web = url.protocol === 'http:' || url.protocol === 'https:';
+        if (web && (url.host !== location.host || url.pathname.indexOf('/uploads/') === 0)) {
+          a.target = '_blank';
+          a.rel = 'noopener';
+        }
+      });
+    </script>
   </body>
 </html>
 
