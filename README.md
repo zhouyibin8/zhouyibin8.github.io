@@ -45,3 +45,11 @@ in Chrome or Edge and choose **Work with Local Repository**.
 
 The previous Hugo-generated site is preserved on the branch
 `archive/hugo-site-2026` and the tag `archive-hugo-2026-10-31`.
+
+## One-page style · 单页版
+
+In **Profile → Site style**, choose **1 · Night — One page · 单页版**.
+This combines About, all Publications and Presentations, CV, and (when enabled)
+Life on the home page. Navigation jumps to each section; English/Chinese and
+the Night/Day toggle remain available. Existing detail-page URLs redirect to
+the corresponding section. The other five styles keep their separate pages.

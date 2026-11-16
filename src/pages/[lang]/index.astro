@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
+import PublicationsContent from '../../components/PublicationsContent.astro';
+import CvContent from '../../components/CvContent.astro';
+import LifeContent from '../../components/LifeContent.astro';
 import ProfileLinks from '../../components/ProfileLinks.astro';
 import PubEntry from '../../components/PubEntry.astro';
 import { getProfile, getSelectedPublications } from '../../lib/data';
@@ -13,6 +16,7 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const profile = await getProfile();
 const layout = homeLayout[profile.theme];
+const onePage = profile.theme === 'night-one-page';
 const selected = await getSelectedPublications();
 
 const name = pick(lang, profile.name, profile.name_zh);
@@ -115,7 +119,7 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
   </section>
 
   {
-    selected.length > 0 && (
+    !onePage && selected.length > 0 && (
       <section class="section">
         <h2 class="section-title">{t(lang, 'selectedPublications')}</h2>
         <div class="entries">
@@ -129,6 +133,13 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
       </section>
     )
   }
+  {onePage && (
+    <>
+      <section id="publications" class="one-page-section"><PublicationsContent lang={lang} embedded /></section>
+      <section id="cv" class="one-page-section"><CvContent lang={lang} embedded /></section>
+      {profile.show_life && <section id="life" class="one-page-section"><LifeContent lang={lang} embedded /></section>}
+    </>
+  )}
 </Base>
 
 <style>

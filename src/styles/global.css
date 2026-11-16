@@ -361,7 +361,8 @@ p {
   background: var(--surface-2);
 }
 
-.nav a[aria-current='page'] {
+.nav a[aria-current='page'],
+.nav a[aria-current='location'] {
   color: var(--ink);
   font-weight: 600;
   text-decoration: underline;
@@ -641,4 +642,14 @@ main {
 
 [data-theme='minimal'] .site-footer .container {
   max-width: var(--wide);
+}
+
+/* Style 1's single-page sections share its existing Night / Day tokens. */
+.one-page-section {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }

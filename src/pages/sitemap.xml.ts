@@ -3,7 +3,8 @@ import { getProfile } from '../lib/data';
 import { languages } from '../lib/i18n';
 
 export const GET: APIRoute = async ({ site }) => {
-  const pages = ['', 'publications/', 'cv/', ...((await getProfile()).show_life ? ['life/'] : [])];
+  const profile = await getProfile();
+  const pages = profile.theme === 'night-one-page' ? [''] : ['', 'publications/', 'cv/', ...(profile.show_life ? ['life/'] : [])];
   const urls = languages.flatMap((lang) =>
     pages.map((p) => `  <url><loc>${new URL(`/${lang}/${p}`, site).href}</loc></url>`),
   );

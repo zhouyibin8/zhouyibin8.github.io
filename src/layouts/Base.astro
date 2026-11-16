@@ -18,7 +18,8 @@ interface Props {
 
 const { lang, path, title, description } = Astro.props;
 const profile = await getProfile();
-const theme = profile.theme;
+const onePage = profile.theme === 'night-one-page';
+const theme = onePage ? 'night' : profile.theme;
 const withSidebar = homeLayout[theme] === 'sidebar';
 // Night and Day are the dark and light versions of one style, so visitors can switch between them.
 const hasModeToggle = theme === 'night' || theme === 'day';
@@ -37,7 +38,10 @@ const nav = [
   { href: `/${lang}/publications/`, label: t(lang, 'publications'), key: 'publications/' },
   { href: `/${lang}/cv/`, label: t(lang, 'cv'), key: 'cv/' },
   profile.show_life && { href: `/${lang}/life/`, label: t(lang, 'life'), key: 'life/' },
-].filter((item) => !!item);
+].filter((item) => !!item).map((item) => ({
+  ...item,
+  href: onePage ? `/${lang}/#${item.key ? item.key.replace('/', '') : 'main'}` : item.href,
+}));
 
 const person = {
   '@context': 'https://schema.org',
@@ -54,7 +58,7 @@ const builtAt = new Date().toISOString().slice(0, 10);
 ---
 
 <!doctype html>
-<html lang={htmlLang[lang]} data-theme={theme}>
+<html lang={htmlLang[lang]} data-theme={theme} data-one-page={onePage || undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -92,7 +96,7 @@ const builtAt = new Date().toISOString().slice(0, 10);
         <nav class="nav" aria-label={lang === 'zh' ? '主导航' : 'Main'}>
           {
             nav.map((item) => (
-              <a href={item.href} aria-current={item.key === path ? 'page' : undefined}>
+              <a href={item.href} data-section={onePage ? (item.key.replace('/', '') || 'main') : undefined} aria-current={item.key === path ? (onePage ? 'location' : 'page') : undefined}>
                 {item.label}
               </a>
             ))
@@ -162,6 +166,36 @@ const builtAt = new Date().toISOString().slice(0, 10);
         </script>
       )
     }
+    <script>
+      if (document.documentElement.dataset.onePage) {
+        const header = document.querySelector<HTMLElement>('.site-header')!;
+        const links = [...document.querySelectorAll<HTMLAnchorElement>('.nav [data-section]')];
+        const sections = links.map(link => document.getElementById(link.dataset.section!));
+        const languageLink = document.querySelector<HTMLAnchorElement>('.lang-switch')!;
+        function updateNavigation() {
+          let active = 0;
+          sections.forEach((section, index) => {
+            if (section && section.getBoundingClientRect().top <= header.offsetHeight + 32) active = index;
+          });
+          links.forEach((link, index) => {
+            if (index === active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+          languageLink.hash = links[active]?.dataset.section ?? '';
+        }
+        let queued = false;
+        window.addEventListener('scroll', () => {
+          if (queued) return;
+          queued = true;
+          requestAnimationFrame(() => { updateNavigation(); queued = false; });
+        }, { passive: true });
+        new ResizeObserver(() => {
+          document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+          updateNavigation();
+        }).observe(header);
+        updateNavigation();
+      }
+    </script>
     <script is:inline>
       // Links to other sites, and uploaded files such as PDFs, open in a new tab.
       document.querySelectorAll('a[href]').forEach(function (a) {

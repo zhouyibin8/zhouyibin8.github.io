@@ -88,6 +88,7 @@ collections:
               - { label: 3 · Sidebar — profile column on every page, value: sidebar }
               - { label: 4 · Minimal — white and quiet, value: minimal }
               - { label: 5 · Slate — modern and bright, value: slate }
+              - { label: 1 · Night — One page · 单页版, value: night-one-page }
           - name: show_life
             label: Show Life page · 显示生活页
             widget: boolean
