@@ -29,7 +29,7 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
 <Base lang={lang} path="">
   {
     layout === 'centered' && (
-      <section class="hero-centered">
+      <section class:list={['hero-centered', { 'cv-intro': onePage }]}>
         {profile.photo && (
           <Image
             class="hero-photo"
@@ -135,8 +135,13 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
   }
   {onePage && (
     <>
-      <section id="publications" class="one-page-section"><PublicationsContent lang={lang} embedded /></section>
-      <section id="cv" class="one-page-section"><CvContent lang={lang} embedded /></section>
+      <div id="cv">
+        <CvContent lang={lang} embedded>
+          <section slot="research" id="publications" class="section">
+            <PublicationsContent lang={lang} embedded />
+          </section>
+        </CvContent>
+      </div>
       {profile.show_life && <section id="life" class="one-page-section"><LifeContent lang={lang} embedded /></section>}
     </>
   )}
@@ -219,6 +224,14 @@ const tagline = profile.tagline ? pick(lang, profile.tagline, profile.tagline_zh
     font-size: clamp(2.3rem, 6vw, 3.25rem);
     letter-spacing: -0.02em;
     line-height: 1.1;
+  }
+  .hero-centered.cv-intro {
+    min-height: auto;
+    margin-top: 0;
+    padding-block: 0 1rem;
+  }
+  .cv-intro .hero-next {
+    display: none;
   }
   .aka {
     font-weight: 400;

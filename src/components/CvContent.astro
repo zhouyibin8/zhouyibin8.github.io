@@ -9,16 +9,18 @@ import { pick, t, type Lang } from '../lib/i18n';
 
 interface Props { lang: Lang; embedded?: boolean; }
 const { lang, embedded = false } = Astro.props;
-const Heading = embedded ? 'h2' : 'h1';
 const profile = await getProfile();
-const sections = await getCv();
+const cv = await getCv();
+const education = cv.find((section) => section.title.trim().toLowerCase() === 'education');
+const sections = embedded && education ? [education, ...cv.filter((section) => section !== education)] : cv;
+const firstExperience = sections.find((section) => section !== education);
 const Contents = embedded ? 'div' : SectionNav;
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const navItems = sections.map((s) => ({ id: slug(s.title), label: pick(lang, s.title, s.title_zh) }));
 ---
 
-  <header class="page-head">
-    <Heading class="page-title">{t(lang, 'cv')}</Heading>
+  {!embedded && <header class="page-head">
+    <h1 class="page-title">{t(lang, 'cv')}</h1>
     {
       profile.cv_pdf && (
         <p class="page-lede">
@@ -29,11 +31,14 @@ const navItems = sections.map((s) => ({ id: slug(s.title), label: pick(lang, s.t
         </p>
       )
     }
-  </header>
+  </header>}
 
   <Contents {...(embedded ? {} : { items: navItems, label: t(lang, 'onThisPage') })}>
+    {embedded && !education && <slot name="research" />}
     {
       sections.map((s) => (
+        <>
+        {embedded && s === firstExperience && <div id="experience" />}
         <section class="section cv-section" id={slug(s.title)}>
           <h2 class="section-title">{pick(lang, s.title, s.title_zh)}</h2>
           {s.entries.every((e) => !e.period) ? (
@@ -93,6 +98,8 @@ const navItems = sections.map((s) => ({ id: slug(s.title), label: pick(lang, s.t
             </ol>
           )}
         </section>
+        {embedded && s === education && <slot name="research" />}
+        </>
       ))
     }
   </Contents>

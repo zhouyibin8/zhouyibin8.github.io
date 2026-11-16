@@ -35,8 +35,10 @@ const alternate = new URL(`/${otherLang(lang)}/${path}`, site).href;
 
 const nav = [
   { href: `/${lang}/`, label: t(lang, 'home'), key: '' },
+  onePage && { href: `/${lang}/#cv`, label: lang === 'zh' ? '教育背景' : 'Education', key: 'cv/' },
   { href: `/${lang}/publications/`, label: t(lang, 'publications'), key: 'publications/' },
-  { href: `/${lang}/cv/`, label: t(lang, 'cv'), key: 'cv/' },
+  !onePage && { href: `/${lang}/cv/`, label: t(lang, 'cv'), key: 'cv/' },
+  onePage && { href: `/${lang}/#experience`, label: lang === 'zh' ? '经历' : 'Experience', key: 'experience/' },
   profile.show_life && { href: `/${lang}/life/`, label: t(lang, 'life'), key: 'life/' },
 ].filter((item) => !!item).map((item) => ({
   ...item,

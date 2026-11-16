@@ -27,7 +27,7 @@ const kindLabel = { presentation: t(lang, 'presentation'), invited: t(lang, 'inv
 ---
 
   <header class="page-head">
-    <Heading class="page-title">{t(lang, 'publications')}</Heading>
+    <Heading class={embedded ? 'section-title' : 'page-title'}>{t(lang, 'publications')}</Heading>
     {
       profile.scholar && (
         <p class="page-lede">
